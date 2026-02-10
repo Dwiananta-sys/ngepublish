@@ -30,7 +30,6 @@
       overflow-x: hidden;
     }
 
-    /* Premium gradient background */
     body::before {
       content: '';
       position: fixed;
@@ -43,7 +42,6 @@
       z-index: 0;
     }
 
-    /* Decorative corner frame */
     body::after {
       content: '';
       position: fixed;
@@ -83,16 +81,16 @@
         repeating-linear-gradient(0deg, transparent, transparent 100px, rgba(212, 175, 55, 0.008) 100px, rgba(212, 175, 55, 0.008) 200px);
     }
 
-    /* Header/Nav */
     header {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 2px solid rgba(232, 227, 216, 0.5);
-      padding: 20px;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+      padding: 12px 14px;
       position: sticky;
       top: 0;
       z-index: 40;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
     }
 
     .header-content {
@@ -100,155 +98,136 @@
       margin: 0 auto;
       display: flex;
       align-items: center;
-      gap: 30px;
+      gap: 10px;
       justify-content: space-between;
     }
 
     .logo-circle {
-      width: 60px;
-      height: 60px;
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
       background: linear-gradient(135deg, #d4af37 0%, #c9941f 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 32px;
+      font-size: 24px;
       flex-shrink: 0;
-      box-shadow: 0 6px 16px rgba(212, 175, 55, 0.25);
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
       cursor: pointer;
       transition: all 0.3s ease;
       touch-action: manipulation;
-      position: relative;
     }
 
     .logo-circle:active {
-      transform: scale(0.95);
+      transform: scale(0.92);
     }
 
     @media (hover: hover) {
       .logo-circle:hover {
-        transform: scale(1.08);
-        box-shadow: 0 8px 24px rgba(212, 175, 55, 0.35);
+        transform: scale(1.05);
+        box-shadow: 0 6px 16px rgba(212, 175, 55, 0.3);
       }
     }
 
     .artist-title {
-      flex: 1;
+      flex: 0 1 auto;
       min-width: 0;
     }
 
     .artist-title h1 {
       margin: 0;
-      font-size: clamp(18px, 4vw, 28px);
+      font-size: 14px;
       font-weight: 700;
       color: #2c2c2c;
       font-family: 'Playfair Display', serif;
-    }
-
-    .artist-title p {
-      margin: 4px 0 0 0;
-      font-size: 11px;
-      color: #888;
-      font-family: 'Montserrat', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
+    .artist-title p {
+      margin: 2px 0 0 0;
+      font-size: 8px;
+      color: #999;
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .header-nav-wrapper {
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+      flex: 1;
+      display: flex;
+      gap: 2px;
+      padding: 0 4px;
+    }
+
+    .header-nav-wrapper::-webkit-scrollbar {
+      height: 3px;
+    }
+
+    .header-nav-wrapper::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .header-nav-wrapper::-webkit-scrollbar-thumb {
+      background: rgba(212, 175, 55, 0.3);
+      border-radius: 2px;
+    }
+
     .header-nav {
       display: flex;
-      gap: 40px;
+      gap: 4px;
       align-items: center;
-      flex-wrap: wrap;
-      justify-content: flex-end;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
     }
 
     .nav-link {
       background: transparent;
-      border: none;
-      color: #2c2c2c;
-      padding: 0;
-      font-size: 13px;
-      font-weight: 500;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      color: #555;
+      padding: 6px 11px;
+      font-size: 9px;
+      font-weight: 600;
       font-family: 'Montserrat', sans-serif;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.6px;
       cursor: pointer;
       transition: all 0.3s ease;
       touch-action: manipulation;
-      position: relative;
       white-space: nowrap;
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: #d4af37;
-      transition: width 0.3s ease;
+      flex-shrink: 0;
+      border-radius: 20px;
     }
 
     .nav-link:active {
-      transform: scale(0.95);
+      transform: scale(0.92);
     }
 
     .nav-link.active {
-      color: #d4af37;
-    }
-
-    .nav-link.active::after {
-      width: 100%;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.9) 0%, rgba(201, 148, 31, 0.9) 100%);
+      color: #fff;
+      border-color: #d4af37;
     }
 
     @media (hover: hover) {
       .nav-link:hover {
-        color: #d4af37;
+        background: rgba(212, 175, 55, 0.1);
+        border-color: #d4af37;
       }
 
-      .nav-link:hover::after {
-        width: 100%;
-      }
-    }
-
-    @media (max-width: 1024px) {
-      .header-nav {
-        gap: 25px;
-      }
-
-      .nav-link {
-        font-size: 11px;
+      .nav-link.active:hover {
+        box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
       }
     }
 
-    @media (max-width: 768px) {
-      .header-content {
-        gap: 15px;
-      }
-
-      .header-nav {
-        gap: 15px;
-      }
-
-      .nav-link {
-        font-size: 10px;
-        letter-spacing: 0.5px;
-      }
-
-      .artist-title h1 {
-        font-size: 18px;
-      }
-
-      .artist-title p {
-        font-size: 9px;
-      }
-    }
-
-    /* Scroll animations */
     .fade-in-section {
       opacity: 0;
       transition: opacity 0.6s ease;
@@ -258,14 +237,12 @@
       opacity: 1;
     }
 
-    /* Main content */
     main {
       max-width: 1400px;
       margin: 0 auto;
       padding: 40px 20px;
     }
 
-    /* Landing/Home Section */
     .landing-section {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -384,7 +361,6 @@
       position: relative;
     }
 
-    /* The Artist Section */
     .artist-section {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -475,7 +451,6 @@
       font-family: 'Montserrat', sans-serif;
     }
 
-    /* Section headers */
     .section-header {
       text-align: center;
       margin-bottom: 60px;
@@ -501,7 +476,6 @@
       font-weight: 600;
     }
 
-    /* Gallery About Section */
     .gallery-about-section {
       background: linear-gradient(135deg, rgba(249, 247, 244, 0.8) 0%, rgba(237, 232, 223, 0.8) 100%);
       backdrop-filter: blur(8px);
@@ -528,7 +502,6 @@
       font-family: 'Montserrat', sans-serif;
     }
 
-    /* Gallery Grid */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -608,7 +581,6 @@
       font-family: 'Montserrat', sans-serif;
     }
 
-    /* Find Us Section */
     .find-us-section {
       background: linear-gradient(135deg, rgba(249, 247, 244, 0.9) 0%, rgba(237, 232, 223, 0.9) 100%);
       backdrop-filter: blur(8px);
@@ -662,7 +634,6 @@
       }
     }
 
-    /* Modal */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -853,7 +824,6 @@
       font-weight: 600;
     }
 
-    /* Footer */
     footer {
       background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(8px);
@@ -874,7 +844,7 @@
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="font-body">
-  <div id="app" class="h-full overflow-auto"><!-- Header -->
+  <div id="app" class="h-full overflow-auto">
    <header>
     <div class="header-content">
      <div class="logo-circle" id="artist-logo" onclick="scrollToTop()" title="Back to Top">
@@ -884,11 +854,13 @@
       <h1 id="header-artist-name">Sofia Chen</h1>
       <p>Contemporary Art &amp; Design</p>
      </div>
-     <nav class="header-nav"><button class="nav-link active" data-section="home" onclick="navigateTo('home')">Home</button> <button class="nav-link" data-section="artist" onclick="navigateTo('artist')">The Artist</button> <button class="nav-link" data-section="artwork" onclick="navigateTo('artwork')">Artwork</button> <button class="nav-link" data-section="gallery" onclick="navigateTo('gallery')">Newest Artwork</button> <button class="nav-link" data-section="contact" onclick="navigateTo('contact')">Find Us</button>
-     </nav>
+     <div class="header-nav-wrapper">
+      <nav class="header-nav"><button class="nav-link active" data-section="home" onclick="navigateTo('home')">Home</button> <button class="nav-link" data-section="artist" onclick="navigateTo('artist')">Artist</button> <button class="nav-link" data-section="artwork" onclick="navigateTo('artwork')">Artwork</button> <button class="nav-link" data-section="gallery" onclick="navigateTo('gallery')">Latest</button> <button class="nav-link" data-section="contact" onclick="navigateTo('contact')">Find Us</button>
+      </nav>
+     </div>
     </div>
-   </header><!-- Main Content -->
-   <main><!-- Landing/Home Section -->
+   </header>
+   <main>
     <section class="landing-section fade-in-section visible" id="home-section">
      <div class="landing-hero-text">
       <h2 id="landing-title">Contemporary Art Curator</h2>
@@ -899,7 +871,7 @@
      <div class="landing-hero-img">
       📸
      </div>
-    </section><!-- The Artist Section -->
+    </section>
     <section class="fade-in-section" id="artist-section">
      <div class="section-header">
       <h2 class="section-title">The Artist</h2>
@@ -916,38 +888,36 @@
        <p id="artist-bio">Sofia Chen is a contemporary artist whose work explores the intersection of traditional techniques and modern aesthetics. With over 10 years of experience, her unique approach to visual storytelling has captivated audiences worldwide. Her art reflects deep contemplation on culture, identity, and the human experience.</p>
       </div>
      </div>
-    </section><!-- Artwork Section (Individual artworks gallery) -->
+    </section>
     <section class="fade-in-section" id="artwork-section">
      <div class="section-header">
       <h2 class="section-title">Artwork</h2>
       <p class="section-subtitle">Browse Our Collections</p>
      </div>
-     <div class="gallery-grid" id="artwork-gallery-container"><!-- Works will be generated here -->
-     </div>
-    </section><!-- Gallery About Section -->
+     <div class="gallery-grid" id="artwork-gallery-container"></div>
+    </section>
     <section class="gallery-about-section fade-in-section" id="gallery-about-container">
      <h3>About This Gallery</h3>
      <p id="gallery-about">This collection represents a carefully curated selection of contemporary works. Each piece tells a unique story and showcases different artistic techniques and perspectives. We invite you to explore the depth and complexity of these artworks, each one a testament to the artist's vision and creative journey.</p>
-    </section><!-- Newest Artwork Section -->
+    </section>
     <section class="fade-in-section" id="gallery-section">
      <div class="section-header">
       <h2 class="section-title">Newest Artwork</h2>
       <p class="section-subtitle">Latest Masterpieces</p>
      </div>
-     <div class="gallery-grid" id="gallery-container"><!-- Works will be generated here -->
-     </div>
-    </section><!-- Find Us Section -->
+     <div class="gallery-grid" id="gallery-container"></div>
+    </section>
     <section class="find-us-section fade-in-section" id="contact-section">
      <h3>Find Us</h3>
      <div class="socmed-container"><a id="instagram-btn" class="socmed-icon" target="_blank" rel="noopener noreferrer" title="Instagram">📷</a> <a id="whatsapp-btn" class="socmed-icon" target="_blank" rel="noopener noreferrer" title="WhatsApp">💬</a> <a id="maps-btn" class="socmed-icon" target="_blank" rel="noopener noreferrer" title="Location">📍</a>
      </div>
     </section>
-   </main><!-- Footer -->
+   </main>
    <footer>
     <p>© 2024 <span id="footer-name">Sofia Chen</span>. All Rights Reserved.</p>
     <p>Contemporary Art Portfolio</p>
    </footer>
-  </div><!-- Artwork Detail Modal -->
+  </div>
   <div id="artworkModal" class="modal-backdrop">
    <div class="modal-content" style="position: relative;"><button class="close-modal" onclick="closeModal()">✕</button>
     <div class="modal-image" id="modal-image">
@@ -979,120 +949,51 @@
    </div>
   </div>
   <script>
-    // Sample artwork data
     const defaultWorks = [
-      {
-        title: 'Ethereal Echoes',
-        desc: 'A meditation on memory and time, this piece combines watercolor with mixed media to create layers of meaning.',
-        year: '2024',
-        medium: 'Watercolor & Mixed Media',
-        emoji: '🎨'
-      },
-      {
-        title: 'Urban Metamorphosis',
-        desc: 'Exploring the transformation of urban spaces through abstract representation and bold colors.',
-        year: '2024',
-        medium: 'Acrylic on Canvas',
-        emoji: '🌆'
-      },
-      {
-        title: 'Harmony in Chaos',
-        desc: 'A dynamic composition that seeks balance between order and spontaneity in artistic expression.',
-        year: '2023',
-        medium: 'Digital Art',
-        emoji: '✨'
-      },
-      {
-        title: 'Intimate Landscapes',
-        desc: 'Personal interpretations of natural forms, inviting viewers into a world of quiet contemplation.',
-        year: '2023',
-        medium: 'Oil on Canvas',
-        emoji: '🌿'
-      }
+      {title: 'Ethereal Echoes', desc: 'A meditation on memory and time, this piece combines watercolor with mixed media to create layers of meaning.', year: '2024', medium: 'Watercolor & Mixed Media', emoji: '🎨'},
+      {title: 'Urban Metamorphosis', desc: 'Exploring the transformation of urban spaces through abstract representation and bold colors.', year: '2024', medium: 'Acrylic on Canvas', emoji: '🌆'},
+      {title: 'Harmony in Chaos', desc: 'A dynamic composition that seeks balance between order and spontaneity in artistic expression.', year: '2023', medium: 'Digital Art', emoji: '✨'},
+      {title: 'Intimate Landscapes', desc: 'Personal interpretations of natural forms, inviting viewers into a world of quiet contemplation.', year: '2023', medium: 'Oil on Canvas', emoji: '🌿'}
     ];
 
     const defaultConfig = {
-      artist_logo: '🎨',
-      artist_name: 'Sofia Chen',
-      artist_tagline: 'Modern Art Through Contemporary Eyes',
+      artist_logo: '🎨', artist_name: 'Sofia Chen', artist_tagline: 'Modern Art Through Contemporary Eyes',
       artist_bio: 'Sofia Chen is a contemporary artist whose work explores the intersection of traditional techniques and modern aesthetics. With over 10 years of experience, her unique approach to visual storytelling has captivated audiences worldwide. Her art reflects deep contemplation on culture, identity, and the human experience.',
-      landing_title: 'Contemporary Art Curator',
-      landing_desc: 'Experience the fusion of traditional techniques and modern aesthetics. Each piece tells a unique story of creativity, passion, and artistic vision.',
+      landing_title: 'Contemporary Art Curator', landing_desc: 'Experience the fusion of traditional techniques and modern aesthetics. Each piece tells a unique story of creativity, passion, and artistic vision.',
       gallery_about: 'This collection represents a carefully curated selection of contemporary works. Each piece tells a unique story and showcases different artistic techniques and perspectives. We invite you to explore the depth and complexity of these artworks, each one a testament to the artist\'s vision and creative journey.',
-      instagram_link: '',
-      whatsapp_link: '',
-      maps_link: '',
-      work_1_title: 'Ethereal Echoes',
-      work_1_desc: 'A meditation on memory and time, this piece combines watercolor with mixed media to create layers of meaning.',
-      work_1_year: '2024',
-      work_1_medium: 'Watercolor & Mixed Media',
-      work_2_title: 'Urban Metamorphosis',
-      work_2_desc: 'Exploring the transformation of urban spaces through abstract representation and bold colors.',
-      work_2_year: '2024',
-      work_2_medium: 'Acrylic on Canvas',
-      work_3_title: 'Harmony in Chaos',
-      work_3_desc: 'A dynamic composition that seeks balance between order and spontaneity in artistic expression.',
-      work_3_year: '2023',
-      work_3_medium: 'Digital Art',
-      work_4_title: 'Intimate Landscapes',
-      work_4_desc: 'Personal interpretations of natural forms, inviting viewers into a world of quiet contemplation.',
-      work_4_year: '2023',
-      work_4_medium: 'Oil on Canvas'
+      instagram_link: '', whatsapp_link: '', maps_link: '',
+      work_1_title: 'Ethereal Echoes', work_1_desc: 'A meditation on memory and time, this piece combines watercolor with mixed media to create layers of meaning.', work_1_year: '2024', work_1_medium: 'Watercolor & Mixed Media',
+      work_2_title: 'Urban Metamorphosis', work_2_desc: 'Exploring the transformation of urban spaces through abstract representation and bold colors.', work_2_year: '2024', work_2_medium: 'Acrylic on Canvas',
+      work_3_title: 'Harmony in Chaos', work_3_desc: 'A dynamic composition that seeks balance between order and spontaneity in artistic expression.', work_3_year: '2023', work_3_medium: 'Digital Art',
+      work_4_title: 'Intimate Landscapes', work_4_desc: 'Personal interpretations of natural forms, inviting viewers into a world of quiet contemplation.', work_4_year: '2023', work_4_medium: 'Oil on Canvas'
     };
 
     function renderGallery(config, containerId) {
       const container = document.getElementById(containerId);
       if (!container) return;
-      
       container.innerHTML = '';
-
       for (let i = 1; i <= 4; i++) {
-        const titleKey = `work_${i}_title`;
-        const descKey = `work_${i}_desc`;
-        const yearKey = `work_${i}_year`;
-        const mediumKey = `work_${i}_medium`;
-        
-        const title = config[titleKey] || defaultConfig[titleKey];
-        const desc = config[descKey] || defaultConfig[descKey];
-        const year = config[yearKey] || defaultConfig[yearKey];
-        const medium = config[mediumKey] || defaultConfig[mediumKey];
-        const work = defaultWorks[i - 1];
-
+        const title = config[`work_${i}_title`] || defaultConfig[`work_${i}_title`];
+        const desc = config[`work_${i}_desc`] || defaultConfig[`work_${i}_desc`];
         const card = document.createElement('div');
         card.className = 'artwork-card';
-        card.dataset.workIndex = i;
-        card.innerHTML = `
-          <div class="artwork-image" onclick="openModal(${i})">
-            ${work.emoji}
-          </div>
-          <h3 class="artwork-title">${title}</h3>
-          <p class="artwork-desc">${desc}</p>
-        `;
-        
+        card.innerHTML = `<div class="artwork-image" onclick="openModal(${i})">${defaultWorks[i-1].emoji}</div><h3 class="artwork-title">${title}</h3><p class="artwork-desc">${desc}</p>`;
         container.appendChild(card);
       }
     }
 
-    let currentConfig = { ...defaultConfig };
+    let currentConfig = {...defaultConfig};
 
     function openModal(workIndex) {
-      const titleKey = `work_${workIndex}_title`;
-      const descKey = `work_${workIndex}_desc`;
-      const yearKey = `work_${workIndex}_year`;
-      const mediumKey = `work_${workIndex}_medium`;
-      
-      const title = currentConfig[titleKey] || defaultConfig[titleKey];
-      const desc = currentConfig[descKey] || defaultConfig[descKey];
-      const year = currentConfig[yearKey] || defaultConfig[yearKey];
-      const medium = currentConfig[mediumKey] || defaultConfig[mediumKey];
-      const work = defaultWorks[workIndex - 1];
-
-      document.getElementById('modal-image').textContent = work.emoji;
+      const title = currentConfig[`work_${workIndex}_title`] || defaultConfig[`work_${workIndex}_title`];
+      const desc = currentConfig[`work_${workIndex}_desc`] || defaultConfig[`work_${workIndex}_desc`];
+      const year = currentConfig[`work_${workIndex}_year`] || defaultConfig[`work_${workIndex}_year`];
+      const medium = currentConfig[`work_${workIndex}_medium`] || defaultConfig[`work_${workIndex}_medium`];
+      document.getElementById('modal-image').textContent = defaultWorks[workIndex-1].emoji;
       document.getElementById('modal-title').textContent = title;
       document.getElementById('modal-desc').textContent = desc;
       document.getElementById('modal-year').textContent = year;
       document.getElementById('modal-medium').textContent = medium;
-      
       const modal = document.getElementById('artworkModal');
       modal.classList.remove('closing');
       modal.classList.add('active');
@@ -1102,7 +1003,6 @@
     function closeModal() {
       const modal = document.getElementById('artworkModal');
       modal.classList.add('closing');
-      
       setTimeout(() => {
         modal.classList.remove('active', 'closing');
         document.body.style.overflow = '';
@@ -1114,123 +1014,58 @@
     }
 
     function navigateTo(section) {
-      const sectionMap = {
-        'home': 'home-section',
-        'artist': 'artist-section',
-        'artwork': 'artwork-section',
-        'gallery': 'gallery-section',
-        'contact': 'contact-section'
-      };
-
+      const sectionMap = {'home': 'home-section', 'artist': 'artist-section', 'artwork': 'artwork-section', 'gallery': 'gallery-section', 'contact': 'contact-section'};
       const targetId = sectionMap[section];
       if (targetId) {
         document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
-        
-        // Update active nav
-        document.querySelectorAll('.nav-link').forEach(link => {
-          link.classList.remove('active');
-        });
+        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
         document.querySelector(`[data-section="${section}"]`).classList.add('active');
       }
     }
 
-    // Scroll animation observer
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
+    const observerOptions = {threshold: 0.1, rootMargin: '0px 0px -100px 0px'};
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        } else {
-          entry.target.classList.remove('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+        else entry.target.classList.remove('visible');
       });
     }, observerOptions);
 
-    document.querySelectorAll('.fade-in-section').forEach(el => {
-      observer.observe(el);
-    });
-
+    document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
     document.getElementById('artworkModal').addEventListener('click', (e) => {
       if (e.target.id === 'artworkModal') closeModal();
     });
-
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeModal();
     });
 
-    // Update social media links
     function updateSocialLinks(config) {
-      const instagramBtn = document.getElementById('instagram-btn');
-      const whatsappBtn = document.getElementById('whatsapp-btn');
-      const mapsBtn = document.getElementById('maps-btn');
-
-      if (config.instagram_link) {
-        instagramBtn.href = config.instagram_link;
-        instagramBtn.onclick = null;
-        instagramBtn.style.cursor = 'pointer';
-      } else {
-        instagramBtn.href = 'javascript:void(0)';
-        instagramBtn.style.cursor = 'default';
-        instagramBtn.onclick = (e) => {
-          e.preventDefault();
-        };
-      }
-
-      if (config.whatsapp_link) {
-        whatsappBtn.href = config.whatsapp_link;
-        whatsappBtn.onclick = null;
-        whatsappBtn.style.cursor = 'pointer';
-      } else {
-        whatsappBtn.href = 'javascript:void(0)';
-        whatsappBtn.style.cursor = 'default';
-        whatsappBtn.onclick = (e) => {
-          e.preventDefault();
-        };
-      }
-
-      if (config.maps_link) {
-        mapsBtn.href = config.maps_link;
-        mapsBtn.onclick = null;
-        mapsBtn.style.cursor = 'pointer';
-      } else {
-        mapsBtn.href = 'javascript:void(0)';
-        mapsBtn.style.cursor = 'default';
-        mapsBtn.onclick = (e) => {
-          e.preventDefault();
-        };
-      }
+      [['instagram-btn', 'instagram_link'], ['whatsapp-btn', 'whatsapp_link'], ['maps-btn', 'maps_link']].forEach(([id, key]) => {
+        const btn = document.getElementById(id);
+        if (config[key]) {
+          btn.href = config[key];
+          btn.onclick = null;
+          btn.style.cursor = 'pointer';
+        } else {
+          btn.href = 'javascript:void(0)';
+          btn.style.cursor = 'default';
+          btn.onclick = (e) => e.preventDefault();
+        }
+      });
     }
 
     async function onConfigChange(config) {
-      currentConfig = { ...config };
-
-      // Update header
+      currentConfig = {...config};
       document.getElementById('artist-logo').textContent = config.artist_logo || defaultConfig.artist_logo;
       document.getElementById('header-artist-name').textContent = config.artist_name || defaultConfig.artist_name;
-
-      // Update landing section
       document.getElementById('landing-title').textContent = config.landing_title || defaultConfig.landing_title;
       document.getElementById('landing-desc').textContent = config.landing_desc || defaultConfig.landing_desc;
-
-      // Update about section
       document.getElementById('about-artist-name').textContent = config.artist_name || defaultConfig.artist_name;
       document.getElementById('artist-tagline').textContent = config.artist_tagline || defaultConfig.artist_tagline;
       document.getElementById('artist-bio').textContent = config.artist_bio || defaultConfig.artist_bio;
-
-      // Update gallery about
       document.getElementById('gallery-about').textContent = config.gallery_about || defaultConfig.gallery_about;
-
-      // Update footer
       document.getElementById('footer-name').textContent = config.artist_name || defaultConfig.artist_name;
-
-      // Update social links
       updateSocialLinks(config);
-
-      // Render galleries
       renderGallery(config, 'artwork-gallery-container');
       renderGallery(config, 'gallery-container');
     }
@@ -1239,12 +1074,7 @@
       window.elementSdk.init({
         defaultConfig,
         onConfigChange,
-        mapToCapabilities: (config) => ({
-          recolorables: [],
-          borderables: [],
-          fontEditable: undefined,
-          fontSizeable: undefined
-        }),
+        mapToCapabilities: (config) => ({recolorables: [], borderables: [], fontEditable: undefined, fontSizeable: undefined}),
         mapToEditPanelValues: (config) => new Map([
           ['artist_name', config.artist_name || defaultConfig.artist_name],
           ['artist_bio', config.artist_bio || defaultConfig.artist_bio],
@@ -1279,5 +1109,5 @@
     renderGallery(defaultConfig, 'gallery-container');
     updateSocialLinks(defaultConfig);
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cb99bb950a9db42',t:'MTc3MDcwNTU1NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cb9cd64e0644ab7',t:'MTc3MDcwNzU5MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
