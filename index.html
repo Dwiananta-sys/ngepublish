@@ -41,7 +41,6 @@
       font-family: 'Montserrat', sans-serif;
     }
     
-    /* Background Pattern */
     .bg-pattern {
       background-color: #fefefe;
       background-image: 
@@ -51,7 +50,6 @@
         url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     }
     
-    /* Floating decorative elements */
     .decor-circle {
       position: fixed;
       border-radius: 50%;
@@ -104,7 +102,6 @@
       animation: float 16s ease-in-out infinite;
     }
     
-    /* Brush stroke decorations */
     .brush-stroke {
       position: fixed;
       pointer-events: none;
@@ -131,7 +128,6 @@
       75% { transform: translate(-15px, 15px) rotate(3deg); }
     }
     
-    /* Navigation styles */
     .nav-link {
       position: relative;
       color: #5c4a32;
@@ -168,7 +164,6 @@
       background: #8b5a2b;
     }
     
-    /* Logo styles */
     .studio-logo {
       width: 50px;
       height: 50px;
@@ -176,13 +171,13 @@
       object-fit: cover;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
+      cursor: pointer;
     }
     
     .studio-logo:hover {
       transform: scale(1.05);
     }
     
-    /* Section animations */
     .section-animate {
       opacity: 0;
       transform: translateY(40px);
@@ -194,7 +189,6 @@
       transform: translateY(0);
     }
     
-    /* Button styles */
     .btn-primary {
       background: linear-gradient(135deg, #d4af37 0%, #8b5a2b 100%);
       color: white;
@@ -248,7 +242,6 @@
       box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
     }
     
-    /* Artwork grid */
     .artwork-card {
       position: relative;
       overflow: hidden;
@@ -289,7 +282,27 @@
       opacity: 1;
     }
     
-    /* Social icons */
+    .artwork-hint {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(212, 175, 55, 0.9);
+      color: #5c4a32;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    
+    .artwork-card:hover .artwork-hint {
+      opacity: 0;
+    }
+    
     .social-icon {
       width: 60px;
       height: 60px;
@@ -315,7 +328,6 @@
       transform: scale(1.1);
     }
     
-    /* Modal */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -328,6 +340,8 @@
       visibility: hidden;
       transition: all 0.4s ease;
       backdrop-filter: blur(10px);
+      overflow-y: auto;
+      padding: 2rem 1rem;
     }
     
     .modal-backdrop.active {
@@ -336,11 +350,15 @@
     }
     
     .modal-content {
-      max-width: 90%;
-      max-height: 90%;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      max-width: 600px;
+      width: 100%;
       transform: scale(0.8) translateY(50px);
       transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
       opacity: 0;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     }
     
     .modal-backdrop.active .modal-content {
@@ -362,72 +380,43 @@
     .modal-image {
       width: 100%;
       height: auto;
-      max-height: 60vh;
+      max-height: 400px;
       object-fit: contain;
-      border-radius: 12px;
-      margin-bottom: 1rem;
+      background: #f5f0e6;
     }
     
-    /* Header glassmorphism */
     .header-glass {
       background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+      overflow: hidden;
     }
     
-    /* Mobile nav scroll container */
     .nav-scroll-container {
       display: flex;
-      gap: 0.5rem;
       overflow-x: auto;
+      scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
-      -ms-overflow-style: none;
-      padding: 0.5rem 0;
-      scroll-snap-type: x mandatory;
     }
     
     .nav-scroll-container::-webkit-scrollbar {
       display: none;
     }
     
-    .nav-scroll-container .nav-link {
-      flex-shrink: 0;
-      scroll-snap-align: start;
-      padding: 0.5rem 1rem;
+    .nav-scroll-wrapper {
+      display: flex;
+      gap: 2rem;
+      padding: 0 1rem;
+      min-width: min-content;
+    }
+    
+    .nav-link-scroll {
       white-space: nowrap;
-      font-size: 0.8rem;
+      flex-shrink: 0;
     }
     
-    /* Scroll indicator for mobile */
-    .scroll-indicator {
-      display: none;
-    }
-    
-    @media (max-width: 768px) {
-      .scroll-indicator {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.25rem;
-        padding: 0.25rem 0;
-        opacity: 0.5;
-        font-size: 0.65rem;
-        color: #8b5a2b;
-      }
-      
-      .scroll-indicator svg {
-        animation: swipe 1.5s ease-in-out infinite;
-      }
-      
-      @keyframes swipe {
-        0%, 100% { transform: translateX(-3px); }
-        50% { transform: translateX(3px); }
-      }
-    }
-    
-    /* Scroll progress */
     .scroll-progress {
       position: fixed;
       top: 0;
@@ -437,8 +426,33 @@
       z-index: 1001;
       transition: width 0.1s ease;
     }
+
+    .swipe-hint {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 40;
+      display: none;
+      font-size: 0.9rem;
+      color: #d4af37;
+      pointer-events: none;
+    }
+
+    .swipe-hint.visible {
+      display: block;
+    }
+
+    .swipe-arrow {
+      animation: slideRight 1.5s ease-in-out infinite;
+      display: inline-block;
+    }
+
+    @keyframes slideRight {
+      0% { transform: translateX(0); opacity: 0.6; }
+      50% { transform: translateX(8px); opacity: 1; }
+      100% { transform: translateX(0); opacity: 0.6; }
+    }
     
-    /* Artist section styling */
     .artist-image-frame {
       position: relative;
       padding: 1rem;
@@ -467,7 +481,6 @@
       object-fit: cover;
     }
     
-    /* Section divider */
     .section-divider {
       width: 100px;
       height: 3px;
@@ -475,25 +488,77 @@
       margin: 0 auto;
     }
     
-    /* Stagger animations */
+    .exhibition-item {
+      text-align: left;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    
+    .exhibition-item:last-child {
+      border-bottom: none;
+    }
+    
+    .exhibition-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #5c4a32;
+    }
+    
+    .exhibition-desc {
+      color: #8b7355;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    
+    .series-title {
+      text-align: center;
+      margin: 3rem 0 2rem 0;
+    }
+    
+    .series-subtitle {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #d4af37;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+    
+    .artwork-item-rect {
+      aspect-ratio: 2/3;
+    }
+    
+    .studio-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    
     .stagger-1 { animation-delay: 0.1s; }
     .stagger-2 { animation-delay: 0.2s; }
     .stagger-3 { animation-delay: 0.3s; }
     .stagger-4 { animation-delay: 0.4s; }
     .stagger-5 { animation-delay: 0.5s; }
     .stagger-6 { animation-delay: 0.6s; }
+
+    @media (max-width: 768px) {
+      .artwork-item-rect {
+        aspect-ratio: 2/3;
+      }
+    }
   </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full font-body bg-pattern">
-  <div class="app-wrapper" id="app-wrapper"><!-- Scroll Progress -->
-   <div class="scroll-progress" id="scroll-progress"></div><!-- Decorative Elements -->
+  <div class="app-wrapper" id="app-wrapper">
+   <div class="scroll-progress" id="scroll-progress"></div>
    <div class="decor-circle decor-1"></div>
    <div class="decor-circle decor-2"></div>
    <div class="decor-circle decor-3"></div>
    <div class="decor-circle decor-4"></div>
-   <div class="decor-circle decor-5"></div><!-- Brush Strokes -->
+   <div class="decor-circle decor-5"></div>
    <div class="brush-stroke brush-1">
     <svg width="200" height="60" viewbox="0 0 200 60" fill="none"><path d="M5 30C20 10 50 50 80 30C110 10 140 50 170 30C185 20 195 25 195 30" stroke="#d4af37" stroke-width="8" stroke-linecap="round" />
     </svg>
@@ -503,19 +568,21 @@
     </svg>
    </div><!-- Header -->
    <header class="header-glass fixed top-0 left-0 right-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-3"><!-- Desktop Layout -->
+    <div class="max-w-7xl mx-auto px-4 py-3">
      <div class="hidden md:flex items-center justify-between"><img id="studio-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23d4af37' opacity='0.2'/%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23d4af37' stroke-width='2'/%3E%3Ctext x='50' y='60' font-size='24' text-anchor='middle' font-family='serif' fill='%235c4a32' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E" alt="Studio Logo" class="studio-logo">
-      <nav class="flex gap-8"><a href="#home" class="nav-link font-body text-sm uppercase tracking-wider" data-section="home">Home</a> <a href="#artist" class="nav-link font-body text-sm uppercase tracking-wider" data-section="artist">The Artist</a> <a href="#newest" class="nav-link font-body text-sm uppercase tracking-wider" data-section="newest">Newest Artwork</a> <a href="#artwork" class="nav-link font-body text-sm uppercase tracking-wider" data-section="artwork">Artwork</a> <a href="#findus" class="nav-link font-body text-sm uppercase tracking-wider" data-section="findus">Find Us</a>
+      <nav class="flex gap-8"><a href="#home" class="nav-link font-body text-sm uppercase tracking-wider" data-section="home">Home</a> <a href="#artist" class="nav-link font-body text-sm uppercase tracking-wider" data-section="artist">The Artist</a> <a href="#newest" class="nav-link font-body text-sm uppercase tracking-wider" data-section="newest">Newest Artwork</a> <a href="#artwork" class="nav-link font-body text-sm uppercase tracking-wider" data-section="artwork">Artwork</a> <a href="#studio" class="nav-link font-body text-sm uppercase tracking-wider" data-section="studio">Our Studio</a> <a href="#findus" class="nav-link font-body text-sm uppercase tracking-wider" data-section="findus">Find Us</a>
       </nav>
-     </div><!-- Mobile Layout -->
+     </div>
      <div class="md:hidden">
-      <div class="flex items-center justify-between mb-2"><img id="studio-logo-mobile" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23d4af37' opacity='0.2'/%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23d4af37' stroke-width='2'/%3E%3Ctext x='50' y='60' font-size='24' text-anchor='middle' font-family='serif' fill='%235c4a32' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E" alt="Studio Logo" class="studio-logo" style="width: 40px; height: 40px;">
-       <div class="scroll-indicator">
-        <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" />
-        </svg><span>Geser</span>
-       </div>
+      <div class="flex items-center mb-2"><img id="studio-logo-mobile" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23d4af37' opacity='0.2'/%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23d4af37' stroke-width='2'/%3E%3Ctext x='50' y='60' font-size='24' text-anchor='middle' font-family='serif' fill='%235c4a32' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E" alt="Studio Logo" class="studio-logo" style="width: 40px; height: 40px;">
       </div>
-      <nav class="nav-scroll-container"><a href="#home" class="nav-link font-body uppercase tracking-wider" data-section="home">Home</a> <a href="#artist" class="nav-link font-body uppercase tracking-wider" data-section="artist">The Artist</a> <a href="#newest" class="nav-link font-body uppercase tracking-wider" data-section="newest">Newest</a> <a href="#artwork" class="nav-link font-body uppercase tracking-wider" data-section="artwork">Artwork</a> <a href="#findus" class="nav-link font-body uppercase tracking-wider" data-section="findus">Find Us</a>
+      <div class="swipe-hint" id="swipe-hint">
+    <span>Swipe</span>
+    <span class="swipe-arrow">→</span>
+  </div>
+      <nav class="nav-scroll-container">
+       <div class="nav-scroll-wrapper"><a href="#home" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="home">Home</a> <a href="#artist" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="artist">Artist</a> <a href="#newest" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="newest">Newest</a> <a href="#artwork" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="artwork">Artwork</a> <a href="#studio" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="studio">Studio</a> <a href="#findus" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="findus">Find Us</a>
+       </div>   
       </nav>
      </div>
     </div>
@@ -529,7 +596,7 @@
       </div>
       <h1 id="hero-title" class="font-display text-5xl md:text-7xl font-bold mb-6" style="color: #5c4a32;">The Art of<br><span style="color: #d4af37;">Traditional Painting</span></h1>
       <p id="hero-subtitle" class="font-body text-lg md:text-xl mb-12 max-w-2xl mx-auto" style="color: #8b7355;">Discover the beauty of conventional art, where every brushstroke tells a story and every canvas holds a piece of the artist's soul.</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center"><a href="#newest" class="btn-primary font-body text-sm uppercase tracking-widest"> Explore Art </a> <a href="#artwork" class="btn-secondary font-body text-sm uppercase tracking-widest"> View Gallery </a>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center"><a href="#studio" class="btn-primary font-body text-sm uppercase tracking-widest"> Explore Studio </a> <a href="#newest" class="btn-secondary font-body text-sm uppercase tracking-widest"> View Art </a>
       </div>
      </div>
     </section><!-- Artist Section -->
@@ -538,7 +605,7 @@
       <div class="grid md:grid-cols-2 gap-12 items-center">
        <div class="section-animate" data-animate>
         <div class="artist-image-frame mx-auto">
-         <div class="artist-image-inner"><img id="artist-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Ccircle cx='150' cy='150' r='145' fill='%23f5f0e6'/%3E%3Ccircle cx='150' cy='80' r='35' fill='%238b5a2b'/%3E%3Cpath d='M100 150 Q150 120 200 150 L200 250 Q150 270 100 250 Z' fill='%238b5a2b'/%3E%3C/svg%3E" alt="Artist" class="artist-image" loading="lazy" onerror="this.style.background='#e5e7eb'; this.alt='Image unavailable';">
+         <div class="artist-image-inner"><img id="artist-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Ccircle cx='150' cy='150' r='145' fill='%23f5f0e6'/%3E%3Ccircle cx='150' cy='80' r='35' fill='%238b5a2b'/%3E%3Cpath d='M100 150 Q150 120 200 150 L200 250 Q150 270 100 250 Z' fill='%238b5a2b'/%3E%3C/svg%3E" alt="Artist" class="artist-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
          </div>
         </div>
        </div>
@@ -546,7 +613,7 @@
         <h2 id="artist-name" class="font-display text-4xl md:text-5xl font-bold mb-6" style="color: #5c4a32;">The Artist</h2>
         <div class="section-divider mb-8" style="margin-left: 0;"></div>
         <p id="artist-bio" class="font-body text-lg leading-relaxed mb-8" style="color: #8b7355;">A passionate traditional artist dedicated to preserving the timeless art of conventional painting. With years of experience and countless hours spent perfecting every brushstroke, each artwork is a testament to the enduring beauty of handcrafted art.</p>
-        <div class="flex gap-4">
+        <div class="flex gap-4 mb-8">
          <div class="text-center"><span class="font-display text-3xl font-bold" style="color: #d4af37;">10+</span>
           <p class="font-body text-sm" style="color: #8b7355;">Years Experience</p>
          </div>
@@ -555,6 +622,25 @@
          </div>
          <div class="text-center"><span class="font-display text-3xl font-bold" style="color: #d4af37;">50+</span>
           <p class="font-body text-sm" style="color: #8b7355;">Happy Collectors</p>
+         </div>
+        </div><!-- Exhibition Experience -->
+        <div class="section-animate" data-animate>
+         <h3 class="font-display text-2xl font-bold mb-4" style="color: #5c4a32;">Exhibition &amp; Experience</h3>
+         <div class="exhibition-item">
+          <div id="exhibition-1-title" class="exhibition-title">
+           Event Title
+          </div>
+          <div id="exhibition-1-desc" class="exhibition-desc">
+           Description about the exhibition or experience
+          </div>
+         </div>
+         <div class="exhibition-item">
+          <div id="exhibition-2-title" class="exhibition-title">
+           Event Title
+          </div>
+          <div id="exhibition-2-desc" class="exhibition-desc">
+           Description about the exhibition or experience
+          </div>
          </div>
         </div>
        </div>
@@ -568,95 +654,151 @@
        <div class="section-divider"></div>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Newest Artwork 1 -->
-       <div class="artwork-card section-animate stagger-1" data-animate data-artwork="newest-1"><img id="newest-1-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect width='300' height='400' fill='%23fde8d0'/%3E%3Ccircle cx='150' cy='120' r='60' fill='%23e11d48' opacity='0.6'/%3E%3Ccircle cx='120' cy='180' r='50' fill='%23f59e0b' opacity='0.5'/%3E%3Ccircle cx='180' cy='200' r='45' fill='%23d4af37' opacity='0.4'/%3E%3Cpath d='M80 250 Q150 180 220 250 L220 380 L80 380 Z' fill='%23166534' opacity='0.4'/%3E%3C/svg%3E" alt="Blooming Dreams" class="artwork-image" loading="lazy" onerror="this.style.background='#e5e7eb'; this.alt='Image unavailable';">
+       <div class="artwork-card section-animate stagger-1" data-animate data-artwork="newest-1"><img id="newest-1-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect width='300' height='400' fill='%23fde8d0'/%3E%3Ccircle cx='150' cy='120' r='60' fill='%23e11d48' opacity='0.6'/%3E%3Ccircle cx='120' cy='180' r='50' fill='%23f59e0b' opacity='0.5'/%3E%3Ccircle cx='180' cy='200' r='45' fill='%23d4af37' opacity='0.4'/%3E%3Cpath d='M80 250 Q150 180 220 250 L220 380 L80 380 Z' fill='%23166534' opacity='0.4'/%3E%3C/svg%3E" alt="Blooming Dreams" class="artwork-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
+        <div class="artwork-hint">
+         Klik selengkapnya
+        </div>
         <div class="artwork-overlay">
-         <div class="text-white">
+         <div class="text-white w-full">
           <h3 id="newest-1-title" class="font-display text-xl font-bold">Blooming Dreams</h3>
-          <p id="newest-1-desc" class="font-body text-sm opacity-80">Oil on Canvas • 2024</p>
+          <p id="newest-1-medium" class="font-body text-sm opacity-80">Oil on Canvas</p>
+          <p id="newest-1-year" class="font-body text-sm opacity-70">2024</p>
          </div>
         </div>
        </div><!-- Newest Artwork 2 -->
-       <div class="artwork-card section-animate stagger-2" data-animate data-artwork="newest-2"><img id="newest-2-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect width='300' height='400' fill='%23e0f2fe'/%3E%3Cpath d='M30 250 Q100 80 150 180 Q200 280 270 120' stroke='%231e40af' stroke-width='10' fill='none'/%3E%3Ccircle cx='75' cy='60' r='40' fill='%23fbbf24' opacity='0.8'/%3E%3Cpath d='M180 280 L190 200 L210 280 L225 220 L240 300' stroke='%23166534' stroke-width='6' fill='none'/%3E%3C/svg%3E" alt="Serene Horizon" class="artwork-image" loading="lazy" onerror="this.style.background='#e5e7eb'; this.alt='Image unavailable';">
+       <div class="artwork-card section-animate stagger-2" data-animate data-artwork="newest-2"><img id="newest-2-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect width='300' height='400' fill='%23e0f2fe'/%3E%3Cpath d='M30 250 Q100 80 150 180 Q200 280 270 120' stroke='%231e40af' stroke-width='10' fill='none'/%3E%3Ccircle cx='75' cy='60' r='40' fill='%23fbbf24' opacity='0.8'/%3E%3Cpath d='M180 280 L190 200 L210 280 L225 220 L240 300' stroke='%23166534' stroke-width='6' fill='none'/%3E%3C/svg%3E" alt="Serene Horizon" class="artwork-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
+        <div class="artwork-hint">
+         Klik selengkapnya
+        </div>
         <div class="artwork-overlay">
-         <div class="text-white">
+         <div class="text-white w-full">
           <h3 id="newest-2-title" class="font-display text-xl font-bold">Serene Horizon</h3>
-          <p id="newest-2-desc" class="font-body text-sm opacity-80">Watercolor • 2024</p>
+          <p id="newest-2-medium" class="font-body text-sm opacity-80">Watercolor</p>
+          <p id="newest-2-year" class="font-body text-sm opacity-70">2024</p>
          </div>
         </div>
        </div><!-- Newest Artwork 3 -->
-       <div class="artwork-card section-animate stagger-3" data-animate data-artwork="newest-3"><img id="newest-3-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect width='300' height='400' fill='%23d1fae5'/%3E%3Cpath d='M150 60 Q180 140 150 220 Q120 300 150 360' stroke='%23166534' stroke-width='10' fill='none'/%3E%3Cellipse cx='150' cy='120' rx='45' ry='30' fill='%2322c55e' opacity='0.6'/%3E%3Cellipse cx='135' cy='180' rx='36' ry='24' fill='%2316a34a' opacity='0.5'/%3E%3Cellipse cx='165' cy='240' rx='30' ry='18' fill='%2315803d' opacity='0.4'/%3E%3C/svg%3E" alt="Nature's Whisper" class="artwork-image" loading="lazy" onerror="this.style.background='#e5e7eb'; this.alt='Image unavailable';">
+       <div class="artwork-card section-animate stagger-3" data-animate data-artwork="newest-3"><img id="newest-3-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect width='300' height='400' fill='%23d1fae5'/%3E%3Cpath d='M150 60 Q180 140 150 220 Q120 300 150 360' stroke='%23166534' stroke-width='10' fill='none'/%3E%3Cellipse cx='150' cy='120' rx='45' ry='30' fill='%2322c55e' opacity='0.6'/%3E%3Cellipse cx='135' cy='180' rx='36' ry='24' fill='%2316a34a' opacity='0.5'/%3E%3Cellipse cx='165' cy='240' rx='30' ry='18' fill='%2315803d' opacity='0.4'/%3E%3C/svg%3E" alt="Nature's Whisper" class="artwork-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
+        <div class="artwork-hint">
+         Klik selengkapnya
+        </div>
         <div class="artwork-overlay">
-         <div class="text-white">
+         <div class="text-white w-full">
           <h3 id="newest-3-title" class="font-display text-xl font-bold">Nature's Whisper</h3>
-          <p id="newest-3-desc" class="font-body text-sm opacity-80">Acrylic • 2024</p>
+          <p id="newest-3-medium" class="font-body text-sm opacity-80">Acrylic</p>
+          <p id="newest-3-year" class="font-body text-sm opacity-70">2024</p>
          </div>
         </div>
        </div>
       </div>
      </div>
-    </section><!-- All Artwork Section -->
+    </section><!-- Artwork Series Section -->
     <section id="artwork" class="min-h-screen py-20 px-4" style="background: linear-gradient(180deg, transparent 0%, rgba(212, 175, 55, 0.03) 50%, transparent 100%);">
      <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16 section-animate" data-animate><span class="font-body text-sm uppercase tracking-widest mb-4 block" style="color: #d4af37;">Complete Collection</span>
        <h2 class="font-display text-4xl md:text-5xl font-bold mb-6" style="color: #5c4a32;">Artwork Gallery</h2>
        <div class="section-divider"></div>
+      </div><!-- Series 1 -->
+      <div id="series-1-container">
+       <div class="text-center series-title"><span class="series-subtitle">Series Collection</span>
+        <h3 id="series-1-title" class="font-display text-3xl font-bold" style="color: #5c4a32;">Series 1</h3>
+       </div>
+       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"><!-- Series 1 Item 1 -->
+        <div class="artwork-card section-animate stagger-1" data-animate data-artwork="series-1-1"><img id="series-1-1-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f3e8ff'/%3E%3Crect x='80' y='60' width='240' height='180' rx='10' fill='%239333ea' opacity='0.3'/%3E%3Ccircle cx='200' cy='150' r='80' fill='%23ec4899' opacity='0.4'/%3E%3C/svg%3E" alt="Series 1 Item 1" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+         <div class="artwork-hint">
+          Klik selengkapnya
+         </div>
+         <div class="artwork-overlay">
+          <div class="text-white w-full">
+           <h3 id="series-1-1-title" class="font-display text-lg font-bold">Artwork Title</h3>
+           <p id="series-1-1-medium" class="font-body text-sm opacity-80">Medium</p>
+           <p id="series-1-1-year" class="font-body text-sm opacity-70">2024</p>
+          </div>
+         </div>
+        </div><!-- Series 1 Item 2 -->
+        <div class="artwork-card section-animate stagger-2" data-animate data-artwork="series-1-2"><img id="series-1-2-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23fed7aa'/%3E%3Cpolygon points='200,60 340,240 60,240' fill='%23ea580c' opacity='0.4'/%3E%3Ccircle cx='200' cy='180' r='70' fill='%23dc2626' opacity='0.3'/%3E%3C/svg%3E" alt="Series 1 Item 2" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+         <div class="artwork-hint">
+          Klik selengkapnya
+         </div>
+         <div class="artwork-overlay">
+          <div class="text-white w-full">
+           <h3 id="series-1-2-title" class="font-display text-lg font-bold">Artwork Title</h3>
+           <p id="series-1-2-medium" class="font-body text-sm opacity-80">Medium</p>
+           <p id="series-1-2-year" class="font-body text-sm opacity-70">2024</p>
+          </div>
+         </div>
+        </div><!-- Series 1 Item 3 -->
+        <div class="artwork-card section-animate stagger-3" data-animate data-artwork="series-1-3"><img id="series-1-3-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23ccfbf1'/%3E%3Cpath d='M80 280 Q150 100 200 180 Q250 260 320 120' stroke='%2314b8a6' stroke-width='16' fill='none'/%3E%3C/svg%3E" alt="Series 1 Item 3" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+         <div class="artwork-hint">
+          Klik selengkapnya
+         </div>
+         <div class="artwork-overlay">
+          <div class="text-white w-full">
+           <h3 id="series-1-3-title" class="font-display text-lg font-bold">Artwork Title</h3>
+           <p id="series-1-3-medium" class="font-body text-sm opacity-80">Medium</p>
+           <p id="series-1-3-year" class="font-body text-sm opacity-70">2024</p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Series 2 -->
+      <div id="series-2-container">
+       <div class="text-center series-title"><span class="series-subtitle">Series Collection</span>
+        <h3 id="series-2-title" class="font-display text-3xl font-bold" style="color: #5c4a32;">Series 2</h3>
+       </div>
+       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Series 2 Item 1 -->
+        <div class="artwork-card section-animate stagger-1" data-animate data-artwork="series-2-1"><img id="series-2-1-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23fef08a'/%3E%3Ccircle cx='200' cy='150' r='120' fill='%23fbbf24' opacity='0.5'/%3E%3Ccircle cx='200' cy='150' r='80' fill='%23f59e0b' opacity='0.4'/%3E%3C/svg%3E" alt="Series 2 Item 1" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+         <div class="artwork-hint">
+          Klik selengkapnya
+         </div>
+         <div class="artwork-overlay">
+          <div class="text-white w-full">
+           <h3 id="series-2-1-title" class="font-display text-lg font-bold">Artwork Title</h3>
+           <p id="series-2-1-medium" class="font-body text-sm opacity-80">Medium</p>
+           <p id="series-2-1-year" class="font-body text-sm opacity-70">2024</p>
+          </div>
+         </div>
+        </div><!-- Series 2 Item 2 -->
+        <div class="artwork-card section-animate stagger-2" data-animate data-artwork="series-2-2"><img id="series-2-2-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f1f5f9'/%3E%3Crect x='100' y='80' width='200' height='140' fill='%2364748b' opacity='0.4'/%3E%3Crect x='140' y='120' width='120' height='70' fill='%23475569' opacity='0.3'/%3E%3C/svg%3E" alt="Series 2 Item 2" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+         <div class="artwork-hint">
+          Klik selengkapnya
+         </div>
+         <div class="artwork-overlay">
+          <div class="text-white w-full">
+           <h3 id="series-2-2-title" class="font-display text-lg font-bold">Artwork Title</h3>
+           <p id="series-2-2-medium" class="font-body text-sm opacity-80">Medium</p>
+           <p id="series-2-2-year" class="font-body text-sm opacity-70">2024</p>
+          </div>
+         </div>
+        </div><!-- Series 2 Item 3 -->
+        <div class="artwork-card section-animate stagger-3" data-animate data-artwork="series-2-3"><img id="series-2-3-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23fbcfe8'/%3E%3Cpath d='M200 80 C240 120 280 180 200 260 C120 180 160 120 200 80' fill='%23f43f5e' opacity='0.4'/%3E%3C/svg%3E" alt="Series 2 Item 3" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+         <div class="artwork-hint">
+          Klik selengkapnya
+         </div>
+         <div class="artwork-overlay">
+          <div class="text-white w-full">
+           <h3 id="series-2-3-title" class="font-display text-lg font-bold">Artwork Title</h3>
+           <p id="series-2-3-medium" class="font-body text-sm opacity-80">Medium</p>
+           <p id="series-2-3-year" class="font-body text-sm opacity-70">2024</p>
+          </div>
+         </div>
+        </div>
+       </div>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"><!-- Gallery Item 1 -->
-       <div class="artwork-card section-animate stagger-1" data-animate data-artwork="gallery-1"><img id="gallery-1-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f3e8ff'/%3E%3Crect x='60' y='60' width='80' height='80' rx='10' fill='%239333ea' opacity='0.3'/%3E%3Ccircle cx='100' cy='100' r='50' fill='%23ec4899' opacity='0.4'/%3E%3C/svg%3E" alt="Abstract I" class="artwork-image" loading="lazy" onerror="this.style.background='#e5e7eb'; this.alt='Image unavailable';">
-        <div class="artwork-overlay">
-         <div class="text-white">
-          <h3 id="gallery-1-title" class="font-display text-sm font-bold">Abstract I</h3>
-         </div>
-        </div>
-       </div><!-- Gallery Item 2 -->
-       <div class="artwork-card section-animate stagger-2" data-animate data-artwork="gallery-2"><img id="gallery-2-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23fed7aa'/%3E%3Cpolygon points='100,45 170,170 30,170' fill='%23ea580c' opacity='0.4'/%3E%3Ccircle cx='100' cy='130' r='45' fill='%23dc2626' opacity='0.3'/%3E%3C/svg%3E" alt="Warmth" class="artwork-image" loading="lazy" onerror="this.style.background='#e5e7eb'; this.alt='Image unavailable';">
-        <div class="artwork-overlay">
-         <div class="text-white">
-          <h3 id="gallery-2-title" class="font-display text-sm font-bold">Warmth</h3>
-         </div>
-        </div>
-       </div><!-- Gallery Item 3 -->
-       <div class="artwork-card section-animate stagger-3" data-animate data-artwork="gallery-3"><img id="gallery-3-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23ccfbf1'/%3E%3Cpath d='M50 170 Q100 60 150 170' stroke='%2314b8a6' stroke-width='10' fill='none'/%3E%3C/svg%3E" alt="Flow" class="artwork-image" loading="lazy" onerror="this.style.background='#e5e7eb'; this.alt='Image unavailable';">
-        <div class="artwork-overlay">
-         <div class="text-white">
-          <h3 id="gallery-3-title" class="font-display text-sm font-bold">Flow</h3>
-         </div>
-        </div>
-       </div><!-- Gallery Item 4 -->
-       <div class="artwork-card section-animate stagger-4" data-animate data-artwork="gallery-4"><img id="gallery-4-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23fef08a'/%3E%3Ccircle cx='100' cy='100' r='75' fill='%23fbbf24' opacity='0.5'/%3E%3Ccircle cx='100' cy='100' r='40' fill='%23f59e0b' opacity='0.4'/%3E%3C/svg%3E" alt="Radiance" class="artwork-image" loading="lazy" onerror="this.style.background='#e5e7eb'; this.alt='Image unavailable';">
-        <div class="artwork-overlay">
-         <div class="text-white">
-          <h3 id="gallery-4-title" class="font-display text-sm font-bold">Radiance</h3>
-         </div>
-        </div>
-       </div><!-- Gallery Item 5 -->
-       <div class="artwork-card section-animate stagger-5" data-animate data-artwork="gallery-5"><img id="gallery-5-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23f1f5f9'/%3E%3Crect x='60' y='60' width='80' height='80' fill='%2364748b' opacity='0.4'/%3E%3Crect x='80' y='80' width='40' height='40' fill='%23475569' opacity='0.3'/%3E%3C/svg%3E" alt="Minimalist" class="artwork-image" loading="lazy" onerror="this.style.background='#e5e7eb'; this.alt='Image unavailable';">
-        <div class="artwork-overlay">
-         <div class="text-white">
-          <h3 id="gallery-5-title" class="font-display text-sm font-bold">Minimalist</h3>
-         </div>
-        </div>
-       </div><!-- Gallery Item 6 -->
-       <div class="artwork-card section-animate stagger-6" data-animate data-artwork="gallery-6"><img id="gallery-6-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23fbcfe8'/%3E%3Cpath d='M100 50 C120 70 140 120 100 170 C60 120 80 70 100 50' fill='%23f43f5e' opacity='0.4'/%3E%3C/svg%3E" alt="Petal" class="artwork-image" loading="lazy" onerror="this.style.background='#e5e7eb'; this.alt='Image unavailable';">
-        <div class="artwork-overlay">
-         <div class="text-white">
-          <h3 id="gallery-6-title" class="font-display text-sm font-bold">Petal</h3>
-         </div>
-        </div>
-       </div><!-- Gallery Item 7 -->
-       <div class="artwork-card section-animate stagger-1" data-animate data-artwork="gallery-7"><img id="gallery-7-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23e9d5ff'/%3E%3Ccircle cx='70' cy='100' r='40' fill='%236366f1' opacity='0.4'/%3E%3Ccircle cx='100' cy='100' r='40' fill='%238b5cf6' opacity='0.3'/%3E%3Ccircle cx='130' cy='100' r='40' fill='%23a78bfa' opacity='0.4'/%3E%3C/svg%3E" alt="Trinity" class="artwork-image" loading="lazy" onerror="this.style.background='#e5e7eb'; this.alt='Image unavailable';">
-        <div class="artwork-overlay">
-         <div class="text-white">
-          <h3 id="gallery-7-title" class="font-display text-sm font-bold">Trinity</h3>
-         </div>
-        </div>
-       </div><!-- Gallery Item 8 -->
-       <div class="artwork-card section-animate stagger-2" data-animate data-artwork="gallery-8"><img id="gallery-8-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23dcfce7'/%3E%3Cpath d='M100 180 L100 60 M60 120 L100 60 L140 120 M80 160 L100 130 L120 160' stroke='%2365a30d' stroke-width='8' fill='none'/%3E%3C/svg%3E" alt="Growth" class="artwork-image" loading="lazy" onerror="this.style.background='#e5e7eb'; this.alt='Image unavailable';">
-        <div class="artwork-overlay">
-         <div class="text-white">
-          <h3 id="gallery-8-title" class="font-display text-sm font-bold">Growth</h3>
-         </div>
-        </div>
+     </div>
+    </section><!-- Studio Section -->
+    <section id="studio" class="min-h-screen flex items-center py-20 px-4">
+     <div class="max-w-6xl mx-auto w-full">
+      <div class="text-center mb-16 section-animate" data-animate><span class="font-body text-sm uppercase tracking-widest mb-4 block" style="color: #d4af37;">Our Creative Space</span>
+       <h2 class="font-display text-4xl md:text-5xl font-bold mb-6" style="color: #5c4a32;">Our Studio</h2>
+       <div class="section-divider"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+       <div class="artwork-card section-animate stagger-1" data-animate><img id="studio-1-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f5e6d3'/%3E%3Crect x='50' y='50' width='300' height='300' rx='20' fill='%238b5a2b' opacity='0.2'/%3E%3Ccircle cx='200' cy='200' r='80' fill='%23d4af37' opacity='0.3'/%3E%3C/svg%3E" alt="Studio" class="studio-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
+       </div>
+       <div class="artwork-card section-animate stagger-2" data-animate><img id="studio-2-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23e8d5c4'/%3E%3Crect x='80' y='80' width='240' height='240' fill='%238b5a2b' opacity='0.15'/%3E%3Crect x='120' y='120' width='160' height='160' fill='%23d4af37' opacity='0.25'/%3E%3C/svg%3E" alt="Studio" class="studio-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
+       </div>
+       <div class="artwork-card section-animate stagger-3" data-animate><img id="studio-3-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f0e2d0'/%3E%3Cpath d='M50 350 L150 50 L250 200 L350 350 Z' fill='%238b5a2b' opacity='0.15'/%3E%3Cpath d='M100 350 L200 100 L300 350 Z' fill='%23d4af37' opacity='0.2'/%3E%3C/svg%3E" alt="Studio" class="studio-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
        </div>
       </div>
      </div>
@@ -668,11 +810,11 @@
        <div class="section-divider"></div>
        <p class="font-body text-lg mt-8 max-w-xl mx-auto" style="color: #8b7355;">Connect with us through social media or visit our studio. We'd love to hear from you and discuss your art needs.</p>
       </div>
-      <div class="flex justify-center gap-8 md:gap-12 section-animate" data-animate><!-- Instagram --> <a href="#" id="instagram-btn" target="_blank" rel="noopener noreferrer" class="social-icon group" title="Instagram">
+      <div class="flex justify-center gap-8 md:gap-12 section-animate" data-animate><a href="#" id="instagram-btn" target="_blank" rel="noopener noreferrer" class="social-icon group" title="Instagram">
         <svg class="w-7 h-7" viewbox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#d4af37" stroke-width="2" /> <circle cx="12" cy="12" r="4" stroke="#d4af37" stroke-width="2" /> <circle cx="18" cy="6" r="1.5" fill="#d4af37" />
-        </svg></a> <!-- WhatsApp --> <a href="#" id="whatsapp-btn" target="_blank" rel="noopener noreferrer" class="social-icon group" title="WhatsApp">
+        </svg></a> <a href="#" id="whatsapp-btn" target="_blank" rel="noopener noreferrer" class="social-icon group" title="WhatsApp">
         <svg class="w-7 h-7" viewbox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12C2 14.17 2.65 16.17 3.77 17.85L2.1 22L6.4 20.4C8 21.35 9.93 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="#25d366" stroke-width="2" /> <path d="M8.5 10C8.5 10 9 8 12 8C15 8 15.5 10 15.5 11C15.5 12.5 14 13 12 14V15.5" stroke="#25d366" stroke-width="2" stroke-linecap="round" /> <circle cx="12" cy="18" r="1" fill="#25d366" />
-        </svg></a> <!-- Maps --> <a href="#" id="maps-btn" target="_blank" rel="noopener noreferrer" class="social-icon group" title="Location">
+        </svg></a> <a href="#" id="maps-btn" target="_blank" rel="noopener noreferrer" class="social-icon group" title="Location">
         <svg class="w-7 h-7" viewbox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z" stroke="#ea4335" stroke-width="2" /> <circle cx="12" cy="9" r="3" stroke="#ea4335" stroke-width="2" />
         </svg></a>
       </div>
@@ -685,16 +827,17 @@
    <div class="modal-backdrop" id="artwork-modal"><button class="absolute top-4 right-4 text-white hover:text-amber-400 transition-colors z-10" id="close-modal">
      <svg class="w-8 h-8" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12" />
      </svg></button>
-    <div class="modal-content bg-white rounded-2xl overflow-hidden shadow-2xl">
-     <div class="p-6 md:p-8"><img id="modal-image" src="" alt="Artwork" class="modal-image" loading="lazy" onerror="this.style.background='#e5e7eb'; this.alt='Image unavailable';">
+    <div class="modal-content"><img id="modal-image" src="" alt="Artwork" class="modal-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
+     <div class="p-6 md:p-8">
       <h3 class="font-display text-2xl md:text-3xl font-bold mb-2" style="color: #5c4a32;" id="modal-title">Artwork Title</h3>
-      <p class="font-body" style="color: #8b7355;" id="modal-description">Medium • Year</p>
+      <p class="font-body mb-4" style="color: #8b7355;"><span id="modal-medium">Medium</span> • <span id="modal-year">2024</span></p>
+      <div class="section-divider mb-4" style="margin: 1rem 0;"></div>
+      <p id="modal-description" class="font-body leading-relaxed" style="color: #5c4a32;">Detailed description of the artwork</p>
      </div>
     </div>
    </div>
   </div>
   <script>
-    // Default configuration
     const defaultConfig = {
       studio_logo_url: '',
       hero_title: 'The Art of Traditional Painting',
@@ -702,46 +845,71 @@
       artist_name: 'The Artist',
       artist_photo_url: '',
       artist_bio: 'A passionate traditional artist dedicated to preserving the timeless art of conventional painting. With years of experience and countless hours spent perfecting every brushstroke, each artwork is a testament to the enduring beauty of handcrafted art.',
+      exhibition_1_title: 'Seminar Nasional',
+      exhibition_1_desc: 'Participated in national art seminar discussing traditional painting techniques',
+      exhibition_2_title: 'Regional Exhibition',
+      exhibition_2_desc: 'Showcased works in regional contemporary art exhibition',
       newest_1_url: '',
       newest_1_title: 'Blooming Dreams',
-      newest_1_desc: 'Oil on Canvas • 2024',
+      newest_1_medium: 'Oil on Canvas',
+      newest_1_year: '2024',
+      newest_1_desc: 'A vibrant exploration of natural beauty through traditional oil painting techniques.',
       newest_2_url: '',
       newest_2_title: 'Serene Horizon',
-      newest_2_desc: 'Watercolor • 2024',
+      newest_2_medium: 'Watercolor',
+      newest_2_year: '2024',
+      newest_2_desc: 'Capturing the peaceful essence of landscapes through delicate watercolor washes.',
       newest_3_url: '',
       newest_3_title: 'Nature\'s Whisper',
-      newest_3_desc: 'Acrylic • 2024',
-      gallery_1_url: '',
-      gallery_1_title: 'Abstract I',
-      gallery_2_url: '',
-      gallery_2_title: 'Warmth',
-      gallery_3_url: '',
-      gallery_3_title: 'Flow',
-      gallery_4_url: '',
-      gallery_4_title: 'Radiance',
-      gallery_5_url: '',
-      gallery_5_title: 'Minimalist',
-      gallery_6_url: '',
-      gallery_6_title: 'Petal',
-      gallery_7_url: '',
-      gallery_7_title: 'Trinity',
-      gallery_8_url: '',
-      gallery_8_title: 'Growth',
+      newest_3_medium: 'Acrylic',
+      newest_3_year: '2024',
+      newest_3_desc: 'An intimate portrayal of nature\'s subtle movements and organic forms.',
+      series_1_title: 'Nature Collection',
+      series_1_1_url: '',
+      series_1_1_title: 'Artwork Title',
+      series_1_1_medium: 'Medium',
+      series_1_1_year: '2024',
+      series_1_1_desc: 'Description',
+      series_1_2_url: '',
+      series_1_2_title: 'Artwork Title',
+      series_1_2_medium: 'Medium',
+      series_1_2_year: '2024',
+      series_1_2_desc: 'Description',
+      series_1_3_url: '',
+      series_1_3_title: 'Artwork Title',
+      series_1_3_medium: 'Medium',
+      series_1_3_year: '2024',
+      series_1_3_desc: 'Description',
+      series_2_title: 'Urban Sketches',
+      series_2_1_url: '',
+      series_2_1_title: 'Artwork Title',
+      series_2_1_medium: 'Medium',
+      series_2_1_year: '2024',
+      series_2_1_desc: 'Description',
+      series_2_2_url: '',
+      series_2_2_title: 'Artwork Title',
+      series_2_2_medium: 'Medium',
+      series_2_2_year: '2024',
+      series_2_2_desc: 'Description',
+      series_2_3_url: '',
+      series_2_3_title: 'Artwork Title',
+      series_2_3_medium: 'Medium',
+      series_2_3_year: '2024',
+      series_2_3_desc: 'Description',
+      studio_1_url: '',
+      studio_2_url: '',
+      studio_3_url: '',
       instagram_link: '',
       whatsapp_link: '',
       maps_link: '',
       primary_color: '#d4af37',
       secondary_color: '#8b5a2b',
       text_color: '#5c4a32',
-      accent_color: '#8b7355',
-      background_color: '#fefefe',
-      font_family: 'Cormorant Garamond',
-      font_size: 16
+      accent_color: '#8b7355'
     };
     
     let config = { ...defaultConfig };
     
-    // Initialize Element SDK
     if (window.elementSdk) {
       window.elementSdk.init({
         defaultConfig,
@@ -752,20 +920,16 @@
         mapToCapabilities: (cfg) => ({
           recolorables: [
             {
-              get: () => cfg.background_color || defaultConfig.background_color,
-              set: (value) => window.elementSdk.setConfig({ background_color: value })
-            },
-            {
               get: () => cfg.primary_color || defaultConfig.primary_color,
               set: (value) => window.elementSdk.setConfig({ primary_color: value })
             },
             {
-              get: () => cfg.text_color || defaultConfig.text_color,
-              set: (value) => window.elementSdk.setConfig({ text_color: value })
-            },
-            {
               get: () => cfg.secondary_color || defaultConfig.secondary_color,
               set: (value) => window.elementSdk.setConfig({ secondary_color: value })
+            },
+            {
+              get: () => cfg.text_color || defaultConfig.text_color,
+              set: (value) => window.elementSdk.setConfig({ text_color: value })
             },
             {
               get: () => cfg.accent_color || defaultConfig.accent_color,
@@ -773,50 +937,73 @@
             }
           ],
           borderables: [],
-          fontEditable: {
-            get: () => cfg.font_family || defaultConfig.font_family,
-            set: (value) => window.elementSdk.setConfig({ font_family: value })
-          },
-          fontSizeable: {
-            get: () => cfg.font_size || defaultConfig.font_size,
-            set: (value) => window.elementSdk.setConfig({ font_size: value })
-          }
+          fontEditable: undefined,
+          fontSizeable: undefined
         }),
         mapToEditPanelValues: (cfg) => new Map([
-          ['studio_logo_url', cfg.studio_logo_url || defaultConfig.studio_logo_url],
+          ['studio_logo_url', cfg.studio_logo_url || ''],
           ['hero_title', cfg.hero_title || defaultConfig.hero_title],
           ['hero_subtitle', cfg.hero_subtitle || defaultConfig.hero_subtitle],
           ['artist_name', cfg.artist_name || defaultConfig.artist_name],
-          ['artist_photo_url', cfg.artist_photo_url || defaultConfig.artist_photo_url],
+          ['artist_photo_url', cfg.artist_photo_url || ''],
           ['artist_bio', cfg.artist_bio || defaultConfig.artist_bio],
-          ['newest_1_url', cfg.newest_1_url || defaultConfig.newest_1_url],
+          ['exhibition_1_title', cfg.exhibition_1_title || defaultConfig.exhibition_1_title],
+          ['exhibition_1_desc', cfg.exhibition_1_desc || defaultConfig.exhibition_1_desc],
+          ['exhibition_2_title', cfg.exhibition_2_title || defaultConfig.exhibition_2_title],
+          ['exhibition_2_desc', cfg.exhibition_2_desc || defaultConfig.exhibition_2_desc],
+          ['newest_1_url', cfg.newest_1_url || ''],
           ['newest_1_title', cfg.newest_1_title || defaultConfig.newest_1_title],
+          ['newest_1_medium', cfg.newest_1_medium || defaultConfig.newest_1_medium],
+          ['newest_1_year', cfg.newest_1_year || defaultConfig.newest_1_year],
           ['newest_1_desc', cfg.newest_1_desc || defaultConfig.newest_1_desc],
-          ['newest_2_url', cfg.newest_2_url || defaultConfig.newest_2_url],
+          ['newest_2_url', cfg.newest_2_url || ''],
           ['newest_2_title', cfg.newest_2_title || defaultConfig.newest_2_title],
+          ['newest_2_medium', cfg.newest_2_medium || defaultConfig.newest_2_medium],
+          ['newest_2_year', cfg.newest_2_year || defaultConfig.newest_2_year],
           ['newest_2_desc', cfg.newest_2_desc || defaultConfig.newest_2_desc],
-          ['newest_3_url', cfg.newest_3_url || defaultConfig.newest_3_url],
+          ['newest_3_url', cfg.newest_3_url || ''],
           ['newest_3_title', cfg.newest_3_title || defaultConfig.newest_3_title],
+          ['newest_3_medium', cfg.newest_3_medium || defaultConfig.newest_3_medium],
+          ['newest_3_year', cfg.newest_3_year || defaultConfig.newest_3_year],
           ['newest_3_desc', cfg.newest_3_desc || defaultConfig.newest_3_desc],
-          ['gallery_1_url', cfg.gallery_1_url || defaultConfig.gallery_1_url],
-          ['gallery_1_title', cfg.gallery_1_title || defaultConfig.gallery_1_title],
-          ['gallery_2_url', cfg.gallery_2_url || defaultConfig.gallery_2_url],
-          ['gallery_2_title', cfg.gallery_2_title || defaultConfig.gallery_2_title],
-          ['gallery_3_url', cfg.gallery_3_url || defaultConfig.gallery_3_url],
-          ['gallery_3_title', cfg.gallery_3_title || defaultConfig.gallery_3_title],
-          ['gallery_4_url', cfg.gallery_4_url || defaultConfig.gallery_4_url],
-          ['gallery_4_title', cfg.gallery_4_title || defaultConfig.gallery_4_title],
-          ['gallery_5_url', cfg.gallery_5_url || defaultConfig.gallery_5_url],
-          ['gallery_5_title', cfg.gallery_5_title || defaultConfig.gallery_5_title],
-          ['gallery_6_url', cfg.gallery_6_url || defaultConfig.gallery_6_url],
-          ['gallery_6_title', cfg.gallery_6_title || defaultConfig.gallery_6_title],
-          ['gallery_7_url', cfg.gallery_7_url || defaultConfig.gallery_7_url],
-          ['gallery_7_title', cfg.gallery_7_title || defaultConfig.gallery_7_title],
-          ['gallery_8_url', cfg.gallery_8_url || defaultConfig.gallery_8_url],
-          ['gallery_8_title', cfg.gallery_8_title || defaultConfig.gallery_8_title],
-          ['instagram_link', cfg.instagram_link || defaultConfig.instagram_link],
-          ['whatsapp_link', cfg.whatsapp_link || defaultConfig.whatsapp_link],
-          ['maps_link', cfg.maps_link || defaultConfig.maps_link]
+          ['series_1_title', cfg.series_1_title || defaultConfig.series_1_title],
+          ['series_1_1_url', cfg.series_1_1_url || ''],
+          ['series_1_1_title', cfg.series_1_1_title || defaultConfig.series_1_1_title],
+          ['series_1_1_medium', cfg.series_1_1_medium || defaultConfig.series_1_1_medium],
+          ['series_1_1_year', cfg.series_1_1_year || defaultConfig.series_1_1_year],
+          ['series_1_1_desc', cfg.series_1_1_desc || defaultConfig.series_1_1_desc],
+          ['series_1_2_url', cfg.series_1_2_url || ''],
+          ['series_1_2_title', cfg.series_1_2_title || defaultConfig.series_1_2_title],
+          ['series_1_2_medium', cfg.series_1_2_medium || defaultConfig.series_1_2_medium],
+          ['series_1_2_year', cfg.series_1_2_year || defaultConfig.series_1_2_year],
+          ['series_1_2_desc', cfg.series_1_2_desc || defaultConfig.series_1_2_desc],
+          ['series_1_3_url', cfg.series_1_3_url || ''],
+          ['series_1_3_title', cfg.series_1_3_title || defaultConfig.series_1_3_title],
+          ['series_1_3_medium', cfg.series_1_3_medium || defaultConfig.series_1_3_medium],
+          ['series_1_3_year', cfg.series_1_3_year || defaultConfig.series_1_3_year],
+          ['series_1_3_desc', cfg.series_1_3_desc || defaultConfig.series_1_3_desc],
+          ['series_2_title', cfg.series_2_title || defaultConfig.series_2_title],
+          ['series_2_1_url', cfg.series_2_1_url || ''],
+          ['series_2_1_title', cfg.series_2_1_title || defaultConfig.series_2_1_title],
+          ['series_2_1_medium', cfg.series_2_1_medium || defaultConfig.series_2_1_medium],
+          ['series_2_1_year', cfg.series_2_1_year || defaultConfig.series_2_1_year],
+          ['series_2_1_desc', cfg.series_2_1_desc || defaultConfig.series_2_1_desc],
+          ['series_2_2_url', cfg.series_2_2_url || ''],
+          ['series_2_2_title', cfg.series_2_2_title || defaultConfig.series_2_2_title],
+          ['series_2_2_medium', cfg.series_2_2_medium || defaultConfig.series_2_2_medium],
+          ['series_2_2_year', cfg.series_2_2_year || defaultConfig.series_2_2_year],
+          ['series_2_2_desc', cfg.series_2_2_desc || defaultConfig.series_2_2_desc],
+          ['series_2_3_url', cfg.series_2_3_url || ''],
+          ['series_2_3_title', cfg.series_2_3_title || defaultConfig.series_2_3_title],
+          ['series_2_3_medium', cfg.series_2_3_medium || defaultConfig.series_2_3_medium],
+          ['series_2_3_year', cfg.series_2_3_year || defaultConfig.series_2_3_year],
+          ['series_2_3_desc', cfg.series_2_3_desc || defaultConfig.series_2_3_desc],
+          ['studio_1_url', cfg.studio_1_url || ''],
+          ['studio_2_url', cfg.studio_2_url || ''],
+          ['studio_3_url', cfg.studio_3_url || ''],
+          ['instagram_link', cfg.instagram_link || ''],
+          ['whatsapp_link', cfg.whatsapp_link || ''],
+          ['maps_link', cfg.maps_link || '']
         ])
       });
     }
@@ -830,7 +1017,7 @@
         if (logoMobile) logoMobile.src = config.studio_logo_url;
       }
       
-      // Update hero section
+      // Hero section
       const heroTitle = document.getElementById('hero-title');
       if (heroTitle && config.hero_title) {
         const titleText = config.hero_title;
@@ -840,69 +1027,123 @@
       }
       
       const heroSubtitle = document.getElementById('hero-subtitle');
-      if (heroSubtitle) {
-        heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
-      }
+      if (heroSubtitle) heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
       
-      // Update artist section
+      // Artist section
       const artistName = document.getElementById('artist-name');
-      if (artistName) {
-        artistName.textContent = config.artist_name || defaultConfig.artist_name;
-      }
+      if (artistName) artistName.textContent = config.artist_name || defaultConfig.artist_name;
       
       const artistImage = document.getElementById('artist-image');
-      if (artistImage && config.artist_photo_url) {
-        artistImage.src = config.artist_photo_url;
-      }
+      if (artistImage && config.artist_photo_url) artistImage.src = config.artist_photo_url;
       
       const artistBio = document.getElementById('artist-bio');
-      if (artistBio) {
-        artistBio.textContent = config.artist_bio || defaultConfig.artist_bio;
-      }
+      if (artistBio) artistBio.textContent = config.artist_bio || defaultConfig.artist_bio;
       
-      // Update newest artwork
+      // Exhibition
+      const ex1Title = document.getElementById('exhibition-1-title');
+      if (ex1Title) ex1Title.textContent = config.exhibition_1_title || defaultConfig.exhibition_1_title;
+      const ex1Desc = document.getElementById('exhibition-1-desc');
+      if (ex1Desc) ex1Desc.textContent = config.exhibition_1_desc || defaultConfig.exhibition_1_desc;
+      
+      const ex2Title = document.getElementById('exhibition-2-title');
+      if (ex2Title) ex2Title.textContent = config.exhibition_2_title || defaultConfig.exhibition_2_title;
+      const ex2Desc = document.getElementById('exhibition-2-desc');
+      if (ex2Desc) ex2Desc.textContent = config.exhibition_2_desc || defaultConfig.exhibition_2_desc;
+      
+      // Newest artwork
       for (let i = 1; i <= 3; i++) {
         const img = document.getElementById(`newest-${i}-img`);
-        if (img && config[`newest_${i}_url`]) {
-          img.src = config[`newest_${i}_url`];
-        }
+        if (img && config[`newest_${i}_url`]) img.src = config[`newest_${i}_url`];
+        
         const title = document.getElementById(`newest-${i}-title`);
-        if (title) {
-          title.textContent = config[`newest_${i}_title`] || defaultConfig[`newest_${i}_title`];
-        }
-        const desc = document.getElementById(`newest-${i}-desc`);
-        if (desc) {
-          desc.textContent = config[`newest_${i}_desc`] || defaultConfig[`newest_${i}_desc`];
-        }
+        if (title) title.textContent = config[`newest_${i}_title`] || defaultConfig[`newest_${i}_title`];
+        
+        const medium = document.getElementById(`newest-${i}-medium`);
+        if (medium) medium.textContent = config[`newest_${i}_medium`] || defaultConfig[`newest_${i}_medium`];
+        
+        const year = document.getElementById(`newest-${i}-year`);
+        if (year) year.textContent = config[`newest_${i}_year`] || defaultConfig[`newest_${i}_year`];
       }
       
-      // Update gallery
-      for (let i = 1; i <= 8; i++) {
-        const img = document.getElementById(`gallery-${i}-img`);
-        if (img && config[`gallery_${i}_url`]) {
-          img.src = config[`gallery_${i}_url`];
-        }
-        const title = document.getElementById(`gallery-${i}-title`);
-        if (title) {
-          title.textContent = config[`gallery_${i}_title`] || defaultConfig[`gallery_${i}_title`];
-        }
+      // Series 1
+      const series1Title = document.getElementById('series-1-title');
+      if (series1Title) series1Title.textContent = config.series_1_title || defaultConfig.series_1_title;
+      
+      for (let i = 1; i <= 3; i++) {
+        const img = document.getElementById(`series-1-${i}-img`);
+        if (img && config[`series_1_${i}_url`]) img.src = config[`series_1_${i}_url`];
+        
+        const title = document.getElementById(`series-1-${i}-title`);
+        if (title) title.textContent = config[`series_1_${i}_title`] || defaultConfig[`series_1_${i}_title`];
+        
+        const medium = document.getElementById(`series-1-${i}-medium`);
+        if (medium) medium.textContent = config[`series_1_${i}_medium`] || defaultConfig[`series_1_${i}_medium`];
+        
+        const year = document.getElementById(`series-1-${i}-year`);
+        if (year) year.textContent = config[`series_1_${i}_year`] || defaultConfig[`series_1_${i}_year`];
       }
       
-      // Update social links
+      // Series 2
+      const series2Title = document.getElementById('series-2-title');
+      if (series2Title) series2Title.textContent = config.series_2_title || defaultConfig.series_2_title;
+      
+      for (let i = 1; i <= 3; i++) {
+        const img = document.getElementById(`series-2-${i}-img`);
+        if (img && config[`series_2_${i}_url`]) img.src = config[`series_2_${i}_url`];
+        
+        const title = document.getElementById(`series-2-${i}-title`);
+        if (title) title.textContent = config[`series_2_${i}_title`] || defaultConfig[`series_2_${i}_title`];
+        
+        const medium = document.getElementById(`series-2-${i}-medium`);
+        if (medium) medium.textContent = config[`series_2_${i}_medium`] || defaultConfig[`series_2_${i}_medium`];
+        
+        const year = document.getElementById(`series-2-${i}-year`);
+        if (year) year.textContent = config[`series_2_${i}_year`] || defaultConfig[`series_2_${i}_year`];
+      }
+      
+      // Studio
+      const studio1 = document.getElementById('studio-1-img');
+      if (studio1 && config.studio_1_url) studio1.src = config.studio_1_url;
+      const studio2 = document.getElementById('studio-2-img');
+      if (studio2 && config.studio_2_url) studio2.src = config.studio_2_url;
+      const studio3 = document.getElementById('studio-3-img');
+      if (studio3 && config.studio_3_url) studio3.src = config.studio_3_url;
+      
+      // Social links
       const instagramBtn = document.getElementById('instagram-btn');
-      const whatsappBtn = document.getElementById('whatsapp-btn');
-      const mapsBtn = document.getElementById('maps-btn');
-      
       if (instagramBtn) instagramBtn.href = config.instagram_link || '#';
+      const whatsappBtn = document.getElementById('whatsapp-btn');
       if (whatsappBtn) whatsappBtn.href = config.whatsapp_link || '#';
+      const mapsBtn = document.getElementById('maps-btn');
       if (mapsBtn) mapsBtn.href = config.maps_link || '#';
     }
+    
+    // Logo redirect to home
+    const logosToClick = document.querySelectorAll('#studio-logo, #studio-logo-mobile');
+    logosToClick.forEach(logo => {
+      logo.addEventListener('click', () => {
+        const home = document.getElementById('home');
+        home.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
     
     // Scroll animations
     const appWrapper = document.getElementById('app-wrapper');
     const sections = document.querySelectorAll('[data-animate]');
     const navLinks = document.querySelectorAll('.nav-link');
     const scrollProgress = document.getElementById('scroll-progress');
+    const swipeHint = document.getElementById('swipe-hint');
+    const navScrollContainer = document.querySelector('.nav-scroll-container');
+    
+    function checkSwipeHint() {
+      const isMobile = window.innerWidth < 768;
+      const hasScroll = navScrollContainer && navScrollContainer.scrollWidth > navScrollContainer.clientWidth;
+      if (isMobile && hasScroll) {
+        swipeHint.classList.add('visible');
+      } else {
+        swipeHint.classList.remove('visible');
+      }
+    }
     
     function handleScroll() {
       const scrollTop = appWrapper.scrollTop;
@@ -919,7 +1160,6 @@
         }
       });
       
-      // Update active nav
       const sectionElements = document.querySelectorAll('section[id]');
       sectionElements.forEach(sec => {
         const rect = sec.getBoundingClientRect();
@@ -935,6 +1175,7 @@
     }
     
     appWrapper.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', checkSwipeHint);
     
     // Nav click handling
     navLinks.forEach(link => {
@@ -952,6 +1193,8 @@
     const modal = document.getElementById('artwork-modal');
     const modalImage = document.getElementById('modal-image');
     const modalTitle = document.getElementById('modal-title');
+    const modalMedium = document.getElementById('modal-medium');
+    const modalYear = document.getElementById('modal-year');
     const modalDescription = document.getElementById('modal-description');
     const closeModal = document.getElementById('close-modal');
     
@@ -960,12 +1203,28 @@
         const artworkId = card.getAttribute('data-artwork');
         const imgElement = card.querySelector('img');
         const titleElement = card.querySelector('h3');
-        const descElement = card.querySelector('p');
+        const mediumElement = card.querySelector('[id*="-medium"]');
+        const yearElement = card.querySelector('[id*="-year"]');
         
         if (imgElement && titleElement) {
           modalImage.src = imgElement.src;
           modalTitle.textContent = titleElement.textContent;
-          modalDescription.textContent = descElement ? descElement.textContent : '';
+          modalMedium.textContent = mediumElement ? mediumElement.textContent : '';
+          modalYear.textContent = yearElement ? yearElement.textContent : '';
+          
+          // Get description from config based on artwork ID
+          let description = '';
+          if (artworkId.includes('newest')) {
+            const num = artworkId.split('-')[1];
+            description = config[`newest_${num}_desc`] || defaultConfig[`newest_${num}_desc`] || '';
+          } else if (artworkId.includes('series')) {
+            const parts = artworkId.split('-');
+            const seriesNum = parts[1];
+            const itemNum = parts[2];
+            description = config[`series_${seriesNum}_${itemNum}_desc`] || defaultConfig[`series_${seriesNum}_${itemNum}_desc`] || '';
+          }
+          
+          modalDescription.textContent = description;
           
           modal.classList.remove('closing');
           modal.classList.add('active');
@@ -987,12 +1246,12 @@
       }
     });
     
-    // Initial setup
     setTimeout(() => {
       handleScroll();
+      checkSwipeHint();
     }, 100);
     
     updateUI();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cba8cb3d7e2960c',t:'MTc3MDcxNTQyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cbd195f8058f46d',t:'MTc3MDc0MjE2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
