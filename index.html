@@ -10,6 +10,37 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <style>
+        .scroll-indicator {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .scroll-indicator {
+    display: flex;
+
+    position: fixed;   /* ini kuncinya */
+    top: 20px;         /* jarak dari atas */
+    right: 12px;       /* jarak dari kanan */
+
+    align-items: center;
+    gap: 6px;
+
+    font-size: 12px;
+    color: #d4af37;
+
+
+    z-index: 999;      /* biar di atas semua */
+  }
+
+  .scroll-indicator svg {
+    animation: swipe 1.2s ease-in-out infinite;
+  }
+
+  @keyframes swipe {
+    0%,100% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+  }
+}
     body {
       box-sizing: border-box;
     }
@@ -634,6 +665,12 @@
       </nav>
      </div>
      <div class="md:hidden">
+      <div class="scroll-indicator">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M5 12h14M12 5l7 7-7 7"/>
+  </svg>
+  <span>Swipe</span>
+</div>
       <div class="flex items-center mb-2"><img id="studio-logo-mobile" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23d4af37' opacity='0.2'/%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23d4af37' stroke-width='2'/%3E%3Ctext x='50' y='60' font-size='24' text-anchor='middle' font-family='serif' fill='%235c4a32' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E" alt="Studio Logo" class="studio-logo" style="width: 40px; height: 40px;">
       </div>
       <nav class="nav-scroll-container">
