@@ -429,28 +429,49 @@
 
     .swipe-hint {
       position: fixed;
-      top: 1rem;
+      top: 0.75rem;
       right: 1rem;
-      z-index: 40;
-      display: none;
-      font-size: 0.9rem;
+      z-index: 50;
+      font-size: 0.75rem;
       color: #d4af37;
       pointer-events: none;
+      background: rgba(92, 74, 50, 0.15);
+      padding: 0.5rem 0.8rem;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      white-space: nowrap;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      border: 1px solid rgba(212, 175, 55, 0.3);
     }
 
-    .swipe-hint.visible {
-      display: block;
+    @media (min-width: 768px) {
+      .swipe-hint {
+        display: none !important;
+      }
+    }
+
+    .swipe-text {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
     }
 
     .swipe-arrow {
-      animation: slideRight 1.5s ease-in-out infinite;
+      animation: slideRight 1.2s ease-in-out infinite;
       display: inline-block;
+      font-size: 0.9rem;
     }
 
     @keyframes slideRight {
-      0% { transform: translateX(0); opacity: 0.6; }
+      0% { transform: translateX(0); opacity: 0.5; }
       50% { transform: translateX(8px); opacity: 1; }
-      100% { transform: translateX(0); opacity: 0.6; }
+      100% { transform: translateX(0); opacity: 0.5; }
     }
     
     .artist-image-frame {
@@ -527,12 +548,49 @@
     .artwork-item-rect {
       aspect-ratio: 2/3;
     }
+
+    .sculpture-item-rect {
+      aspect-ratio: 3/4;
+    }
     
     .studio-image {
       width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 12px;
+    }
+
+    .testimonial-frame {
+      position: relative;
+      padding: 0.8rem;
+      background: linear-gradient(135deg, #d4af37 0%, #8b5a2b 100%);
+      border-radius: 12px;
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+
+    .testimonial-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .testimonial-frame-container {
+      background: rgba(245, 240, 230, 0.5);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .testimonial-text-quote {
+      font-size: 3rem;
+      line-height: 1;
+    }
+
+    .testimonial-content {
+      text-align: left;
     }
     
     .stagger-1 { animation-delay: 0.1s; }
@@ -554,6 +612,8 @@
  <body class="h-full font-body bg-pattern">
   <div class="app-wrapper" id="app-wrapper">
    <div class="scroll-progress" id="scroll-progress"></div>
+   <div class="swipe-hint" id="swipe-hint"><span class="swipe-text">Geser</span> <span class="swipe-arrow">→</span>
+   </div>
    <div class="decor-circle decor-1"></div>
    <div class="decor-circle decor-2"></div>
    <div class="decor-circle decor-3"></div>
@@ -576,13 +636,9 @@
      <div class="md:hidden">
       <div class="flex items-center mb-2"><img id="studio-logo-mobile" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23d4af37' opacity='0.2'/%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23d4af37' stroke-width='2'/%3E%3Ctext x='50' y='60' font-size='24' text-anchor='middle' font-family='serif' fill='%235c4a32' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E" alt="Studio Logo" class="studio-logo" style="width: 40px; height: 40px;">
       </div>
-      <div class="swipe-hint" id="swipe-hint">
-    <span>Swipe</span>
-    <span class="swipe-arrow">→</span>
-  </div>
       <nav class="nav-scroll-container">
        <div class="nav-scroll-wrapper"><a href="#home" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="home">Home</a> <a href="#artist" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="artist">Artist</a> <a href="#newest" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="newest">Newest</a> <a href="#artwork" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="artwork">Artwork</a> <a href="#studio" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="studio">Studio</a> <a href="#findus" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="findus">Find Us</a>
-       </div>   
+       </div>
       </nav>
      </div>
     </div>
@@ -603,9 +659,20 @@
     <section id="artist" class="min-h-screen flex items-center py-20 px-4">
      <div class="max-w-6xl mx-auto w-full">
       <div class="grid md:grid-cols-2 gap-12 items-center">
-       <div class="section-animate" data-animate>
+       <div class="section-animate space-y-8" data-animate>
         <div class="artist-image-frame mx-auto">
          <div class="artist-image-inner"><img id="artist-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Ccircle cx='150' cy='150' r='145' fill='%23f5f0e6'/%3E%3Ccircle cx='150' cy='80' r='35' fill='%238b5a2b'/%3E%3Cpath d='M100 150 Q150 120 200 150 L200 250 Q150 270 100 250 Z' fill='%238b5a2b'/%3E%3C/svg%3E" alt="Artist" class="artist-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
+         </div>
+        </div>
+        <div class="testimonial-frame-container">
+         <h3 class="font-display text-xl font-bold mb-4" style="color: #5c4a32;">Testimoni Maestro</h3>
+         <div class="testimonial-frame"><img id="testimonial-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23d4af37' opacity='0.2'/%3E%3Ccircle cx='200' cy='150' r='80' fill='%235c4a32' opacity='0.3'/%3E%3C/svg%3E" alt="Maestro" class="testimonial-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
+         </div>
+         <div class="testimonial-content mt-4">
+          <p id="testimonial-text" class="testimonial-text-quote font-display italic text-lg mb-3" style="color: #5c4a32;">"</p>
+          <p id="testimonial-quote" class="font-body leading-relaxed mb-4" style="color: #8b7355;"></p>
+          <div id="testimonial-name" class="font-display font-bold" style="color: #5c4a32;"></div>
+          <div id="testimonial-title" class="font-body text-sm" style="color: #d4af37;"></div>
          </div>
         </div>
        </div>
@@ -746,7 +813,7 @@
        <div class="text-center series-title"><span class="series-subtitle">Series Collection</span>
         <h3 id="series-2-title" class="font-display text-3xl font-bold" style="color: #5c4a32;">Series 2</h3>
        </div>
-       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Series 2 Item 1 -->
+       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"><!-- Series 2 Item 1 -->
         <div class="artwork-card section-animate stagger-1" data-animate data-artwork="series-2-1"><img id="series-2-1-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23fef08a'/%3E%3Ccircle cx='200' cy='150' r='120' fill='%23fbbf24' opacity='0.5'/%3E%3Ccircle cx='200' cy='150' r='80' fill='%23f59e0b' opacity='0.4'/%3E%3C/svg%3E" alt="Series 2 Item 1" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
          <div class="artwork-hint">
           Klik selengkapnya
@@ -780,6 +847,73 @@
            <h3 id="series-2-3-title" class="font-display text-lg font-bold">Artwork Title</h3>
            <p id="series-2-3-medium" class="font-body text-sm opacity-80">Medium</p>
            <p id="series-2-3-year" class="font-body text-sm opacity-70">2024</p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- Series 3 Plastic Sculpture -->
+      <div id="series-3-container">
+       <div class="text-center series-title"><span class="series-subtitle">Series Collection</span>
+        <h3 id="series-3-title" class="font-display text-3xl font-bold" style="color: #5c4a32;">Plastic Sculpture</h3>
+       </div>
+       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6"><!-- Series 3 Item 1 -->
+        <div class="artwork-card section-animate stagger-1" data-animate data-artwork="series-3-1"><img id="series-3-1-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23dbeafe'/%3E%3Cpolygon points='200,50 350,200 50,200' fill='%230ea5e9' opacity='0.5'/%3E%3Ccircle cx='200' cy='180' r='60' fill='%230284c7' opacity='0.4'/%3E%3C/svg%3E" alt="Sculpture 1" class="artwork-image sculpture-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+         <div class="artwork-hint">
+          Klik selengkapnya
+         </div>
+         <div class="artwork-overlay">
+          <div class="text-white w-full">
+           <h3 id="series-3-1-title" class="font-display text-sm font-bold">Sculpture Title</h3>
+           <p id="series-3-1-medium" class="font-body text-xs opacity-80">Plastic</p>
+           <p id="series-3-1-year" class="font-body text-xs opacity-70">2024</p>
+          </div>
+         </div>
+        </div><!-- Series 3 Item 2 -->
+        <div class="artwork-card section-animate stagger-2" data-animate data-artwork="series-3-2"><img id="series-3-2-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23fce7f3'/%3E%3Crect x='100' y='80' width='200' height='160' rx='20' fill='%23ec4899' opacity='0.4'/%3E%3Ccircle cx='200' cy='160' r='40' fill='%23be185d' opacity='0.3'/%3E%3C/svg%3E" alt="Sculpture 2" class="artwork-image sculpture-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+         <div class="artwork-hint">
+          Klik selengkapnya
+         </div>
+         <div class="artwork-overlay">
+          <div class="text-white w-full">
+           <h3 id="series-3-2-title" class="font-display text-sm font-bold">Sculpture Title</h3>
+           <p id="series-3-2-medium" class="font-body text-xs opacity-80">Plastic</p>
+           <p id="series-3-2-year" class="font-body text-xs opacity-70">2024</p>
+          </div>
+         </div>
+        </div><!-- Series 3 Item 3 -->
+        <div class="artwork-card section-animate stagger-3" data-animate data-artwork="series-3-3"><img id="series-3-3-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23d1fae5'/%3E%3Cpath d='M200 50 Q280 100 280 180 Q280 240 200 250 Q120 240 120 180 Q120 100 200 50' fill='%2310b981' opacity='0.4'/%3E%3C/svg%3E" alt="Sculpture 3" class="artwork-image sculpture-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+         <div class="artwork-hint">
+          Klik selengkapnya
+         </div>
+         <div class="artwork-overlay">
+          <div class="text-white w-full">
+           <h3 id="series-3-3-title" class="font-display text-sm font-bold">Sculpture Title</h3>
+           <p id="series-3-3-medium" class="font-body text-xs opacity-80">Plastic</p>
+           <p id="series-3-3-year" class="font-body text-xs opacity-70">2024</p>
+          </div>
+         </div>
+        </div><!-- Series 3 Item 4 -->
+        <div class="artwork-card section-animate stagger-4" data-animate data-artwork="series-3-4"><img id="series-3-4-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23fef3c7'/%3E%3Crect x='80' y='60' width='240' height='200' fill='%23f59e0b' opacity='0.3'/%3E%3Cpath d='M150 150 L250 150 L220 200 L180 200 Z' fill='%23d97706' opacity='0.4'/%3E%3C/svg%3E" alt="Sculpture 4" class="artwork-image sculpture-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+         <div class="artwork-hint">
+          Klik selengkapnya
+         </div>
+         <div class="artwork-overlay">
+          <div class="text-white w-full">
+           <h3 id="series-3-4-title" class="font-display text-sm font-bold">Sculpture Title</h3>
+           <p id="series-3-4-medium" class="font-body text-xs opacity-80">Plastic</p>
+           <p id="series-3-4-year" class="font-body text-xs opacity-70">2024</p>
+          </div>
+         </div>
+        </div><!-- Series 3 Item 5 -->
+        <div class="artwork-card section-animate stagger-5" data-animate data-artwork="series-3-5"><img id="series-3-5-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f5d5e8'/%3E%3Ccircle cx='200' cy='100' r='50' fill='%23c084fc' opacity='0.5'/%3E%3Crect x='150' y='140' width='100' height='130' fill='%23a855f7' opacity='0.4'/%3E%3C/svg%3E" alt="Sculpture 5" class="artwork-image sculpture-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+         <div class="artwork-hint">
+          Klik selengkapnya
+         </div>
+         <div class="artwork-overlay">
+          <div class="text-white w-full">
+           <h3 id="series-3-5-title" class="font-display text-sm font-bold">Sculpture Title</h3>
+           <p id="series-3-5-medium" class="font-body text-xs opacity-80">Plastic</p>
+           <p id="series-3-5-year" class="font-body text-xs opacity-70">2024</p>
           </div>
          </div>
         </div>
@@ -847,9 +981,10 @@
       artist_bio: 'A passionate traditional artist dedicated to preserving the timeless art of conventional painting. With years of experience and countless hours spent perfecting every brushstroke, each artwork is a testament to the enduring beauty of handcrafted art.',
       exhibition_1_title: 'Seminar Nasional',
       exhibition_1_desc: 'Participated in national art seminar discussing traditional painting techniques',
-      exhibition_2_title: 'Regional Exhibition',
-      exhibition_2_desc: 'Showcased works in regional contemporary art exhibition',
-      newest_1_url: '',
+      artist_testimonial_title: 'A Master\'s Word',
+      artist_testimonial_name: 'Famous Artist Name',
+      artist_testimonial_text: 'Their dedication to traditional painting is truly remarkable and inspiring.',
+      artist_testimonial_photo_url: '',
       newest_1_title: 'Blooming Dreams',
       newest_1_medium: 'Oil on Canvas',
       newest_1_year: '2024',
@@ -896,7 +1031,32 @@
       series_2_3_medium: 'Medium',
       series_2_3_year: '2024',
       series_2_3_desc: 'Description',
-      studio_1_url: '',
+      series_3_title: 'Plastic Sculpture',
+      series_3_1_url: '',
+      series_3_1_title: 'Sculpture Title',
+      series_3_1_medium: 'Plastic',
+      series_3_1_year: '2024',
+      series_3_1_desc: 'Description',
+      series_3_2_url: '',
+      series_3_2_title: 'Sculpture Title',
+      series_3_2_medium: 'Plastic',
+      series_3_2_year: '2024',
+      series_3_2_desc: 'Description',
+      series_3_3_url: '',
+      series_3_3_title: 'Sculpture Title',
+      series_3_3_medium: 'Plastic',
+      series_3_3_year: '2024',
+      series_3_3_desc: 'Description',
+      series_3_4_url: '',
+      series_3_4_title: 'Sculpture Title',
+      series_3_4_medium: 'Plastic',
+      series_3_4_year: '2024',
+      series_3_4_desc: 'Description',
+      series_3_5_url: '',
+      series_3_5_title: 'Sculpture Title',
+      series_3_5_medium: 'Plastic',
+      series_3_5_year: '2024',
+      series_3_5_desc: 'Description',
       studio_2_url: '',
       studio_3_url: '',
       instagram_link: '',
@@ -998,7 +1158,36 @@
           ['series_2_3_medium', cfg.series_2_3_medium || defaultConfig.series_2_3_medium],
           ['series_2_3_year', cfg.series_2_3_year || defaultConfig.series_2_3_year],
           ['series_2_3_desc', cfg.series_2_3_desc || defaultConfig.series_2_3_desc],
-          ['studio_1_url', cfg.studio_1_url || ''],
+          ['artist_testimonial_title', cfg.artist_testimonial_title || defaultConfig.artist_testimonial_title],
+          ['artist_testimonial_name', cfg.artist_testimonial_name || defaultConfig.artist_testimonial_name],
+          ['artist_testimonial_text', cfg.artist_testimonial_text || defaultConfig.artist_testimonial_text],
+          ['artist_testimonial_photo_url', cfg.artist_testimonial_photo_url || ''],
+          ['series_3_title', cfg.series_3_title || defaultConfig.series_3_title],
+          ['series_3_1_url', cfg.series_3_1_url || ''],
+          ['series_3_1_title', cfg.series_3_1_title || defaultConfig.series_3_1_title],
+          ['series_3_1_medium', cfg.series_3_1_medium || defaultConfig.series_3_1_medium],
+          ['series_3_1_year', cfg.series_3_1_year || defaultConfig.series_3_1_year],
+          ['series_3_1_desc', cfg.series_3_1_desc || defaultConfig.series_3_1_desc],
+          ['series_3_2_url', cfg.series_3_2_url || ''],
+          ['series_3_2_title', cfg.series_3_2_title || defaultConfig.series_3_2_title],
+          ['series_3_2_medium', cfg.series_3_2_medium || defaultConfig.series_3_2_medium],
+          ['series_3_2_year', cfg.series_3_2_year || defaultConfig.series_3_2_year],
+          ['series_3_2_desc', cfg.series_3_2_desc || defaultConfig.series_3_2_desc],
+          ['series_3_3_url', cfg.series_3_3_url || ''],
+          ['series_3_3_title', cfg.series_3_3_title || defaultConfig.series_3_3_title],
+          ['series_3_3_medium', cfg.series_3_3_medium || defaultConfig.series_3_3_medium],
+          ['series_3_3_year', cfg.series_3_3_year || defaultConfig.series_3_3_year],
+          ['series_3_3_desc', cfg.series_3_3_desc || defaultConfig.series_3_3_desc],
+          ['series_3_4_url', cfg.series_3_4_url || ''],
+          ['series_3_4_title', cfg.series_3_4_title || defaultConfig.series_3_4_title],
+          ['series_3_4_medium', cfg.series_3_4_medium || defaultConfig.series_3_4_medium],
+          ['series_3_4_year', cfg.series_3_4_year || defaultConfig.series_3_4_year],
+          ['series_3_4_desc', cfg.series_3_4_desc || defaultConfig.series_3_4_desc],
+          ['series_3_5_url', cfg.series_3_5_url || ''],
+          ['series_3_5_title', cfg.series_3_5_title || defaultConfig.series_3_5_title],
+          ['series_3_5_medium', cfg.series_3_5_medium || defaultConfig.series_3_5_medium],
+          ['series_3_5_year', cfg.series_3_5_year || defaultConfig.series_3_5_year],
+          ['series_3_5_desc', cfg.series_3_5_desc || defaultConfig.series_3_5_desc],
           ['studio_2_url', cfg.studio_2_url || ''],
           ['studio_3_url', cfg.studio_3_url || ''],
           ['instagram_link', cfg.instagram_link || ''],
@@ -1049,6 +1238,21 @@
       if (ex2Title) ex2Title.textContent = config.exhibition_2_title || defaultConfig.exhibition_2_title;
       const ex2Desc = document.getElementById('exhibition-2-desc');
       if (ex2Desc) ex2Desc.textContent = config.exhibition_2_desc || defaultConfig.exhibition_2_desc;
+
+      // Testimonial
+      const testimonialImage = document.getElementById('testimonial-image');
+      if (testimonialImage && config.artist_testimonial_photo_url) {
+        testimonialImage.src = config.artist_testimonial_photo_url;
+      }
+      
+      const testimonialName = document.getElementById('testimonial-name');
+      if (testimonialName) testimonialName.textContent = config.artist_testimonial_name || defaultConfig.artist_testimonial_name;
+      
+      const testimonialQuote = document.getElementById('testimonial-quote');
+      if (testimonialQuote) testimonialQuote.textContent = config.artist_testimonial_text || defaultConfig.artist_testimonial_text;
+      
+      const testimonialTitle = document.getElementById('testimonial-title');
+      if (testimonialTitle) testimonialTitle.textContent = config.artist_testimonial_title || defaultConfig.artist_testimonial_title;
       
       // Newest artwork
       for (let i = 1; i <= 3; i++) {
@@ -1100,6 +1304,24 @@
         const year = document.getElementById(`series-2-${i}-year`);
         if (year) year.textContent = config[`series_2_${i}_year`] || defaultConfig[`series_2_${i}_year`];
       }
+
+      // Series 3
+      const series3Title = document.getElementById('series-3-title');
+      if (series3Title) series3Title.textContent = config.series_3_title || defaultConfig.series_3_title;
+      
+      for (let i = 1; i <= 5; i++) {
+        const img = document.getElementById(`series-3-${i}-img`);
+        if (img && config[`series_3_${i}_url`]) img.src = config[`series_3_${i}_url`];
+        
+        const title = document.getElementById(`series-3-${i}-title`);
+        if (title) title.textContent = config[`series_3_${i}_title`] || defaultConfig[`series_3_${i}_title`];
+        
+        const medium = document.getElementById(`series-3-${i}-medium`);
+        if (medium) medium.textContent = config[`series_3_${i}_medium`] || defaultConfig[`series_3_${i}_medium`];
+        
+        const year = document.getElementById(`series-3-${i}-year`);
+        if (year) year.textContent = config[`series_3_${i}_year`] || defaultConfig[`series_3_${i}_year`];
+      }
       
       // Studio
       const studio1 = document.getElementById('studio-1-img');
@@ -1135,16 +1357,6 @@
     const swipeHint = document.getElementById('swipe-hint');
     const navScrollContainer = document.querySelector('.nav-scroll-container');
     
-    function checkSwipeHint() {
-      const isMobile = window.innerWidth < 768;
-      const hasScroll = navScrollContainer && navScrollContainer.scrollWidth > navScrollContainer.clientWidth;
-      if (isMobile && hasScroll) {
-        swipeHint.classList.add('visible');
-      } else {
-        swipeHint.classList.remove('visible');
-      }
-    }
-    
     function handleScroll() {
       const scrollTop = appWrapper.scrollTop;
       const scrollHeight = appWrapper.scrollHeight - appWrapper.clientHeight;
@@ -1175,7 +1387,6 @@
     }
     
     appWrapper.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', checkSwipeHint);
     
     // Nav click handling
     navLinks.forEach(link => {
@@ -1248,10 +1459,9 @@
     
     setTimeout(() => {
       handleScroll();
-      checkSwipeHint();
     }, 100);
     
     updateUI();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cbd195f8058f46d',t:'MTc3MDc0MjE2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cc2995ab24a7da9',t:'MTc3MDc5OTgzMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
