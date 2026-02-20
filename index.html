@@ -710,7 +710,8 @@
       <section id="home" class="min-h-screen flex items-center justify-center px-4 pt-24 md:pt-20">
         <div class="text-center section-animate" data-animate>
           <h1 id="hero-title" class="font-display text-5xl md:text-7xl font-bold mb-6" style="color: #5c4a32;">
-            The Art of<br><span style="color: #d4af37;">Traditional Painting</span>
+            Maya Rupa<br>
+            <span style="color: #d4af37;">Art Space</span>
           </h1>
           <p id="hero-subtitle" class="font-body text-lg md:text-xl mb-12 max-w-2xl mx-auto" style="color: #8b7355;">
             Discover the beauty of conventional art, where every brushstroke tells a story and every canvas holds a piece of the artist's soul.
@@ -1573,7 +1574,7 @@
   <script>
     const defaultConfig = {
       studio_logo_url: 'https://imgur.com/BtmF3OR.jpg',
-      hero_title: 'The Art of Traditional Painting',
+      hero_title: 'Maya Rupa Art Space',
       hero_subtitle: 'Discover the beauty of conventional art, where every brushstroke tells a story and every canvas holds a piece of the artist\'s soul.',
       artist_name: 'I Wayan Santrayana',
       artist_photo_url: 'https://imgur.com/BtmF3OR.jpg',
@@ -2036,9 +2037,11 @@
       const heroTitle = document.getElementById('hero-title');
       if (heroTitle && config.hero_title) {
         const titleText = config.hero_title;
-        const lastWord = titleText.split(' ').pop();
-        const restText = titleText.substring(0, titleText.length - lastWord.length);
-        heroTitle.innerHTML = restText + '<br><span style="color: ' + (config.primary_color || defaultConfig.primary_color) + ';">' + lastWord + '</span>';
+        const words = titleText.split(' ');
+        const lastTwo = words.slice(-2).join(' ');
+        const restText = words.slice(0, -2).join(' ');
+        heroTitle.innerHTML =
+        restText + '<br><span style="color:' + (config.primary_color || defaultConfig.primary_color) + ';">' + lastTwo + '</span>';
       }
       
       const heroSubtitle = document.getElementById('hero-subtitle');
