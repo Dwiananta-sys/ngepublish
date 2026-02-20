@@ -222,6 +222,17 @@
       transform: translateY(0);
     }
     
+    .photo-animate {
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    
+    .photo-animate.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    
     .btn-primary {
       background: linear-gradient(135deg, #d4af37 0%, #8b5a2b 100%);
       color: white;
@@ -1307,7 +1318,7 @@
                 </div>
               </div>
 
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
                 <!-- Plastic Sculpture 4 -->
                 <div class="artwork-card section-animate stagger-4" data-animate data-artwork="series-3-4">
                   <img id="series-3-4-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23fef3c7'/%3E%3Crect x='80' y='60' width='240' height='200' fill='%23f59e0b' opacity='0.3'/%3E%3Cpath d='M150 150 L250 150 L220 200 L180 200 Z' fill='%23d97706' opacity='0.4'/%3E%3C/svg%3E" alt="Sculpture 4" class="artwork-image sculpture-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
@@ -2228,6 +2239,13 @@
     const swipeHint = document.getElementById('swipe-hint');
     const navScrollContainer = document.querySelector('.nav-scroll-container');
     
+    // Tambahkan class photo-animate ke semua artwork-card
+    const artworkCards = document.querySelectorAll('.artwork-card');
+    artworkCards.forEach(card => {
+      card.classList.add('photo-animate');
+      card.classList.remove('section-animate');
+    });
+    
     function handleScroll() {
       const scrollTop = appWrapper.scrollTop;
       const scrollHeight = appWrapper.scrollHeight - appWrapper.clientHeight;
@@ -2238,8 +2256,18 @@
         const rect = section.getBoundingClientRect();
         const windowHeight = window.innerHeight;
         
-        if (rect.top < windowHeight * 0.85 && rect.bottom > windowHeight * 0.15) {
-          section.classList.add('visible');
+        // Untuk foto (artwork-card) dengan class photo-animate
+        if (section.classList.contains('artwork-card')) {
+          if (rect.top < windowHeight * 0.85 && rect.bottom > windowHeight * 0.15) {
+            section.classList.add('visible');
+          } else {
+            section.classList.remove('visible');
+          }
+        } else {
+          // Untuk teks dan elemen lainnya
+          if (rect.top < windowHeight * 0.85 && rect.bottom > windowHeight * 0.15) {
+            section.classList.add('visible');
+          }
         }
       });
       
