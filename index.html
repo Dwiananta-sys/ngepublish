@@ -902,6 +902,10 @@
                       <div class="exhibition-desc">Solo Exhibition at Bajra Sandhi Monument, Denpasar</div>
                     </div>
                     <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">2010</div>
+                      <div class="exhibition-desc">Solo Exhibition at Art Center, Kalimantan</div>
+                    </div>
+                    <div class="exhibition-item py-2">
                       <div class="exhibition-title font-bold">2016</div>
                       <div class="exhibition-desc">"Maya Rupa" Solo Exhibition, Griya Santrian Gallery, Sanur</div>
                     </div>
@@ -913,11 +917,11 @@
                 <!-- Art Award -->
 
                 <div class="mt-5">
-                  <h4 class="font-display text-lg font-bold mb-4" style="color: #8b5a2b;">Art Award</h4>
+                  <h4 class="font-display text-lg font-bold mb-4" style="color: #8b5a2b;"></h4>
                   <div class="space-y-3">
                     <div class="exhibition-item py-2">
-                      <div class="exhibition-title font-bold">2010</div>
-                      <div class="exhibition-desc">Solo Exhibition at Art Center, Denpasar</div>
+                      <div class="exhibition-title font-bold"></div>
+                      <div class="exhibition-desc"></div>
                     </div>
                     </div>
                   </div>
@@ -2037,11 +2041,14 @@
       const heroTitle = document.getElementById('hero-title');
       if (heroTitle && config.hero_title) {
         const titleText = config.hero_title;
+
         const words = titleText.split(' ');
         const lastTwo = words.slice(-2).join(' ');
         const restText = words.slice(0, -2).join(' ');
+
         heroTitle.innerHTML =
         restText + '<br><span style="color:' + (config.primary_color || defaultConfig.primary_color) + ';">' + lastTwo + '</span>';
+
       }
       
       const heroSubtitle = document.getElementById('hero-subtitle');
