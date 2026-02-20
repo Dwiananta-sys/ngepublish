@@ -1,6 +1,6 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id" class="h-full">
- <head>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Artist Guidebook</title>
@@ -8,9 +8,9 @@
   <script src="/_sdk/element_sdk.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-        .scroll-indicator {
+    .scroll-indicator {
   display: none;
 }
 
@@ -19,7 +19,7 @@
     display: flex;
 
     position: fixed;   /* ini kuncinya */
-    top: 20px;         /* jarak dari atas */
+    top: 12px;         /* jarak dari atas */
     right: 12px;       /* jarak dari kanan */
 
     align-items: center;
@@ -27,6 +27,7 @@
 
     font-size: 12px;
     color: #d4af37;
+
 
 
     z-index: 999;      /* biar di atas semua */
@@ -41,6 +42,7 @@
     50% { transform: translateX(4px); }
   }
 }
+
     body {
       box-sizing: border-box;
     }
@@ -637,451 +639,1074 @@
       }
     }
   </style>
-  <style>@view-transition { navigation: auto; }</style>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
- </head>
- <body class="h-full font-body bg-pattern">
+</head>
+<body class="h-full font-body bg-pattern">
   <div class="app-wrapper" id="app-wrapper">
-   <div class="scroll-progress" id="scroll-progress"></div>
-   <div class="swipe-hint" id="swipe-hint"><span class="swipe-text">Geser</span> <span class="swipe-arrow">→</span>
-   </div>
-   <div class="decor-circle decor-1"></div>
-   <div class="decor-circle decor-2"></div>
-   <div class="decor-circle decor-3"></div>
-   <div class="decor-circle decor-4"></div>
-   <div class="decor-circle decor-5"></div>
-   <div class="brush-stroke brush-1">
-    <svg width="200" height="60" viewbox="0 0 200 60" fill="none"><path d="M5 30C20 10 50 50 80 30C110 10 140 50 170 30C185 20 195 25 195 30" stroke="#d4af37" stroke-width="8" stroke-linecap="round" />
-    </svg>
-   </div>
-   <div class="brush-stroke brush-2">
-    <svg width="150" height="50" viewbox="0 0 150 50" fill="none"><path d="M5 25C30 5 60 45 90 25C120 5 145 20 145 25" stroke="#8b5a2b" stroke-width="6" stroke-linecap="round" />
-    </svg>
-   </div><!-- Header -->
-   <header class="header-glass fixed top-0 left-0 right-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-3">
-     <div class="hidden md:flex items-center justify-between"><img id="studio-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23d4af37' opacity='0.2'/%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23d4af37' stroke-width='2'/%3E%3Ctext x='50' y='60' font-size='24' text-anchor='middle' font-family='serif' fill='%235c4a32' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E" alt="Studio Logo" class="studio-logo">
-      <nav class="flex gap-8"><a href="#home" class="nav-link font-body text-sm uppercase tracking-wider" data-section="home">Home</a> <a href="#artist" class="nav-link font-body text-sm uppercase tracking-wider" data-section="artist">The Artist</a> <a href="#newest" class="nav-link font-body text-sm uppercase tracking-wider" data-section="newest">Newest Artwork</a> <a href="#artwork" class="nav-link font-body text-sm uppercase tracking-wider" data-section="artwork">Artwork</a> <a href="#studio" class="nav-link font-body text-sm uppercase tracking-wider" data-section="studio">Our Studio</a> <a href="#findus" class="nav-link font-body text-sm uppercase tracking-wider" data-section="findus">Find Us</a>
-      </nav>
-     </div>
-     <div class="md:hidden">
-      <div class="scroll-indicator">
+    <div class="scroll-progress" id="scroll-progress"></div>
+    <div class="swipe-hint" id="swipe-hint">
+      <span class="swipe-text">Geser</span>
+      <span class="swipe-arrow">→</span>
+    </div>
+    
+    <div class="decor-circle decor-1"></div>
+    <div class="decor-circle decor-2"></div>
+    <div class="decor-circle decor-3"></div>
+    <div class="decor-circle decor-4"></div>
+    <div class="decor-circle decor-5"></div>
+    
+    <div class="brush-stroke brush-1">
+      <svg width="200" height="60" viewBox="0 0 200 60" fill="none">
+        <path d="M5 30C20 10 50 50 80 30C110 10 140 50 170 30C185 20 195 25 195 30" stroke="#d4af37" stroke-width="8" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="brush-stroke brush-2">
+      <svg width="150" height="50" viewBox="0 0 150 50" fill="none">
+        <path d="M5 25C30 5 60 45 90 25C120 5 145 20 145 25" stroke="#8b5a2b" stroke-width="6" stroke-linecap="round"/>
+      </svg>
+    </div>
+    
+    <!-- Header -->
+    <header class="header-glass fixed top-0 left-0 right-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 py-3">
+        <div class="hidden md:flex items-center justify-between">
+          <img id="studio-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23d4af37' opacity='0.2'/%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23d4af37' stroke-width='2'/%3E%3Ctext x='50' y='60' font-size='24' text-anchor='middle' font-family='serif' fill='%235c4a32' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E" alt="Studio Logo" class="studio-logo">
+          <nav class="flex gap-8">
+            <a href="#home" class="nav-link font-body text-sm uppercase tracking-wider" data-section="home">Home</a>
+            <a href="#artist" class="nav-link font-body text-sm uppercase tracking-wider" data-section="artist">The Artist</a>
+            <a href="#newest" class="nav-link font-body text-sm uppercase tracking-wider" data-section="newest">Newest Artwork</a>
+            <a href="#artwork" class="nav-link font-body text-sm uppercase tracking-wider" data-section="artwork">Artwork</a>
+            <a href="#studio" class="nav-link font-body text-sm uppercase tracking-wider" data-section="studio">Our Studio</a>
+            <a href="#findus" class="nav-link font-body text-sm uppercase tracking-wider" data-section="findus">Find Us</a>
+          </nav>
+        </div>
+        
+        <div class="md:hidden">
+          <div class="scroll-indicator">
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
     <path d="M5 12h14M12 5l7 7-7 7"/>
   </svg>
   <span>Swipe</span>
 </div>
-      <div class="flex items-center mb-2"><img id="studio-logo-mobile" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23d4af37' opacity='0.2'/%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23d4af37' stroke-width='2'/%3E%3Ctext x='50' y='60' font-size='24' text-anchor='middle' font-family='serif' fill='%235c4a32' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E" alt="Studio Logo" class="studio-logo" style="width: 40px; height: 40px;">
+          <div class="flex items-center mb-2">
+            <img id="studio-logo-mobile" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23d4af37' opacity='0.2'/%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23d4af37' stroke-width='2'/%3E%3Ctext x='50' y='60' font-size='24' text-anchor='middle' font-family='serif' fill='%235c4a32' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E" alt="Studio Logo" class="studio-logo" style="width: 40px; height: 40px;">
+          </div>
+          <nav class="nav-scroll-container">
+            <div class="nav-scroll-wrapper">
+              <a href="#home" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="home">Home</a>
+              <a href="#artist" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="artist">Artist</a>
+              <a href="#newest" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="newest">Newest</a>
+              <a href="#artwork" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="artwork">Artwork</a>
+              <a href="#studio" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="studio">Studio</a>
+              <a href="#findus" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="findus">Find Us</a>
+            </div>
+          </nav>
+        </div>
       </div>
-      <nav class="nav-scroll-container">
-       <div class="nav-scroll-wrapper"><a href="#home" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="home">Home</a> <a href="#artist" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="artist">Artist</a> <a href="#newest" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="newest">Newest</a> <a href="#artwork" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="artwork">Artwork</a> <a href="#studio" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="studio">Studio</a> <a href="#findus" class="nav-link font-body text-xs uppercase tracking-wider nav-link-scroll" data-section="findus">Find Us</a>
-       </div>
-      </nav>
-     </div>
-    </div>
-   </header><!-- Main Content -->
-   <main class="relative z-10"><!-- Home Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center px-4 pt-24 md:pt-20">
-     <div class="text-center section-animate" data-animate>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="relative z-10">
+      <!-- Home Section -->
+      <section id="home" class="min-h-screen flex items-center justify-center px-4 pt-24 md:pt-20">
+        <div class="text-center section-animate" data-animate>
+          <h1 id="hero-title" class="font-display text-5xl md:text-7xl font-bold mb-6" style="color: #5c4a32;">
+            The Art of<br><span style="color: #d4af37;">Traditional Painting</span>
+          </h1>
+          <p id="hero-subtitle" class="font-body text-lg md:text-xl mb-12 max-w-2xl mx-auto" style="color: #8b7355;">
+            Discover the beauty of conventional art, where every brushstroke tells a story and every canvas holds a piece of the artist's soul.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#studio" class="btn-primary font-body text-sm uppercase tracking-widest">
+              Explore Studio
+            </a>
+            <a href="#newest" class="btn-secondary font-body text-sm uppercase tracking-widest">
+              View Art
+            </a>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Artist Section -->
+      <section id="artist" class="min-h-screen flex items-center py-20 px-4">
+        <div class="max-w-6xl mx-auto w-full">
+          <div class="grid md:grid-cols-2 gap-12 items-start pt-20">
+            <div class="section-animate space-y-8" data-animate>
+              <div class="artist-image-frame mx-auto">
+                <div class="artist-image-inner">
+                  <img id="artist-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Ccircle cx='150' cy='150' r='145' fill='%23f5f0e6'/%3E%3Ccircle cx='150' cy='80' r='35' fill='%238b5a2b'/%3E%3Cpath d='M100 150 Q150 120 200 150 L200 250 Q150 270 100 250 Z' fill='%238b5a2b'/%3E%3C/svg%3E" alt="Artist" class="artist-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                </div>
+              </div>
+              
+              <div class="testimonial-frame-container">
+                <h3 class="font-display text-xl font-bold mb-4" style="color: #5c4a32;">Testimoni Maestro</h3>
+                <div class="testimonial-frame">
+                  <img id="testimonial-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23d4af37' opacity='0.2'/%3E%3Ccircle cx='200' cy='150' r='80' fill='%235c4a32' opacity='0.3'/%3E%3C/svg%3E" alt="Maestro" class="testimonial-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                </div>
+                <div class="testimonial-content mt-4">
+                  <p id="testimonial-text" class="testimonial-text-quote font-display italic text-lg mb-3" style="color: #5c4a32;">"</p>
+                  <p id="testimonial-quote" class="font-body leading-relaxed mb-4" style="color: #8b7355;"></p>
+                  <div id="testimonial-name" class="font-display font-bold" style="color: #5c4a32;"></div>
+                  <div id="testimonial-title" class="font-body text-sm" style="color: #d4af37;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="section-animate" data-animate>
+              <span class="font-body text-sm uppercase tracking-widest mb-4 block" style="color: #d4af37;">Meet The Creator</span>
+              <h2 id="artist-name" class="font-display text-4xl md:text-5xl font-bold mb-6" style="color: #5c4a32;">
+                I Wayan Santrayana
+              </h2>
+              <div class="section-divider mb-8" style="margin-left: 0;"></div>
+              <div id="artist-bio" class="font-body text-base leading-relaxed mb-8 space-y-4" style="color: #8b7355;">
+                <p>An artist born on September 29, 1965, in Marga District, Tabanan. Raised in a humble and modest family, Santrayana has always carried a deep passion for the arts—be it music, dance, theater, or painting.</p>
+                <p>His deep love for tradition and culture, combined with a critical mind toward nature and the world, often stirred unease within him. For him, Arie Smit (Adrianus Wilhelmus Smit) was a figure who could carry the message of tradition into the modern era. The restlessness he found hard to express in words, he captured carefully on his canvases.</p>
+                <p>To this day, Santrayana continues to channel his restlessness through his bold and powerful works, following past exhibitions—both group and solo—held in Indonesia and abroad.</p>
+                <p><strong>I Wayan Santrayana</strong> expresses his voice and dedicates his life to Balinese culture and nature from his studio in Batubulan, Gianyar-Bali: <strong>Mayarupa Santrayana Art Space.</strong></p>
+              </div>
+              <div class="flex gap-4 mb-8">
+                <div class="text-center">
+                  <span class="font-display text-3xl font-bold" style="color: #d4af37;">10+</span>
+                  <p class="font-body text-sm" style="color: #8b7355;">Years Experience</p>
+                </div>
+                <div class="text-center">
+                  <span class="font-display text-3xl font-bold" style="color: #d4af37;">200+</span>
+                  <p class="font-body text-sm" style="color: #8b7355;">Artworks Created</p>
+                </div>
+                <div class="text-center">
+                  <span class="font-display text-3xl font-bold" style="color: #d4af37;">50+</span>
+                  <p class="font-body text-sm" style="color: #8b7355;">Happy Collectors</p>
+                </div>
+              </div>
 
-      <h1 id="hero-title" class="font-display text-5xl md:text-7xl font-bold mb-6" style="color: #5c4a32;">Maya Rupa<br><span style="color: #d4af37;">Art Space</span></h1>
-      <p id="hero-subtitle" class="font-body text-lg md:text-xl mb-12 max-w-2xl mx-auto" style="color: #8b7355;">Discover the beauty of conventional art, where every brushstroke tells a story and every canvas holds a piece of the artist's soul.</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center"><a href="#studio" class="btn-primary font-body text-sm uppercase tracking-widest"> Explore Studio </a> <a href="#newest" class="btn-secondary font-body text-sm uppercase tracking-widest"> View Art </a>
+              <!-- Exhibition Experience -->
+              <div class="section-animate" data-animate>
+                <h3 class="font-display text-2xl font-bold mb-6" style="color: #5c4a32;">Exhibition & Experience</h3>
+                
+                <!-- Group Exhibition -->
+                <div class="mb-8">
+                  <h4 class="font-display text-lg font-bold mb-4" style="color: #8b5a2b;">Group Exhibition</h4>
+                  <div class="space-y-3">
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">1986</div>
+                      <div class="exhibition-desc">Group Exhibition with Young Artists, Taman Budaya, Denpasar</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">1989</div>
+                      <div class="exhibition-desc">Group Exhibition in Japan</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">1992</div>
+                      <div class="exhibition-desc">Denpasar Art Festival Exhibition; Camps Group Exhibition, Campuan Hotel, Ubud; Exhibition in Celebration of STSI Anniversary – Denpasar; "4 Cities" Fine Art Exhibition, Bandung; Group Exhibition with Sanggar Dewata Indonesia at Gunarsa Museum – Ubud</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">1993</div>
+                      <div class="exhibition-desc">Exhibition at Nusa Dua Beach Hotel – Nusa Dua</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">1997</div>
+                      <div class="exhibition-desc">Group Exhibition at Ratna Warta Museum, Ubud</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">1998</div>
+                      <div class="exhibition-desc">Group Exhibition in Lugano, Switzerland</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">2000</div>
+                      <div class="exhibition-desc">Millennium Group Exhibition with Sanggar Dewata – Bali; Exhibition Welcoming ASEAN Ministers of Education, SMKN 1 Sukawati Exhibition Hall (SMSR) – Bali</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">2006</div>
+                      <div class="exhibition-desc">"Gema Perdamaian" (Echo of Peace) Exhibition with Tamiang Bali Community – Bali</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">2007</div>
+                      <div class="exhibition-desc">"Voice of Peace from Bali" Exhibition, Brussels, Belgium; "Artists for Humanity" Exhibition, Multi Art Gallery, Nusa Dua; Group Exhibition at Pers Pancasila Building, Jakarta</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">2008</div>
+                      <div class="exhibition-desc">Group Exhibition at Bali Classic Centre (BCC), Ubud; Finalist, "International Art Festival 2008", Yogyakarta; National Art Festival Exhibition, Ministry of Education and Culture, Jakarta</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">2009</div>
+                      <div class="exhibition-desc">50 Years of Sanggar Bambu Group Exhibition, Yogyakarta; "Gebrak Guru Gambar" Exhibition, Yogyakarta</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">2010</div>
+                      <div class="exhibition-desc">Edu Art Expo 2010, Solo</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">2014</div>
+                      <div class="exhibition-desc">National Art Exhibition V: "Geledah Kreasi Guru Seni", Taman Budaya, Yogyakarta</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">2015</div>
+                      <div class="exhibition-desc">National Art Exhibition VI: "Pro EduArt Expressio", Taman Budaya, Yogyakarta; "Tutur Nyatur" Group Exhibition, Bentara Budaya Bali</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">2020</div>
+                      <div class="exhibition-desc">"Timeless Impression", Bali Watercolorist Exhibition, Sudakara Art Space, Bali</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">2022</div>
+                      <div class="exhibition-desc">"Meet in Bali – International Painting Exhibition", Batu 8 Studio, Batubulan, Bali</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">2024</div>
+                      <div class="exhibition-desc">Watercolor Exhibition, "Bali in Watercolor", Citha Kelangen Gallery, ISI Denpasar; Group Exhibition, Griya Santrian Gallery (with MRB), Ubud; Group Exhibition, Gosford Regional Gallery, Sydney, Australia; Group Exhibition, Balai Budaya Central Java, Solo; Watercolor Exhibition, Kota Lama, Semarang; Group Exhibition at Sono Budoyo Museum, Yogyakarta</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">2025</div>
+                      <div class="exhibition-desc">"Catus Pata" Group Exhibition with Asta Muka Group, Moon Gallery, Kemenuh – Ubud</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">2025</div>
+                      <div class="exhibition-desc">Sad Rasa Group Exhibition at ARMA Museum, Ubud</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">2025</div>
+                      <div class="exhibition-desc">JIAF (Jogja International Art Fair), Yogyakarta</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">2026</div>
+                      <div class="exhibition-desc">Tapak Dara Group Exhibition at Museum Puri Lukisan, Ubud</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">2026</div>
+                      <div class="exhibition-desc">“Soko Guru” Group Exhibition at Griya Santrian Hotel Gallery</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Solo Exhibition -->
+                <div>
+                  <h4 class="font-display text-lg font-bold mb-4" style="color: #8b5a2b;">Solo Exhibition</h4>
+                  <div class="space-y-3">
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">1993</div>
+                      <div class="exhibition-desc">Solo Exhibition at Art Center, Denpasar</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">1994</div>
+                      <div class="exhibition-desc">Solo Exhibition at Bali Museum</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">2000</div>
+                      <div class="exhibition-desc">Solo Exhibition at Bali International Convention Centre, Sheraton Nusa Indah, Nusa Dua</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">2006</div>
+                      <div class="exhibition-desc">Solo Exhibition at Ganesha Gallery, Four Seasons Hotel, Jimbaran, Bali</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">2007</div>
+                      <div class="exhibition-desc">Solo Exhibition at Bajra Sandhi Monument, Denpasar</div>
+                    </div>
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">2016</div>
+                      <div class="exhibition-desc">"Maya Rupa" Solo Exhibition, Griya Santrian Gallery, Sanur</div>
+                    </div>
+                    </div>
+                    
+
+
+                    
+                <!-- Art Award -->
+
+                <div class="mt-5">
+                  <h4 class="font-display text-lg font-bold mb-4" style="color: #8b5a2b;">Art Award</h4>
+                  <div class="space-y-3">
+                    <div class="exhibition-item py-2">
+                      <div class="exhibition-title font-bold">2010</div>
+                      <div class="exhibition-desc">Solo Exhibition at Art Center, Denpasar</div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Newest Artwork Section -->
+      <section id="newest" class="min-h-screen py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-16 section-animate" data-animate>
+            <span class="font-body text-sm uppercase tracking-widest mb-4 block" style="color: #d4af37;">Fresh From The Studio</span>
+            <h2 class="font-display text-4xl md:text-5xl font-bold mb-6" style="color: #5c4a32;">Newest Artwork</h2>
+            <div class="section-divider"></div>
+          </div>
+          
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Newest Artwork 1 -->
+            <div class="artwork-card section-animate stagger-1" data-animate data-artwork="newest-1">
+              <img id="newest-1-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect width='300' height='400' fill='%23fde8d0'/%3E%3Ccircle cx='150' cy='120' r='60' fill='%23e11d48' opacity='0.6'/%3E%3Ccircle cx='120' cy='180' r='50' fill='%23f59e0b' opacity='0.5'/%3E%3Ccircle cx='180' cy='200' r='45' fill='%23d4af37' opacity='0.4'/%3E%3Cpath d='M80 250 Q150 180 220 250 L220 380 L80 380 Z' fill='%23166534' opacity='0.4'/%3E%3C/svg%3E" alt="Blooming Dreams" class="artwork-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
+              <div class="artwork-hint">View Details</div>
+              <div class="artwork-overlay">
+                <div class="text-white w-full">
+                  <h3 id="newest-1-title" class="font-display text-xl font-bold">Blooming Dreams</h3>
+                  <p id="newest-1-medium" class="font-body text-sm opacity-80">Oil on Canvas</p>
+                  <p id="newest-1-year" class="font-body text-sm opacity-70">2024</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Newest Artwork 2 -->
+            <div class="artwork-card section-animate stagger-2" data-animate data-artwork="newest-2">
+              <img id="newest-2-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect width='300' height='400' fill='%23e0f2fe'/%3E%3Cpath d='M30 250 Q100 80 150 180 Q200 280 270 120' stroke='%231e40af' stroke-width='10' fill='none'/%3E%3Ccircle cx='75' cy='60' r='40' fill='%23fbbf24' opacity='0.8'/%3E%3Cpath d='M180 280 L190 200 L210 280 L225 220 L240 300' stroke='%23166534' stroke-width='6' fill='none'/%3E%3C/svg%3E" alt="Serene Horizon" class="artwork-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
+              <div class="artwork-hint">View Details</div>
+              <div class="artwork-overlay">
+                <div class="text-white w-full">
+                  <h3 id="newest-2-title" class="font-display text-xl font-bold">Serene Horizon</h3>
+                  <p id="newest-2-medium" class="font-body text-sm opacity-80">Watercolor</p>
+                  <p id="newest-2-year" class="font-body text-sm opacity-70">2024</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Newest Artwork 3 -->
+            <div class="artwork-card section-animate stagger-3" data-animate data-artwork="newest-3">
+              <img id="newest-3-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect width='300' height='400' fill='%23d1fae5'/%3E%3Cpath d='M150 60 Q180 140 150 220 Q120 300 150 360' stroke='%23166534' stroke-width='10' fill='none'/%3E%3Cellipse cx='150' cy='120' rx='45' ry='30' fill='%2322c55e' opacity='0.6'/%3E%3Cellipse cx='135' cy='180' rx='36' ry='24' fill='%2316a34a' opacity='0.5'/%3E%3Cellipse cx='165' cy='240' rx='30' ry='18' fill='%2315803d' opacity='0.4'/%3E%3C/svg%3E" alt="Nature's Whisper" class="artwork-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
+              <div class="artwork-hint">View Details</div>
+              <div class="artwork-overlay">
+                <div class="text-white w-full">
+                  <h3 id="newest-3-title" class="font-display text-xl font-bold">Nature's Whisper</h3>
+                  <p id="newest-3-medium" class="font-body text-sm opacity-80">Acrylic</p>
+                  <p id="newest-3-year" class="font-body text-sm opacity-70">2024</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Artwork Series Section -->
+      <section id="artwork" class="min-h-screen py-20 px-4" style="background: linear-gradient(180deg, transparent 0%, rgba(212, 175, 55, 0.03) 50%, transparent 100%);">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-16 section-animate" data-animate>
+            <span class="font-body text-sm uppercase tracking-widest mb-4 block" style="color: #d4af37;">Complete Collection</span>
+            <h2 class="font-display text-4xl md:text-5xl font-bold mb-6" style="color: #5c4a32;">Artwork Gallery</h2>
+            <div class="section-divider"></div>
+          </div>
+
+          <!-- Series 1 -->
+          <div id="series-1-container">
+            <div class="text-center series-title">
+              <span class="series-subtitle">Series Collection</span>
+              <h3 id="series-1-title" class="font-display text-3xl font-bold" style="color: #5c4a32;">Maya Rupa</h3>
+            </div>
+            <div class="max-w-3xl mx-auto mb-12 px-4">
+              <p id="series-1-desc" class="font-body text-center leading-relaxed" style="color: #8b7355;">
+                Mayarupa comes from the words maya, meaning absence or illusion, and rupa, meaning form. Mayarupa is the manifestation of a wild and liberated mind, capable of transforming a form into a new perception, shaped by the traces of experience stored within one’s subconscious.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+              <!-- Series 1 Item 1 -->
+              <div class="artwork-card section-animate stagger-1" data-animate data-artwork="series-1-1">
+                <img id="series-1-1-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f3e8ff'/%3E%3Crect x='80' y='60' width='240' height='180' rx='10' fill='%239333ea' opacity='0.3'/%3E%3Ccircle cx='200' cy='150' r='80' fill='%23ec4899' opacity='0.4'/%3E%3C/svg%3E" alt="Series 1 Item 1" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                <div class="artwork-hint">View Details</div>
+                <div class="artwork-overlay">
+                  <div class="text-white w-full">
+                    <h3 id="series-1-1-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                    <p id="series-1-1-medium" class="font-body text-sm opacity-80">Size</p>
+                    <p id="series-1-1-year" class="font-body text-sm opacity-70">2024</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Series 1 Item 2 -->
+              <div class="artwork-card section-animate stagger-2" data-animate data-artwork="series-1-2">
+                <img id="series-1-2-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23fed7aa'/%3E%3Cpolygon points='200,60 340,240 60,240' fill='%23ea580c' opacity='0.4'/%3E%3Ccircle cx='200' cy='180' r='70' fill='%23dc2626' opacity='0.3'/%3E%3C/svg%3E" alt="Series 1 Item 2" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                <div class="artwork-hint">View Details</div>
+                <div class="artwork-overlay">
+                  <div class="text-white w-full">
+                    <h3 id="series-1-2-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                    <p id="series-1-2-medium" class="font-body text-sm opacity-80">Size</p>
+                    <p id="series-1-2-year" class="font-body text-sm opacity-70">2024</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Series 1 Item 3 -->
+              <div class="artwork-card section-animate stagger-3" data-animate data-artwork="series-1-3">
+                <img id="series-1-3-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23ccfbf1'/%3E%3Cpath d='M80 280 Q150 100 200 180 Q250 260 320 120' stroke='%2314b8a6' stroke-width='16' fill='none'/%3E%3C/svg%3E" alt="Series 1 Item 3" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                <div class="artwork-hint">View Details</div>
+                <div class="artwork-overlay">
+                  <div class="text-white w-full">
+                    <h3 id="series-1-3-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                    <p id="series-1-3-medium" class="font-body text-sm opacity-80">Size</p>
+                    <p id="series-1-3-year" class="font-body text-sm opacity-70">2024</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Series 1 Item 4 -->
+              <div class="artwork-card section-animate stagger-4" data-animate data-artwork="series-1-4">
+                <img id="series-1-4-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23fef3c7'/%3E%3Crect x='80' y='60' width='240' height='200' fill='%23f59e0b' opacity='0.3'/%3E%3Cpath d='M150 150 L250 150 L220 200 L180 200 Z' fill='%23d97706' opacity='0.4'/%3E%3C/svg%3E" alt="Series 1 Item 4" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                <div class="artwork-hint">View Details</div>
+                <div class="artwork-overlay">
+                  <div class="text-white w-full">
+                    <h3 id="series-1-4-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                    <p id="series-1-4-medium" class="font-body text-sm opacity-80">Size</p>
+                    <p id="series-1-4-year" class="font-body text-sm opacity-70">2024</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Series 1 Item 5 -->
+              <div class="artwork-card section-animate stagger-5" data-animate data-artwork="series-1-5">
+                <img id="series-1-5-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f5d5e8'/%3E%3Ccircle cx='200' cy='100' r='50' fill='%23c084fc' opacity='0.5'/%3E%3Crect x='150' y='140' width='100' height='130' fill='%23a855f7' opacity='0.4'/%3E%3C/svg%3E" alt="Series 1 Item 5" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                <div class="artwork-hint">View Details</div>
+                <div class="artwork-overlay">
+                  <div class="text-white w-full">
+                    <h3 id="series-1-5-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                    <p id="series-1-5-medium" class="font-body text-sm opacity-80">Size</p>
+                    <p id="series-1-5-year" class="font-body text-sm opacity-70">2024</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Series 1 Item 6 -->
+              <div class="artwork-card section-animate stagger-6" data-animate data-artwork="series-1-6">
+                <img id="series-1-6-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23fce7f3'/%3E%3Crect x='100' y='80' width='200' height='140' rx='20' fill='%23ec4899' opacity='0.4'/%3E%3Ccircle cx='200' cy='160' r='40' fill='%23be185d' opacity='0.3'/%3E%3C/svg%3E" alt="Series 1 Item 6" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                <div class="artwork-hint">View Details</div>
+                <div class="artwork-overlay">
+                  <div class="text-white w-full">
+                    <h3 id="series-1-6-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                    <p id="series-1-6-medium" class="font-body text-sm opacity-80">Size</p>
+                    <p id="series-1-6-year" class="font-body text-sm opacity-70">2024</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Series 1 Item 7 -->
+              <div class="artwork-card section-animate stagger-1" data-animate data-artwork="series-1-7">
+                <img id="series-1-7-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23dbeafe'/%3E%3Cpolygon points='200,50 350,200 350,280 50,280 50,200' fill='%230ea5e9' opacity='0.3'/%3E%3C/svg%3E" alt="Series 1 Item 7" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                <div class="artwork-hint">View Details</div>
+                <div class="artwork-overlay">
+                  <div class="text-white w-full">
+                    <h3 id="series-1-7-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                    <p id="series-1-7-medium" class="font-body text-sm opacity-80">Size</p>
+                    <p id="series-1-7-year" class="font-body text-sm opacity-70">2024</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Series 1 Item 8 -->
+              <div class="artwork-card section-animate stagger-2" data-animate data-artwork="series-1-8">
+                <img id="series-1-8-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23d1fae5'/%3E%3Cpath d='M200 80 C240 120 280 180 200 260 C120 180 160 120 200 80' fill='%2310b981' opacity='0.4'/%3E%3C/svg%3E" alt="Series 1 Item 8" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                <div class="artwork-hint">View Details</div>
+                <div class="artwork-overlay">
+                  <div class="text-white w-full">
+                    <h3 id="series-1-8-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                    <p id="series-1-8-medium" class="font-body text-sm opacity-80">Size</p>
+                    <p id="series-1-8-year" class="font-body text-sm opacity-70">2024</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Series 1 Item 9 -->
+              <div class="artwork-card section-animate stagger-3" data-animate data-artwork="series-1-9">
+                <img id="series-1-9-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23fee2e2'/%3E%3Ccircle cx='200' cy='150' r='100' fill='%23dc2626' opacity='0.3'/%3E%3Ccircle cx='200' cy='150' r='60' fill='%23991b1b' opacity='0.2'/%3E%3C/svg%3E" alt="Series 1 Item 9" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                <div class="artwork-hint">View Details</div>
+                <div class="artwork-overlay">
+                  <div class="text-white w-full">
+                    <h3 id="series-1-9-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                    <p id="series-1-9-medium" class="font-body text-sm opacity-80">Size</p>
+                    <p id="series-1-9-year" class="font-body text-sm opacity-70">2024</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Series 2 -->
+          <div id="series-2-container">
+            <div class="text-center series-title">
+              <span class="series-subtitle">Series Collection</span>
+              <h3 id="series-2-title" class="font-display text-3xl font-bold" style="color: #5c4a32;">Marginal Life</h3>
+            </div>
+            <div class="max-w-3xl mx-auto mb-12 px-4">
+              <p id="series-2-desc" class="font-body text-center leading-relaxed" style="color: #8b7355;">
+                Marginal Life is constructed from the perspective of Balinese society in the 1980s, when the government’s tourism program entered the spaces of social life. This intersection created a collision that reconfigured the order of living: values shifted toward hedonism, the gap of inequality widened, poverty grew, and parts of the community were pushed to the margins, living a marginalized existence.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+              <!-- Series 2 Item 1 -->
+              <div class="artwork-card section-animate stagger-1" data-animate data-artwork="series-2-1">
+                <img id="series-2-1-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23fef08a'/%3E%3Ccircle cx='200' cy='150' r='120' fill='%23fbbf24' opacity='0.5'/%3E%3Ccircle cx='200' cy='150' r='80' fill='%23f59e0b' opacity='0.4'/%3E%3C/svg%3E" alt="Series 2 Item 1" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                <div class="artwork-hint">View Details</div>
+                <div class="artwork-overlay">
+                  <div class="text-white w-full">
+                    <h3 id="series-2-1-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                    <p id="series-2-1-medium" class="font-body text-sm opacity-80">Size</p>
+                    <p id="series-2-1-year" class="font-body text-sm opacity-70">2024</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Series 2 Item 2 -->
+              <div class="artwork-card section-animate stagger-2" data-animate data-artwork="series-2-2">
+                <img id="series-2-2-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f1f5f9'/%3E%3Crect x='100' y='80' width='200' height='140' fill='%2364748b' opacity='0.4'/%3E%3Crect x='140' y='120' width='120' height='70' fill='%23475569' opacity='0.3'/%3E%3C/svg%3E" alt="Series 2 Item 2" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                <div class="artwork-hint">View Details</div>
+                <div class="artwork-overlay">
+                  <div class="text-white w-full">
+                    <h3 id="series-2-2-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                    <p id="series-2-2-medium" class="font-body text-sm opacity-80">Size</p>
+                    <p id="series-2-2-year" class="font-body text-sm opacity-70">2024</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Series 2 Item 3 -->
+              <div class="artwork-card section-animate stagger-3" data-animate data-artwork="series-2-3">
+                <img id="series-2-3-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23fbcfe8'/%3E%3Cpath d='M200 80 C240 120 280 180 200 260 C120 180 160 120 200 80' fill='%23f43f5e' opacity='0.4'/%3E%3C/svg%3E" alt="Series 2 Item 3" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                <div class="artwork-hint">View Details</div>
+                <div class="artwork-overlay">
+                  <div class="text-white w-full">
+                    <h3 id="series-2-3-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                    <p id="series-2-3-medium" class="font-body text-sm opacity-80">Size</p>
+                    <p id="series-2-3-year" class="font-body text-sm opacity-70">2024</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Series 2 Item 4 -->
+              <div class="artwork-card section-animate stagger-4" data-animate data-artwork="series-2-4">
+                <img id="series-2-4-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f3e8ff'/%3E%3Crect x='80' y='60' width='240' height='180' rx='10' fill='%239333ea' opacity='0.3'/%3E%3Ccircle cx='200' cy='150' r='80' fill='%23ec4899' opacity='0.4'/%3E%3C/svg%3E" alt="Series 2 Item 4" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                <div class="artwork-hint">View Details</div>
+                <div class="artwork-overlay">
+                  <div class="text-white w-full">
+                    <h3 id="series-2-4-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                    <p id="series-2-4-medium" class="font-body text-sm opacity-80">Size</p>
+                    <p id="series-2-4-year" class="font-body text-sm opacity-70">2024</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Series 2 Item 5 -->
+              <div class="artwork-card section-animate stagger-5" data-animate data-artwork="series-2-5">
+                <img id="series-2-5-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23fed7aa'/%3E%3Cpolygon points='200,60 340,240 60,240' fill='%23ea580c' opacity='0.4'/%3E%3Ccircle cx='200' cy='180' r='70' fill='%23dc2626' opacity='0.3'/%3E%3C/svg%3E" alt="Series 2 Item 5" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                <div class="artwork-hint">View Details</div>
+                <div class="artwork-overlay">
+                  <div class="text-white w-full">
+                    <h3 id="series-2-5-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                    <p id="series-2-5-medium" class="font-body text-sm opacity-80">Size</p>
+                    <p id="series-2-5-year" class="font-body text-sm opacity-70">2024</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Series 2 Item 6 -->
+              <div class="artwork-card section-animate stagger-6" data-animate data-artwork="series-2-6">
+                <img id="series-2-6-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23dbeafe'/%3E%3Cpolygon points='200,50 350,200 350,280 50,280 50,200' fill='%230ea5e9' opacity='0.3'/%3E%3C/svg%3E" alt="Series 2 Item 6" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                <div class="artwork-hint">View Details</div>
+                <div class="artwork-overlay">
+                  <div class="text-white w-full">
+                    <h3 id="series-2-6-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                    <p id="series-2-6-medium" class="font-body text-sm opacity-80">Size</p>
+                    <p id="series-2-6-year" class="font-body text-sm opacity-70">2024</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Series 2 Item 7 -->
+              <div class="artwork-card section-animate stagger-1" data-animate data-artwork="series-2-7">
+                <img id="series-2-7-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23d1fae5'/%3E%3Cpath d='M200 80 C240 120 280 180 200 260 C120 180 160 120 200 80' fill='%2310b981' opacity='0.4'/%3E%3C/svg%3E" alt="Series 2 Item 7" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                <div class="artwork-hint">View Details</div>
+                <div class="artwork-overlay">
+                  <div class="text-white w-full">
+                    <h3 id="series-2-7-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                    <p id="series-2-7-medium" class="font-body text-sm opacity-80">Size</p>
+                    <p id="series-2-7-year" class="font-body text-sm opacity-70">2024</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Series 2 Item 8 -->
+              <div class="artwork-card section-animate stagger-2" data-animate data-artwork="series-2-8">
+                <img id="series-2-8-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23fef3c7'/%3E%3Crect x='80' y='60' width='240' height='200' fill='%23f59e0b' opacity='0.3'/%3E%3Cpath d='M150 150 L250 150 L220 200 L180 200 Z' fill='%23d97706' opacity='0.4'/%3E%3C/svg%3E" alt="Series 2 Item 8" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                <div class="artwork-hint">View Details</div>
+                <div class="artwork-overlay">
+                  <div class="text-white w-full">
+                    <h3 id="series-2-8-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                    <p id="series-2-8-medium" class="font-body text-sm opacity-80">Size</p>
+                    <p id="series-2-8-year" class="font-body text-sm opacity-70">2024</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Series 2 Item 9 -->
+              <div class="artwork-card section-animate stagger-3" data-animate data-artwork="series-2-9">
+                <img id="series-2-9-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f5d5e8'/%3E%3Ccircle cx='200' cy='100' r='50' fill='%23c084fc' opacity='0.5'/%3E%3Crect x='150' y='140' width='100' height='130' fill='%23a855f7' opacity='0.4'/%3E%3C/svg%3E" alt="Series 2 Item 9" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                <div class="artwork-hint">View Details</div>
+                <div class="artwork-overlay">
+                  <div class="text-white w-full">
+                    <h3 id="series-2-9-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                    <p id="series-2-9-medium" class="font-body text-sm opacity-80">Size</p>
+                    <p id="series-2-9-year" class="font-body text-sm opacity-70">2024</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Series 3 Plastic Sculpture -->
+          <div id="series-3-container">
+            <div class="text-center series-title">
+              <span class="series-subtitle">Series Collection</span>
+              <h3 id="series-3-title" class="font-display text-3xl font-bold" style="color: #5c4a32;">Karya Limbah</h3>
+            </div>
+            <div class="max-w-3xl mx-auto mb-12 px-4">
+              <p id="series-3-desc" class="font-body text-center leading-relaxed" style="color: #8b7355;">
+                Giving life to “inanimate objects,” bringing value to things once neglected. An initial step toward environmental awareness: a space where everyone can contribute, and where the works created become both witnesses and a source of inspiration.
+              </p>
+            </div>
+
+            <!-- Sub Series 1: Plastic Sculpture -->
+            <div class="mb-16">
+              <h4 class="text-center font-display text-2xl font-bold mb-8" style="color: #5c4a32;">Plastic Sculpture</h4>
+              <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8">
+                <!-- Plastic Sculpture 1 -->
+                <div class="artwork-card section-animate stagger-1" data-animate data-artwork="series-3-1">
+                  <img id="series-3-1-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23dbeafe'/%3E%3Cpolygon points='200,50 350,200 50,200' fill='%230ea5e9' opacity='0.5'/%3E%3Ccircle cx='200' cy='180' r='60' fill='%230284c7' opacity='0.4'/%3E%3C/svg%3E" alt="Sculpture 1" class="artwork-image sculpture-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                  <div class="artwork-hint">View Details</div>
+                  <div class="artwork-overlay">
+                    <div class="text-white w-full">
+                      <h3 id="series-3-1-title" class="font-display text-sm font-bold">Sculpture Title</h3>
+                      <p id="series-3-1-medium" class="font-body text-xs opacity-80">Size</p>
+                      <p id="series-3-1-year" class="font-body text-xs opacity-70">2024</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Plastic Sculpture 2 -->
+                <div class="artwork-card section-animate stagger-2" data-animate data-artwork="series-3-2">
+                  <img id="series-3-2-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23fce7f3'/%3E%3Crect x='100' y='80' width='200' height='160' rx='20' fill='%23ec4899' opacity='0.4'/%3E%3Ccircle cx='200' cy='160' r='40' fill='%23be185d' opacity='0.3'/%3E%3C/svg%3E" alt="Sculpture 2" class="artwork-image sculpture-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                  <div class="artwork-hint">View Details</div>
+                  <div class="artwork-overlay">
+                    <div class="text-white w-full">
+                      <h3 id="series-3-2-title" class="font-display text-sm font-bold">Sculpture Title</h3>
+                      <p id="series-3-2-medium" class="font-body text-xs opacity-80">Size</p>
+                      <p id="series-3-2-year" class="font-body text-xs opacity-70">2024</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Plastic Sculpture 3 -->
+                <div class="artwork-card section-animate stagger-3" data-animate data-artwork="series-3-3">
+                  <img id="series-3-3-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23d1fae5'/%3E%3Cpath d='M200 50 Q280 100 280 180 Q280 240 200 250 Q120 240 120 180 Q120 100 200 50' fill='%2310b981' opacity='0.4'/%3E%3C/svg%3E" alt="Sculpture 3" class="artwork-image sculpture-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                  <div class="artwork-hint">View Details</div>
+                  <div class="artwork-overlay">
+                    <div class="text-white w-full">
+                      <h3 id="series-3-3-title" class="font-display text-sm font-bold">Sculpture Title</h3>
+                      <p id="series-3-3-medium" class="font-body text-xs opacity-80">Size</p>
+                      <p id="series-3-3-year" class="font-body text-xs opacity-70">2024</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Plastic Sculpture 4 -->
+                <div class="artwork-card section-animate stagger-4" data-animate data-artwork="series-3-4">
+                  <img id="series-3-4-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23fef3c7'/%3E%3Crect x='80' y='60' width='240' height='200' fill='%23f59e0b' opacity='0.3'/%3E%3Cpath d='M150 150 L250 150 L220 200 L180 200 Z' fill='%23d97706' opacity='0.4'/%3E%3C/svg%3E" alt="Sculpture 4" class="artwork-image sculpture-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                  <div class="artwork-hint">View Details</div>
+                  <div class="artwork-overlay">
+                    <div class="text-white w-full">
+                      <h3 id="series-3-4-title" class="font-display text-sm font-bold">Sculpture Title</h3>
+                      <p id="series-3-4-medium" class="font-body text-xs opacity-80">Size</p>
+                      <p id="series-3-4-year" class="font-body text-xs opacity-70">2024</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Plastic Sculpture 5 -->
+                <div class="artwork-card section-animate stagger-5" data-animate data-artwork="series-3-5">
+                  <img id="series-3-5-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f5d5e8'/%3E%3Ccircle cx='200' cy='100' r='50' fill='%23c084fc' opacity='0.5'/%3E%3Crect x='150' y='140' width='100' height='130' fill='%23a855f7' opacity='0.4'/%3E%3C/svg%3E" alt="Sculpture 5" class="artwork-image sculpture-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                  <div class="artwork-hint">View Details</div>
+                  <div class="artwork-overlay">
+                    <div class="text-white w-full">
+                      <h3 id="series-3-5-title" class="font-display text-sm font-bold">Sculpture Title</h3>
+                      <p id="series-3-5-medium" class="font-body text-xs opacity-80">Size</p>
+                      <p id="series-3-5-year" class="font-body text-xs opacity-70">2024</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sub Series 2: Lukisan Maya Rupa -->
+            <div class="mb-16">
+              <h4 class="text-center font-display text-2xl font-bold mb-8" style="color: #5c4a32;">Upcycled Material Painting</h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Painting 1 -->
+                <div class="artwork-card section-animate stagger-1" data-animate data-artwork="series-3-sub2-1">
+                  <img id="series-3-sub2-1-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Crect width='400' height='500' fill='%23f3e8ff'/%3E%3Ccircle cx='200' cy='150' r='80' fill='%239333ea' opacity='0.4'/%3E%3Cpath d='M100 300 Q200 250 300 300 L300 480 L100 480 Z' fill='%23c084fc' opacity='0.3'/%3E%3C/svg%3E" alt="Painting 1" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                  <div class="artwork-hint">View Details</div>
+                  <div class="artwork-overlay">
+                    <div class="text-white w-full">
+                      <h3 id="series-3-sub2-1-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                      <p id="series-3-sub2-1-medium" class="font-body text-sm opacity-80">Size</p>
+                      <p id="series-3-sub2-1-year" class="font-body text-sm opacity-70">2024</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Painting 2 -->
+                <div class="artwork-card section-animate stagger-2" data-animate data-artwork="series-3-sub2-2">
+                  <img id="series-3-sub2-2-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Crect width='400' height='500' fill='%23fef08a'/%3E%3Cpolygon points='200,50 350,200 350,480 50,480 50,200' fill='%23f59e0b' opacity='0.3'/%3E%3C/svg%3E" alt="Painting 2" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                  <div class="artwork-hint">View Details</div>
+                  <div class="artwork-overlay">
+                    <div class="text-white w-full">
+                      <h3 id="series-3-sub2-2-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                      <p id="series-3-sub2-2-medium" class="font-body text-sm opacity-80">Size</p>
+                      <p id="series-3-sub2-2-year" class="font-body text-sm opacity-70">2024</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Painting 3 -->
+                <div class="artwork-card section-animate stagger-3" data-animate data-artwork="series-3-sub2-3">
+                  <img id="series-3-sub2-3-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Crect width='400' height='500' fill='%23d1fae5'/%3E%3Crect x='60' y='80' width='280' height='340' rx='20' fill='%2310b981' opacity='0.3'/%3E%3C/svg%3E" alt="Painting 3" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                  <div class="artwork-hint">View Details</div>
+                  <div class="artwork-overlay">
+                    <div class="text-white w-full">
+                      <h3 id="series-3-sub2-3-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                      <p id="series-3-sub2-3-medium" class="font-body text-sm opacity-80">Size</p>
+                      <p id="series-3-sub2-3-year" class="font-body text-sm opacity-70">2024</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Painting 4 -->
+                <div class="artwork-card section-animate stagger-4" data-animate data-artwork="series-3-sub2-4">
+                  <img id="series-3-sub2-4-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Crect width='400' height='500' fill='%23fbcfe8'/%3E%3Cpath d='M200 50 Q300 150 300 300 Q300 450 200 480 Q100 450 100 300 Q100 150 200 50' fill='%23f43f5e' opacity='0.3'/%3E%3C/svg%3E" alt="Painting 4" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                  <div class="artwork-hint">View Details</div>
+                  <div class="artwork-overlay">
+                    <div class="text-white w-full">
+                      <h3 id="series-3-sub2-4-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                      <p id="series-3-sub2-4-medium" class="font-body text-sm opacity-80">Size</p>
+                      <p id="series-3-sub2-4-year" class="font-body text-sm opacity-70">2024</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Painting 5 -->
+                <div class="artwork-card section-animate stagger-5" data-animate data-artwork="series-3-sub2-5">
+                  <img id="series-3-sub2-5-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Crect width='400' height='500' fill='%23dbeafe'/%3E%3Cpath d='M50 250 Q80 100 200 50 Q320 100 350 250 L350 480 L50 480 Z' fill='%230ea5e9' opacity='0.3'/%3E%3C/svg%3E" alt="Painting 5" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                  <div class="artwork-hint">View Details</div>
+                  <div class="artwork-overlay">
+                    <div class="text-white w-full">
+                      <h3 id="series-3-sub2-5-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                      <p id="series-3-sub2-5-medium" class="font-body text-sm opacity-80">Size</p>
+                      <p id="series-3-sub2-5-year" class="font-body text-sm opacity-70">2024</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sub Series 3: Limbah Gerinda -->
+            <div>
+              <h4 class="text-center font-display text-2xl font-bold mb-8" style="color: #5c4a32;">Discarded Grinding Disc</h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Mixed Media 1 -->
+                <div class="artwork-card section-animate stagger-1" data-animate data-artwork="series-3-sub3-1">
+                  <img id="series-3-sub3-1-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Crect width='400' height='500' fill='%23e5e7eb'/%3E%3Crect x='50' y='80' width='300' height='360' fill='%23718096' opacity='0.4'/%3E%3Crect x='100' y='150' width='200' height='240' fill='%234a5568' opacity='0.3'/%3E%3C/svg%3E" alt="Mixed Media 1" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                  <div class="artwork-hint">View Details</div>
+                  <div class="artwork-overlay">
+                    <div class="text-white w-full">
+                      <h3 id="series-3-sub3-1-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                      <p id="series-3-sub3-1-medium" class="font-body text-sm opacity-80">Size</p>
+                      <p id="series-3-sub3-1-year" class="font-body text-sm opacity-70">2024</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Mixed Media 2 -->
+                <div class="artwork-card section-animate stagger-2" data-animate data-artwork="series-3-sub3-2">
+                  <img id="series-3-sub3-2-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Crect width='400' height='500' fill='%23f5f3f0'/%3E%3Cpath d='M80 80 L320 80 L280 200 L120 200 Z' fill='%238b5a2b' opacity='0.3'/%3E%3Cpath d='M100 220 L300 220 L260 380 L140 380 Z' fill='%23d4af37' opacity='0.25'/%3E%3C/svg%3E" alt="Mixed Media 2" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                  <div class="artwork-hint">View Details</div>
+                  <div class="artwork-overlay">
+                    <div class="text-white w-full">
+                      <h3 id="series-3-sub3-2-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                      <p id="series-3-sub3-2-medium" class="font-body text-sm opacity-80">Size</p>
+                      <p id="series-3-sub3-2-year" class="font-body text-sm opacity-70">2024</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Mixed Media 3 -->
+                <div class="artwork-card section-animate stagger-3" data-animate data-artwork="series-3-sub3-3">
+                  <img id="series-3-sub3-3-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Crect width='400' height='500' fill='%23ede9fe'/%3E%3Ccircle cx='200' cy='150' r='70' fill='%236b21a8' opacity='0.3'/%3E%3Crect x='80' y='260' width='240' height='200' fill='%238b5cf6' opacity='0.25'/%3E%3C/svg%3E" alt="Mixed Media 3" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                  <div class="artwork-hint">View Details</div>
+                  <div class="artwork-overlay">
+                    <div class="text-white w-full">
+                      <h3 id="series-3-sub3-3-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                      <p id="series-3-sub3-3-medium" class="font-body text-sm opacity-80">Size</p>
+                      <p id="series-3-sub3-3-year" class="font-body text-sm opacity-70">2024</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Mixed Media 4 -->
+                <div class="artwork-card section-animate stagger-4" data-animate data-artwork="series-3-sub3-4">
+                  <img id="series-3-sub3-4-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Crect width='400' height='500' fill='%23fef3c7'/%3E%3Cpolygon points='200,80 320,200 320,420 80,420 80,200' fill='%23ca8a04' opacity='0.3'/%3E%3C/svg%3E" alt="Mixed Media 4" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                  <div class="artwork-hint">View Details</div>
+                  <div class="artwork-overlay">
+                    <div class="text-white w-full">
+                      <h3 id="series-3-sub3-4-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                      <p id="series-3-sub3-4-medium" class="font-body text-sm opacity-80">Size</p>
+                      <p id="series-3-sub3-4-year" class="font-body text-sm opacity-70">2024</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Mixed Media 5 -->
+                <div class="artwork-card section-animate stagger-5" data-animate data-artwork="series-3-sub3-5">
+                  <img id="series-3-sub3-5-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Crect width='400' height='500' fill='%23dcfce7'/%3E%3Crect x='70' y='100' width='260' height='300' rx='30' fill='%2316a34a' opacity='0.3'/%3E%3C/svg%3E" alt="Mixed Media 5" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
+                  <div class="artwork-hint">View Details</div>
+                  <div class="artwork-overlay">
+                    <div class="text-white w-full">
+                      <h3 id="series-3-sub3-5-title" class="font-display text-lg font-bold">Artwork Title</h3>
+                      <p id="series-3-sub3-5-medium" class="font-body text-sm opacity-80">Size</p>
+                      <p id="series-3-sub3-5-year" class="font-body text-sm opacity-70">2024</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Studio Section -->
+      <section id="studio" class="min-h-screen flex items-center py-20 px-4">
+        <div class="max-w-6xl mx-auto w-full">
+          <div class="text-center mb-16 section-animate" data-animate>
+            <span class="font-body text-sm uppercase tracking-widest mb-4 block" style="color: #d4af37;">Our Creative Space</span>
+            <h2 class="font-display text-4xl md:text-5xl font-bold mb-6" style="color: #5c4a32;">Our Studio</h2>
+            <div class="section-divider"></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="artwork-card section-animate stagger-1" data-animate>
+              <img id="studio-1-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f5e6d3'/%3E%3Crect x='50' y='50' width='300' height='300' rx='20' fill='%238b5a2b' opacity='0.2'/%3E%3Ccircle cx='200' cy='200' r='80' fill='%23d4af37' opacity='0.3'/%3E%3C/svg%3E" alt="Studio" class="studio-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
+            </div>
+            <div class="artwork-card section-animate stagger-2" data-animate>
+              <img id="studio-2-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23e8d5c4'/%3E%3Crect x='80' y='80' width='240' height='240' fill='%238b5a2b' opacity='0.15'/%3E%3Crect x='120' y='120' width='160' height='160' fill='%23d4af37' opacity='0.25'/%3E%3C/svg%3E" alt="Studio" class="studio-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
+            </div>
+            <div class="artwork-card section-animate stagger-3" data-animate>
+              <img id="studio-3-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f0e2d0'/%3E%3Cpath d='M50 350 L150 50 L250 200 L350 350 Z' fill='%238b5a2b' opacity='0.15'/%3E%3Cpath d='M100 350 L200 100 L300 350 Z' fill='%23d4af37' opacity='0.2'/%3E%3C/svg%3E" alt="Studio" class="studio-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Find Us Section -->
+      <section id="findus" class="min-h-screen flex items-center py-20 px-4">
+        <div class="max-w-4xl mx-auto w-full">
+          <div class="text-center mb-16 section-animate" data-animate>
+            <span class="font-body text-sm uppercase tracking-widest mb-4 block" style="color: #d4af37;">Get In Touch</span>
+            <h2 class="font-display text-4xl md:text-5xl font-bold mb-6" style="color: #5c4a32;">Find Us</h2>
+            <div class="section-divider"></div>
+            <p class="font-body text-lg mt-8 max-w-xl mx-auto" style="color: #8b7355;">
+              Connect with us through social media or visit our studio. We'd love to hear from you and discuss your art needs.
+            </p>
+          </div>
+          
+          <div class="flex justify-center gap-8 md:gap-12 section-animate" data-animate>
+            <a href="#" id="instagram-btn" target="_blank" rel="noopener noreferrer" class="social-icon group" title="Instagram">
+              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none">
+                <rect x="2" y="2" width="20" height="20" rx="5" stroke="#d4af37" stroke-width="2"/>
+                <circle cx="12" cy="12" r="4" stroke="#d4af37" stroke-width="2"/>
+                <circle cx="18" cy="6" r="1.5" fill="#d4af37"/>
+              </svg>
+            </a>
+            
+            <a href="#" id="whatsapp-btn" target="_blank" rel="noopener noreferrer" class="social-icon group" title="WhatsApp">
+              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C6.48 2 2 6.48 2 12C2 14.17 2.65 16.17 3.77 17.85L2.1 22L6.4 20.4C8 21.35 9.93 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="#25d366" stroke-width="2"/>
+                <path d="M8.5 10C8.5 10 9 8 12 8C15 8 15.5 10 15.5 11C15.5 12.5 14 13 12 14V15.5" stroke="#25d366" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="12" cy="18" r="1" fill="#25d366"/>
+              </svg>
+            </a>
+            
+            <a href="#" id="maps-btn" target="_blank" rel="noopener noreferrer" class="social-icon group" title="Location">
+              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z" stroke="#ea4335" stroke-width="2"/>
+                <circle cx="12" cy="9" r="3" stroke="#ea4335" stroke-width="2"/>
+              </svg>
+            </a>
+          </div>
+          
+          <div class="text-center mt-16 section-animate" data-animate>
+            <p class="font-body text-sm" style="color: #a89070;">
+              © 2024 Artist Studio. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <!-- Modal for Artwork -->
+    <div class="modal-backdrop" id="artwork-modal">
+      <button class="absolute top-4 right-4 text-white hover:text-amber-400 transition-colors z-10" id="close-modal">
+        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+      <div class="modal-content">
+        <img id="modal-image" src="" alt="Artwork" class="modal-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
+        <div class="p-6 md:p-8">
+          <h3 class="font-display text-2xl md:text-3xl font-bold mb-2" style="color: #5c4a32;" id="modal-title">Artwork Title</h3>
+          <p class="font-body mb-4" style="color: #8b7355;">
+            <span id="modal-medium">Medium</span> • <span id="modal-year">2024</span>
+          </p>
+          <div class="section-divider mb-4" style="margin: 1rem 0;"></div>
+          <p id="modal-description" class="font-body leading-relaxed" style="color: #5c4a32;">Detailed description of the artwork</p>
+        </div>
       </div>
-     </div>
-    </section><!-- Artist Section -->
-    <section id="artist" class="min-h-screen flex items-center py-20 px-4">
-     <div class="max-w-6xl mx-auto w-full">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-       <div class="section-animate space-y-8" data-animate>
-        <div class="artist-image-frame mx-auto">
-         <div class="artist-image-inner"><img id="artist-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Ccircle cx='150' cy='150' r='145' fill='%23f5f0e6'/%3E%3Ccircle cx='150' cy='80' r='35' fill='%238b5a2b'/%3E%3Cpath d='M100 150 Q150 120 200 150 L200 250 Q150 270 100 250 Z' fill='%238b5a2b'/%3E%3C/svg%3E" alt="Artist" class="artist-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
-         </div>
-        </div>
-        <div class="testimonial-frame-container">
-         <h3 class="font-display text-xl font-bold mb-4" style="color: #5c4a32;">Maestro Testimonial</h3>
-         <div class="testimonial-frame"><img id="testimonial-image" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23d4af37' opacity='0.2'/%3E%3Ccircle cx='200' cy='150' r='80' fill='%235c4a32' opacity='0.3'/%3E%3C/svg%3E" alt="Maestro" class="testimonial-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
-         </div>
-         <div class="testimonial-content mt-4">
-          <p id="testimonial-text" class="testimonial-text-quote font-display italic text-lg mb-3" style="color: #5c4a32;">"</p>
-          <p id="testimonial-quote" class="font-body leading-relaxed mb-4" style="color: #8b7355;"></p>
-          <div id="testimonial-name" class="font-display font-bold" style="color: #5c4a32;"></div>
-          <div id="testimonial-title" class="font-body text-sm" style="color: #d4af37;"></div>
-         </div>
-        </div>
-       </div>
-       <div class="section-animate" data-animate><span class="font-body text-sm uppercase tracking-widest mb-4 block" style="color: #d4af37;">Meet The Creator</span>
-        <h2 id="artist-name" class="font-display text-4xl md:text-5xl font-bold mb-6" style="color: #5c4a32;">The Artist</h2>
-        <div class="section-divider mb-8" style="margin-left: 0;"></div>
-        <p id="artist-bio" class="font-body text-lg leading-relaxed mb-8" style="color: #8b7355;">A passionate traditional artist dedicated to preserving the timeless art of conventional painting. With years of experience and countless hours spent perfecting every brushstroke, each artwork is a testament to the enduring beauty of handcrafted art.</p>
-        <div class="flex gap-4 mb-8">
-         <div class="text-center"><span class="font-display text-3xl font-bold" style="color: #d4af37;">10+</span>
-          <p class="font-body text-sm" style="color: #8b7355;">Years Experience</p>
-         </div>
-         <div class="text-center"><span class="font-display text-3xl font-bold" style="color: #d4af37;">200+</span>
-          <p class="font-body text-sm" style="color: #8b7355;">Artworks Created</p>
-         </div>
-         <div class="text-center"><span class="font-display text-3xl font-bold" style="color: #d4af37;">50+</span>
-          <p class="font-body text-sm" style="color: #8b7355;">Happy Collectors</p>
-         </div>
-        </div><!-- Exhibition Experience -->
-        <div class="section-animate" data-animate>
-         <h3 class="font-display text-2xl font-bold mb-4" style="color: #5c4a32;">Exhibition &amp; Experience</h3>
-         <div class="exhibition-item">
-          <div id="exhibition-1-title" class="exhibition-title">
-           Event Title
-          </div>
-          <div id="exhibition-1-desc" class="exhibition-desc">
-           Description about the exhibition or experience
-          </div>
-         </div>
-         <div class="exhibition-item">
-          <div id="exhibition-2-title" class="exhibition-title">
-           Event Title
-          </div>
-          <div id="exhibition-2-desc" class="exhibition-desc">
-           Description about the exhibition or experience
-          </div>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
-    </section><!-- Newest Artwork Section -->
-    <section id="newest" class="min-h-screen py-20 px-4">
-     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16 section-animate" data-animate><span class="font-body text-sm uppercase tracking-widest mb-4 block" style="color: #d4af37;">Fresh From The Studio</span>
-       <h2 class="font-display text-4xl md:text-5xl font-bold mb-6" style="color: #5c4a32;">Newest Artwork</h2>
-       <div class="section-divider"></div>
-      </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Newest Artwork 1 -->
-       <div class="artwork-card section-animate stagger-1" data-animate data-artwork="newest-1"><img id="newest-1-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect width='300' height='400' fill='%23fde8d0'/%3E%3Ccircle cx='150' cy='120' r='60' fill='%23e11d48' opacity='0.6'/%3E%3Ccircle cx='120' cy='180' r='50' fill='%23f59e0b' opacity='0.5'/%3E%3Ccircle cx='180' cy='200' r='45' fill='%23d4af37' opacity='0.4'/%3E%3Cpath d='M80 250 Q150 180 220 250 L220 380 L80 380 Z' fill='%23166534' opacity='0.4'/%3E%3C/svg%3E" alt="Blooming Dreams" class="artwork-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
-        <div class="artwork-hint">
-         View Details
-        </div>
-        <div class="artwork-overlay">
-         <div class="text-white w-full">
-          <h3 id="newest-1-title" class="font-display text-xl font-bold">Blooming Dreams</h3>
-          <p id="newest-1-medium" class="font-body text-sm opacity-80">Oil on Canvas</p>
-          <p id="newest-1-year" class="font-body text-sm opacity-70">2024</p>
-         </div>
-        </div>
-       </div><!-- Newest Artwork 2 -->
-       <div class="artwork-card section-animate stagger-2" data-animate data-artwork="newest-2"><img id="newest-2-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect width='300' height='400' fill='%23e0f2fe'/%3E%3Cpath d='M30 250 Q100 80 150 180 Q200 280 270 120' stroke='%231e40af' stroke-width='10' fill='none'/%3E%3Ccircle cx='75' cy='60' r='40' fill='%23fbbf24' opacity='0.8'/%3E%3Cpath d='M180 280 L190 200 L210 280 L225 220 L240 300' stroke='%23166534' stroke-width='6' fill='none'/%3E%3C/svg%3E" alt="Serene Horizon" class="artwork-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
-        <div class="artwork-hint">
-         View Details
-        </div>
-        <div class="artwork-overlay">
-         <div class="text-white w-full">
-          <h3 id="newest-2-title" class="font-display text-xl font-bold">Serene Horizon</h3>
-          <p id="newest-2-medium" class="font-body text-sm opacity-80">Watercolor</p>
-          <p id="newest-2-year" class="font-body text-sm opacity-70">2024</p>
-         </div>
-        </div>
-       </div><!-- Newest Artwork 3 -->
-       <div class="artwork-card section-animate stagger-3" data-animate data-artwork="newest-3"><img id="newest-3-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect width='300' height='400' fill='%23d1fae5'/%3E%3Cpath d='M150 60 Q180 140 150 220 Q120 300 150 360' stroke='%23166534' stroke-width='10' fill='none'/%3E%3Cellipse cx='150' cy='120' rx='45' ry='30' fill='%2322c55e' opacity='0.6'/%3E%3Cellipse cx='135' cy='180' rx='36' ry='24' fill='%2316a34a' opacity='0.5'/%3E%3Cellipse cx='165' cy='240' rx='30' ry='18' fill='%2315803d' opacity='0.4'/%3E%3C/svg%3E" alt="Nature's Whisper" class="artwork-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
-        <div class="artwork-hint">
-         View Details
-        </div>
-        <div class="artwork-overlay">
-         <div class="text-white w-full">
-          <h3 id="newest-3-title" class="font-display text-xl font-bold">Nature's Whisper</h3>
-          <p id="newest-3-medium" class="font-body text-sm opacity-80">Acrylic</p>
-          <p id="newest-3-year" class="font-body text-sm opacity-70">2024</p>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
-    </section><!-- Artwork Series Section -->
-    <section id="artwork" class="min-h-screen py-20 px-4" style="background: linear-gradient(180deg, transparent 0%, rgba(212, 175, 55, 0.03) 50%, transparent 100%);">
-     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16 section-animate" data-animate><span class="font-body text-sm uppercase tracking-widest mb-4 block" style="color: #d4af37;">Complete Collection</span>
-       <h2 class="font-display text-4xl md:text-5xl font-bold mb-6" style="color: #5c4a32;">Artwork Gallery</h2>
-       <div class="section-divider"></div>
-      </div><!-- Series 1 -->
-      <div id="series-1-container">
-       <div class="text-center series-title"><span class="series-subtitle">Series Collection</span>
-        <h3 id="series-1-title" class="font-display text-3xl font-bold" style="color: #5c4a32;">Series 1</h3>
-       </div>
-       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"><!-- Series 1 Item 1 -->
-        <div class="artwork-card section-animate stagger-1" data-animate data-artwork="series-1-1"><img id="series-1-1-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f3e8ff'/%3E%3Crect x='80' y='60' width='240' height='180' rx='10' fill='%239333ea' opacity='0.3'/%3E%3Ccircle cx='200' cy='150' r='80' fill='%23ec4899' opacity='0.4'/%3E%3C/svg%3E" alt="Series 1 Item 1" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
-         <div class="artwork-hint">
-          View Details
-         </div>
-         <div class="artwork-overlay">
-          <div class="text-white w-full">
-           <h3 id="series-1-1-title" class="font-display text-lg font-bold">Artwork Title</h3>
-           <p id="series-1-1-medium" class="font-body text-sm opacity-80">Medium</p>
-           <p id="series-1-1-year" class="font-body text-sm opacity-70">2024</p>
-          </div>
-         </div>
-        </div><!-- Series 1 Item 2 -->
-        <div class="artwork-card section-animate stagger-2" data-animate data-artwork="series-1-2"><img id="series-1-2-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23fed7aa'/%3E%3Cpolygon points='200,60 340,240 60,240' fill='%23ea580c' opacity='0.4'/%3E%3Ccircle cx='200' cy='180' r='70' fill='%23dc2626' opacity='0.3'/%3E%3C/svg%3E" alt="Series 1 Item 2" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
-         <div class="artwork-hint">
-          View Details
-         </div>
-         <div class="artwork-overlay">
-          <div class="text-white w-full">
-           <h3 id="series-1-2-title" class="font-display text-lg font-bold">Artwork Title</h3>
-           <p id="series-1-2-medium" class="font-body text-sm opacity-80">Medium</p>
-           <p id="series-1-2-year" class="font-body text-sm opacity-70">2024</p>
-          </div>
-         </div>
-        </div><!-- Series 1 Item 3 -->
-        <div class="artwork-card section-animate stagger-3" data-animate data-artwork="series-1-3"><img id="series-1-3-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23ccfbf1'/%3E%3Cpath d='M80 280 Q150 100 200 180 Q250 260 320 120' stroke='%2314b8a6' stroke-width='16' fill='none'/%3E%3C/svg%3E" alt="Series 1 Item 3" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
-         <div class="artwork-hint">
-          View Details
-         </div>
-         <div class="artwork-overlay">
-          <div class="text-white w-full">
-           <h3 id="series-1-3-title" class="font-display text-lg font-bold">Artwork Title</h3>
-           <p id="series-1-3-medium" class="font-body text-sm opacity-80">Medium</p>
-           <p id="series-1-3-year" class="font-body text-sm opacity-70">2024</p>
-          </div>
-         </div>
-        </div>
-       </div>
-      </div><!-- Series 2 -->
-      <div id="series-2-container">
-       <div class="text-center series-title"><span class="series-subtitle">Series Collection</span>
-        <h3 id="series-2-title" class="font-display text-3xl font-bold" style="color: #5c4a32;">Series 2</h3>
-       </div>
-       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"><!-- Series 2 Item 1 -->
-        <div class="artwork-card section-animate stagger-1" data-animate data-artwork="series-2-1"><img id="series-2-1-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23fef08a'/%3E%3Ccircle cx='200' cy='150' r='120' fill='%23fbbf24' opacity='0.5'/%3E%3Ccircle cx='200' cy='150' r='80' fill='%23f59e0b' opacity='0.4'/%3E%3C/svg%3E" alt="Series 2 Item 1" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
-         <div class="artwork-hint">
-          View Details
-         </div>
-         <div class="artwork-overlay">
-          <div class="text-white w-full">
-           <h3 id="series-2-1-title" class="font-display text-lg font-bold">Artwork Title</h3>
-           <p id="series-2-1-medium" class="font-body text-sm opacity-80">Medium</p>
-           <p id="series-2-1-year" class="font-body text-sm opacity-70">2024</p>
-          </div>
-         </div>
-        </div><!-- Series 2 Item 2 -->
-        <div class="artwork-card section-animate stagger-2" data-animate data-artwork="series-2-2"><img id="series-2-2-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f1f5f9'/%3E%3Crect x='100' y='80' width='200' height='140' fill='%2364748b' opacity='0.4'/%3E%3Crect x='140' y='120' width='120' height='70' fill='%23475569' opacity='0.3'/%3E%3C/svg%3E" alt="Series 2 Item 2" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
-         <div class="artwork-hint">
-          View Details
-         </div>
-         <div class="artwork-overlay">
-          <div class="text-white w-full">
-           <h3 id="series-2-2-title" class="font-display text-lg font-bold">Artwork Title</h3>
-           <p id="series-2-2-medium" class="font-body text-sm opacity-80">Medium</p>
-           <p id="series-2-2-year" class="font-body text-sm opacity-70">2024</p>
-          </div>
-         </div>
-        </div><!-- Series 2 Item 3 -->
-        <div class="artwork-card section-animate stagger-3" data-animate data-artwork="series-2-3"><img id="series-2-3-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23fbcfe8'/%3E%3Cpath d='M200 80 C240 120 280 180 200 260 C120 180 160 120 200 80' fill='%23f43f5e' opacity='0.4'/%3E%3C/svg%3E" alt="Series 2 Item 3" class="artwork-image artwork-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
-         <div class="artwork-hint">
-          View Details
-         </div>
-         <div class="artwork-overlay">
-          <div class="text-white w-full">
-           <h3 id="series-2-3-title" class="font-display text-lg font-bold">Artwork Title</h3>
-           <p id="series-2-3-medium" class="font-body text-sm opacity-80">Medium</p>
-           <p id="series-2-3-year" class="font-body text-sm opacity-70">2024</p>
-          </div>
-         </div>
-        </div>
-       </div>
-      </div><!-- Series 3 Plastic Sculpture -->
-      <div id="series-3-container">
-       <div class="text-center series-title"><span class="series-subtitle">Series Collection</span>
-        <h3 id="series-3-title" class="font-display text-3xl font-bold" style="color: #5c4a32;">Plastic Sculpture</h3>
-       </div>
-       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:col-span-3"><!-- First row: 3 items --> <!-- Series 3 Item 1 -->
-         <div class="artwork-card section-animate stagger-1" data-animate data-artwork="series-3-1"><img id="series-3-1-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23dbeafe'/%3E%3Cpolygon points='200,50 350,200 50,200' fill='%230ea5e9' opacity='0.5'/%3E%3Ccircle cx='200' cy='180' r='60' fill='%230284c7' opacity='0.4'/%3E%3C/svg%3E" alt="Sculpture 1" class="artwork-image sculpture-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
-          <div class="artwork-hint">
-           View Details
-          </div>
-          <div class="artwork-overlay">
-           <div class="text-white w-full">
-            <h3 id="series-3-1-title" class="font-display text-sm font-bold">Sculpture Title</h3>
-            <p id="series-3-1-medium" class="font-body text-xs opacity-80">Plastic</p>
-            <p id="series-3-1-year" class="font-body text-xs opacity-70">2024</p>
-           </div>
-          </div>
-         </div><!-- Series 3 Item 2 -->
-         <div class="artwork-card section-animate stagger-2" data-animate data-artwork="series-3-2"><img id="series-3-2-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23fce7f3'/%3E%3Crect x='100' y='80' width='200' height='160' rx='20' fill='%23ec4899' opacity='0.4'/%3E%3Ccircle cx='200' cy='160' r='40' fill='%23be185d' opacity='0.3'/%3E%3C/svg%3E" alt="Sculpture 2" class="artwork-image sculpture-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
-          <div class="artwork-hint">
-           View Details
-          </div>
-          <div class="artwork-overlay">
-           <div class="text-white w-full">
-            <h3 id="series-3-2-title" class="font-display text-sm font-bold">Sculpture Title</h3>
-            <p id="series-3-2-medium" class="font-body text-xs opacity-80">Plastic</p>
-            <p id="series-3-2-year" class="font-body text-xs opacity-70">2024</p>
-           </div>
-          </div>
-         </div><!-- Series 3 Item 3 -->
-         <div class="artwork-card section-animate stagger-3" data-animate data-artwork="series-3-3"><img id="series-3-3-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23d1fae5'/%3E%3Cpath d='M200 50 Q280 100 280 180 Q280 240 200 250 Q120 240 120 180 Q120 100 200 50' fill='%2310b981' opacity='0.4'/%3E%3C/svg%3E" alt="Sculpture 3" class="artwork-image sculpture-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
-          <div class="artwork-hint">
-           View Details
-          </div>
-          <div class="artwork-overlay">
-           <div class="text-white w-full">
-            <h3 id="series-3-3-title" class="font-display text-sm font-bold">Sculpture Title</h3>
-            <p id="series-3-3-medium" class="font-body text-xs opacity-80">Plastic</p>
-            <p id="series-3-3-year" class="font-body text-xs opacity-70">2024</p>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:col-span-3"><!-- Second row: 2 items --> <!-- Series 3 Item 4 -->
-         <div class="artwork-card section-animate stagger-4" data-animate data-artwork="series-3-4"><img id="series-3-4-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23fef3c7'/%3E%3Crect x='80' y='60' width='240' height='200' fill='%23f59e0b' opacity='0.3'/%3E%3Cpath d='M150 150 L250 150 L220 200 L180 200 Z' fill='%23d97706' opacity='0.4'/%3E%3C/svg%3E" alt="Sculpture 4" class="artwork-image sculpture-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
-          <div class="artwork-hint">
-           View Details
-          </div>
-          <div class="artwork-overlay">
-           <div class="text-white w-full">
-            <h3 id="series-3-4-title" class="font-display text-sm font-bold">Sculpture Title</h3>
-            <p id="series-3-4-medium" class="font-body text-xs opacity-80">Plastic</p>
-            <p id="series-3-4-year" class="font-body text-xs opacity-70">2024</p>
-           </div>
-          </div>
-         </div><!-- Series 3 Item 5 -->
-         <div class="artwork-card section-animate stagger-5" data-animate data-artwork="series-3-5"><img id="series-3-5-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f5d5e8'/%3E%3Ccircle cx='200' cy='100' r='50' fill='%23c084fc' opacity='0.5'/%3E%3Crect x='150' y='140' width='100' height='130' fill='%23a855f7' opacity='0.4'/%3E%3C/svg%3E" alt="Sculpture 5" class="artwork-image sculpture-item-rect" loading="lazy" onerror="this.style.background='#e5e7eb';">
-          <div class="artwork-hint">
-           View Details
-          </div>
-          <div class="artwork-overlay">
-           <div class="text-white w-full">
-            <h3 id="series-3-5-title" class="font-display text-sm font-bold">Sculpture Title</h3>
-            <p id="series-3-5-medium" class="font-body text-xs opacity-80">Plastic</p>
-            <p id="series-3-5-year" class="font-body text-xs opacity-70">2024</p>
-           </div>
-          </div>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
-    </section><!-- Studio Section -->
-    <section id="studio" class="min-h-screen flex items-center py-20 px-4">
-     <div class="max-w-6xl mx-auto w-full">
-      <div class="text-center mb-16 section-animate" data-animate><span class="font-body text-sm uppercase tracking-widest mb-4 block" style="color: #d4af37;">Our Creative Space</span>
-       <h2 class="font-display text-4xl md:text-5xl font-bold mb-6" style="color: #5c4a32;">Our Studio</h2>
-       <div class="section-divider"></div>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-       <div class="artwork-card section-animate stagger-1" data-animate><img id="studio-1-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f5e6d3'/%3E%3Crect x='50' y='50' width='300' height='300' rx='20' fill='%238b5a2b' opacity='0.2'/%3E%3Ccircle cx='200' cy='200' r='80' fill='%23d4af37' opacity='0.3'/%3E%3C/svg%3E" alt="Studio" class="studio-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
-       </div>
-       <div class="artwork-card section-animate stagger-2" data-animate><img id="studio-2-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23e8d5c4'/%3E%3Crect x='80' y='80' width='240' height='240' fill='%238b5a2b' opacity='0.15'/%3E%3Crect x='120' y='120' width='160' height='160' fill='%23d4af37' opacity='0.25'/%3E%3C/svg%3E" alt="Studio" class="studio-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
-       </div>
-       <div class="artwork-card section-animate stagger-3" data-animate><img id="studio-3-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23f0e2d0'/%3E%3Cpath d='M50 350 L150 50 L250 200 L350 350 Z' fill='%238b5a2b' opacity='0.15'/%3E%3Cpath d='M100 350 L200 100 L300 350 Z' fill='%23d4af37' opacity='0.2'/%3E%3C/svg%3E" alt="Studio" class="studio-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
-       </div>
-      </div>
-     </div>
-    </section><!-- Find Us Section -->
-    <section id="findus" class="min-h-screen flex items-center py-20 px-4">
-     <div class="max-w-4xl mx-auto w-full">
-      <div class="text-center mb-16 section-animate" data-animate><span class="font-body text-sm uppercase tracking-widest mb-4 block" style="color: #d4af37;">Get In Touch</span>
-       <h2 class="font-display text-4xl md:text-5xl font-bold mb-6" style="color: #5c4a32;">Find Us</h2>
-       <div class="section-divider"></div>
-       <p class="font-body text-lg mt-8 max-w-xl mx-auto" style="color: #8b7355;">Connect with us through social media or visit our studio. We'd love to hear from you and discuss your art needs.</p>
-      </div>
-      <div class="flex justify-center gap-8 md:gap-12 section-animate" data-animate><a href="#" id="instagram-btn" target="_blank" rel="noopener noreferrer" class="social-icon group" title="Instagram">
-        <svg class="w-7 h-7" viewbox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#d4af37" stroke-width="2" /> <circle cx="12" cy="12" r="4" stroke="#d4af37" stroke-width="2" /> <circle cx="18" cy="6" r="1.5" fill="#d4af37" />
-        </svg></a> <a href="#" id="whatsapp-btn" target="_blank" rel="noopener noreferrer" class="social-icon group" title="WhatsApp">
-        <svg class="w-7 h-7" viewbox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12C2 14.17 2.65 16.17 3.77 17.85L2.1 22L6.4 20.4C8 21.35 9.93 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="#25d366" stroke-width="2" /> <path d="M8.5 10C8.5 10 9 8 12 8C15 8 15.5 10 15.5 11C15.5 12.5 14 13 12 14V15.5" stroke="#25d366" stroke-width="2" stroke-linecap="round" /> <circle cx="12" cy="18" r="1" fill="#25d366" />
-        </svg></a> <a href="#" id="maps-btn" target="_blank" rel="noopener noreferrer" class="social-icon group" title="Location">
-        <svg class="w-7 h-7" viewbox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z" stroke="#ea4335" stroke-width="2" /> <circle cx="12" cy="9" r="3" stroke="#ea4335" stroke-width="2" />
-        </svg></a>
-      </div>
-      <div class="text-center mt-16 section-animate" data-animate>
-       <p class="font-body text-sm" style="color: #a89070;">© 2024 Artist Studio. All rights reserved.</p>
-      </div>
-     </div>
-    </section>
-   </main><!-- Modal for Artwork -->
-   <div class="modal-backdrop" id="artwork-modal"><button class="absolute top-4 right-4 text-white hover:text-amber-400 transition-colors z-10" id="close-modal">
-     <svg class="w-8 h-8" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12" />
-     </svg></button>
-    <div class="modal-content"><img id="modal-image" src="" alt="Artwork" class="modal-image" loading="lazy" onerror="this.style.background='#e5e7eb';">
-     <div class="p-6 md:p-8">
-      <h3 class="font-display text-2xl md:text-3xl font-bold mb-2" style="color: #5c4a32;" id="modal-title">Artwork Title</h3>
-      <p class="font-body mb-4" style="color: #8b7355;"><span id="modal-medium">Medium</span> • <span id="modal-year">2024</span></p>
-      <div class="section-divider mb-4" style="margin: 1rem 0;"></div>
-      <p id="modal-description" class="font-body leading-relaxed" style="color: #5c4a32;">Detailed description of the artwork</p>
-     </div>
     </div>
-   </div>
   </div>
+  
   <script>
     const defaultConfig = {
-      studio_logo_url: 'https://imgur.com/yTELHFg.jpg',
-      hero_title: 'Maya Rupa Art Space',
+      studio_logo_url: 'https://imgur.com/BtmF3OR.jpg',
+      hero_title: 'The Art of Traditional Painting',
       hero_subtitle: 'Discover the beauty of conventional art, where every brushstroke tells a story and every canvas holds a piece of the artist\'s soul.',
-      artist_name: 'I Wayan Santrayana',
-      artist_photo_url: 'https://imgur.com/yTELHFg.jpg',
+      artist_name: 'The Artist',
+      artist_photo_url: 'https://imgur.com/BtmF3OR.jpg',
       artist_bio: 'A passionate traditional artist dedicated to preserving the timeless art of conventional painting. With years of experience and countless hours spent perfecting every brushstroke, each artwork is a testament to the enduring beauty of handcrafted art.',
-      exhibition_1_title: 'National Seminar',
+      exhibition_1_title: 'Seminar Nasional',
       exhibition_1_desc: 'Participated in national art seminar discussing traditional painting techniques',
-      artist_testimonial_title: 'Painter',
-      artist_testimonial_name: 'Arie Smit',
-      artist_testimonial_text: 'He is a painter who continues to walk the line of ancient Balinese art and simultaneously brings it further into the “modern” realm; maintains its quality and sense of mystery, and thus very potential to provide a new “direction” for the Balinese fine arts.',
-      artist_testimonial_photo_url: 'https://imgur.com/MpXVeUS.jpg',
-      newest_1_title: 'Blooming Dreams',
+      artist_testimonial_title: 'A Master\'s Word',
+      artist_testimonial_name: 'Famous Artist Name',
+      artist_testimonial_text: 'Their dedication to traditional painting is truly remarkable and inspiring.',
+      artist_testimonial_photo_url: 'https://imgur.com/8WoWlnM.jpg',
+      newest_1_url: 'https://imgur.com/TCduAby.jpg',
+      newest_1_title: 'Tragedi di Tanah Emas',
       newest_1_medium: 'Oil on Canvas',
       newest_1_year: '2024',
       newest_1_desc: 'A vibrant exploration of natural beauty through traditional oil painting techniques.',
-      newest_2_url: '',
-      newest_2_title: 'Serene Horizon',
+      newest_2_url: 'https://imgur.com/DqywhzF.jpg',
+      newest_2_title: 'Naga Banda',
       newest_2_medium: 'Watercolor',
       newest_2_year: '2024',
       newest_2_desc: 'Capturing the peaceful essence of landscapes through delicate watercolor washes.',
-      newest_3_url: '',
-      newest_3_title: 'Nature\'s Whisper',
+      newest_3_url: 'https://imgur.com/PeSK7gI.jpg',
+      newest_3_title: 'Harmony of Life',
       newest_3_medium: 'Acrylic',
       newest_3_year: '2024',
       newest_3_desc: 'An intimate portrayal of nature\'s subtle movements and organic forms.',
-      series_1_title: 'Nature Collection',
-      series_1_1_url: '',
-      series_1_1_title: 'Artwork Title',
-      series_1_1_medium: 'Medium',
+      
+      series_1_title: 'Maya Rupa',
+      series_1_1_url: 'https://imgur.com/ZFlwhf9.jpg',
+      series_1_1_title: 'Kehidupan Marginal',
+      series_1_1_medium: 'Oil on Canvas',
       series_1_1_year: '2024',
       series_1_1_desc: 'Description',
-      series_1_2_url: '',
-      series_1_2_title: 'Artwork Title',
+      series_1_2_url: 'https://imgur.com/FGL5cIU.jpg',
+      series_1_2_title: 'Maya Rupa',
       series_1_2_medium: 'Medium',
       series_1_2_year: '2024',
       series_1_2_desc: 'Description',
-      series_1_3_url: '',
-      series_1_3_title: 'Artwork Title',
+      series_1_3_url: 'https://imgur.com/nf7jca1.jpg',
+      series_1_3_title: 'Lingga Sagara',
       series_1_3_medium: 'Medium',
       series_1_3_year: '2024',
       series_1_3_desc: 'Description',
-      series_2_title: 'Urban Sketches',
-      series_2_1_url: '',
-      series_2_1_title: 'Artwork Title',
-      series_2_1_medium: 'Medium',
+      series_1_4_url: 'https://imgur.com/i4IWTWI.jpg',
+      series_1_4_title: 'Maya Rupa',
+      series_1_4_medium: 'Medium',
+      series_1_4_year: '2024',
+      series_1_4_desc: 'Description',
+      series_1_5_url: 'https://imgur.com/H6RYIE0.jpg',
+      series_1_5_title: 'Maya Rupa',
+      series_1_5_medium: 'Medium',
+      series_1_5_year: '2024',
+      series_1_5_desc: 'Description',
+      series_1_6_url: 'https://imgur.com/8ZsM76v.jpg',
+      series_1_6_title: 'Maha Kala',
+      series_1_6_medium: 'Medium',
+      series_1_6_year: '2024',
+      series_1_6_desc: 'Description',
+      series_1_7_url: 'https://imgur.com/TdxQLHq.jpg',
+      series_1_7_title: 'Maya Rupa',
+      series_1_7_medium: 'Medium',
+      series_1_7_year: '2024',
+      series_1_7_desc: 'Description',
+      series_1_8_url: 'https://imgur.com/pwAp6is.jpg',
+      series_1_8_title: 'Maya Rupa',
+      series_1_8_medium: 'Medium',
+      series_1_8_year: '2024',
+      series_1_8_desc: 'Description',
+      series_1_9_url: '',
+      series_1_9_title: 'Maya Rupa',
+      series_1_9_medium: 'Medium',
+      series_1_9_year: '2024',
+      series_1_9_desc: 'Description',
+
+      series_2_title: 'Marginal Life',
+      series_2_1_url: 'https://imgur.com/QxRD8NP.jpg',
+      series_2_1_title: 'Dugem',
+      series_2_1_medium: 'Acrylic on Canvas',
       series_2_1_year: '2024',
       series_2_1_desc: 'Description',
-      series_2_2_url: '',
-      series_2_2_title: 'Artwork Title',
-      series_2_2_medium: 'Medium',
+      series_2_2_url: 'https://imgur.com/wI9NaFH.jpg',
+      series_2_2_title: 'Ngaben',
+      series_2_2_medium: 'Acrylic on Canvas',
       series_2_2_year: '2024',
       series_2_2_desc: 'Description',
-      series_2_3_url: '',
-      series_2_3_title: 'Artwork Title',
-      series_2_3_medium: 'Medium',
+      series_2_3_url: 'https://imgur.com/s2wUBrL.jpg',
+      series_2_3_title: 'Raja Tanpa Hutan',
+      series_2_3_medium: 'Acrylic on Canvas',
       series_2_3_year: '2024',
       series_2_3_desc: 'Description',
-      series_3_title: 'Plastic Sculpture',
-      series_3_1_url: 'https://imgur.com/sc4m2PF.jpg',
+      series_2_4_url: 'https://imgur.com/fNHcD6P.jpg',
+      series_2_4_title: 'Tanpa Arah Tanpa Tujuan',
+      series_2_4_medium: 'Acrylic on Canvas',
+      series_2_4_year: '2024',
+      series_2_4_desc: 'Description',
+      series_2_5_url: 'https://imgur.com/jJp4lFX.jpg',
+      series_2_5_title: 'Yang Masih Tersisa',
+      series_2_5_medium: 'Acrylic on Canvas',
+      series_2_5_year: '2024',
+      series_2_5_desc: 'Description',
+      series_2_6_url: 'https://imgur.com/VzjY9cF.jpg',
+      series_2_6_title: 'Wanita Naga',
+      series_2_6_medium: 'Acrylic on Canvas',
+      series_2_6_year: '2024',
+      series_2_6_desc: 'Description',
+      series_2_7_url: 'https://imgur.com/9yX88k2.jpg',
+      series_2_7_title: 'Ibu',
+      series_2_7_medium: 'Acrylic on Canvas',
+      series_2_7_year: '2024',
+      series_2_7_desc: 'Description',
+      series_2_8_url: 'https://imgur.com/Af6qPe6.jpg',
+      series_2_8_title: 'Sanggama Tatwa',
+      series_2_8_medium: 'Acrylic on Canvas',
+      series_2_8_year: '2024',
+      series_2_8_desc: 'Description',
+      series_2_9_url: 'https://imgur.com/gUAg7Am.jpg',
+      series_2_9_title: 'Berburu dan Diburu',
+      series_2_9_medium: 'Acrylic on Canvas',
+      series_2_9_year: '2024',
+      series_2_9_desc: 'Description',
+
+      series_3_title: 'Upcycled Art',
+      series_3_1_url: 'https://imgur.com/N7ZZDkM.jpg',
       series_3_1_title: 'Sculpture Title',
       series_3_1_medium: 'Plastic',
       series_3_1_year: '2024',
       series_3_1_desc: 'Description',
-      series_3_2_url: 'https://imgur.com/fbCcqUF.jpg',
+      series_3_2_url: 'https://imgur.com/9nG8KPp.jpg',
       series_3_2_title: 'Sculpture Title',
       series_3_2_medium: 'Plastic',
       series_3_2_year: '2024',
       series_3_2_desc: 'Description',
-      series_3_3_url: '',
-      series_3_3_title: 'Sculpture Title',
+      series_3_3_url: 'https://imgur.com/7VeoXTO.jpg',
+      series_3_3_title: 'Kala Rahu',
       series_3_3_medium: 'Plastic',
       series_3_3_year: '2024',
       series_3_3_desc: 'Description',
@@ -1095,11 +1720,64 @@
       series_3_5_medium: 'Plastic',
       series_3_5_year: '2024',
       series_3_5_desc: 'Description',
+
+      series_3_sub2_1_url: 'https://imgur.com/b7PPmUr.jpg',
+      series_3_sub2_1_title: 'Artwork Title',
+      series_3_sub2_1_medium: 'Medium',
+      series_3_sub2_1_year: '2024',
+      series_3_sub2_1_desc: 'Description',
+      series_3_sub2_2_url: 'https://imgur.com/7w0au8X.jpg',
+      series_3_sub2_2_title: 'Artwork Title',
+      series_3_sub2_2_medium: 'Medium',
+      series_3_sub2_2_year: '2024',
+      series_3_sub2_2_desc: 'Description',
+      series_3_sub2_3_url: 'https://imgur.com/XbkK7PL.jpg',
+      series_3_sub2_3_title: 'Artwork Title',
+      series_3_sub2_3_medium: 'Medium',
+      series_3_sub2_3_year: '2024',
+      series_3_sub2_3_desc: 'Description',
+      series_3_sub2_4_url: 'https://imgur.com/aj7019g.jpg',
+      series_3_sub2_4_title: 'Artwork Title',
+      series_3_sub2_4_medium: 'Medium',
+      series_3_sub2_4_year: '2024',
+      series_3_sub2_4_desc: 'Description',
+      series_3_sub2_5_url: 'https://imgur.com/l1rndtg.jpg',
+      series_3_sub2_5_title: 'Artwork Title',
+      series_3_sub2_5_medium: 'Medium',
+      series_3_sub2_5_year: '2024',
+      series_3_sub2_5_desc: 'Description',
+
+      series_3_sub3_1_url: 'https://imgur.com/hsalpex.jpg',
+      series_3_sub3_1_title: 'Artwork Title',
+      series_3_sub3_1_medium: 'Medium',
+      series_3_sub3_1_year: '2024',
+      series_3_sub3_1_desc: 'Description',
+      series_3_sub3_2_url: 'https://imgur.com/kuyIHRE.jpg',
+      series_3_sub3_2_title: 'Artwork Title',
+      series_3_sub3_2_medium: 'Medium',
+      series_3_sub3_2_year: '2024',
+      series_3_sub3_2_desc: 'Description',
+      series_3_sub3_3_url: 'https://imgur.com/BWRQCfw.jpg',
+      series_3_sub3_3_title: 'Artwork Title',
+      series_3_sub3_3_medium: 'Medium',
+      series_3_sub3_3_year: '2024',
+      series_3_sub3_3_desc: 'Description',
+      series_3_sub3_4_url: 'https://imgur.com/2iAWkHX.jpg',
+      series_3_sub3_4_title: 'Artwork Title',
+      series_3_sub3_4_medium: 'Medium',
+      series_3_sub3_4_year: '2024',
+      series_3_sub3_4_desc: 'Description',
+      series_3_sub3_5_url: 'https://imgur.com/XPg0jrT.jpg',
+      series_3_sub3_5_title: 'Artwork Title',
+      series_3_sub3_5_medium: 'Medium',
+      series_3_sub3_5_year: '2024',
+      series_3_sub3_5_desc: 'Description',
+      
       studio_2_url: '',
       studio_3_url: '',
-      instagram_link: '',
-      whatsapp_link: '',
-      maps_link: '',
+      instagram_link: 'https://www.instagram.com/wayan_santrayana?igsh=YjdxYW5idzBraTI2&utm_source=qr',
+      whatsapp_link: 'https://wa.me/62895623449328',
+      maps_link: 'https://share.google/L7eEoRs5G6mBebn9h',
       primary_color: '#d4af37',
       secondary_color: '#8b5a2b',
       text_color: '#5c4a32',
@@ -1180,6 +1858,36 @@
           ['series_1_3_medium', cfg.series_1_3_medium || defaultConfig.series_1_3_medium],
           ['series_1_3_year', cfg.series_1_3_year || defaultConfig.series_1_3_year],
           ['series_1_3_desc', cfg.series_1_3_desc || defaultConfig.series_1_3_desc],
+          ['series_1_4_url', cfg.series_1_4_url || ''],
+          ['series_1_4_title', cfg.series_1_4_title || defaultConfig.series_1_4_title],
+          ['series_1_4_medium', cfg.series_1_4_medium || defaultConfig.series_1_4_medium],
+          ['series_1_4_year', cfg.series_1_4_year || defaultConfig.series_1_4_year],
+          ['series_1_4_desc', cfg.series_1_4_desc || defaultConfig.series_1_4_desc],
+          ['series_1_5_url', cfg.series_1_5_url || ''],
+          ['series_1_5_title', cfg.series_1_5_title || defaultConfig.series_1_5_title],
+          ['series_1_5_medium', cfg.series_1_5_medium || defaultConfig.series_1_5_medium],
+          ['series_1_5_year', cfg.series_1_5_year || defaultConfig.series_1_5_year],
+          ['series_1_5_desc', cfg.series_1_5_desc || defaultConfig.series_1_5_desc],
+          ['series_1_6_url', cfg.series_1_6_url || ''],
+          ['series_1_6_title', cfg.series_1_6_title || defaultConfig.series_1_6_title],
+          ['series_1_6_medium', cfg.series_1_6_medium || defaultConfig.series_1_6_medium],
+          ['series_1_6_year', cfg.series_1_6_year || defaultConfig.series_1_6_year],
+          ['series_1_6_desc', cfg.series_1_6_desc || defaultConfig.series_1_6_desc],
+          ['series_1_7_url', cfg.series_1_7_url || ''],
+          ['series_1_7_title', cfg.series_1_7_title || defaultConfig.series_1_7_title],
+          ['series_1_7_medium', cfg.series_1_7_medium || defaultConfig.series_1_7_medium],
+          ['series_1_7_year', cfg.series_1_7_year || defaultConfig.series_1_7_year],
+          ['series_1_7_desc', cfg.series_1_7_desc || defaultConfig.series_1_7_desc],
+          ['series_1_8_url', cfg.series_1_8_url || ''],
+          ['series_1_8_title', cfg.series_1_8_title || defaultConfig.series_1_8_title],
+          ['series_1_8_medium', cfg.series_1_8_medium || defaultConfig.series_1_8_medium],
+          ['series_1_8_year', cfg.series_1_8_year || defaultConfig.series_1_8_year],
+          ['series_1_8_desc', cfg.series_1_8_desc || defaultConfig.series_1_8_desc],
+          ['series_1_9_url', cfg.series_1_9_url || ''],
+          ['series_1_9_title', cfg.series_1_9_title || defaultConfig.series_1_9_title],
+          ['series_1_9_medium', cfg.series_1_9_medium || defaultConfig.series_1_9_medium],
+          ['series_1_9_year', cfg.series_1_9_year || defaultConfig.series_1_9_year],
+          ['series_1_9_desc', cfg.series_1_9_desc || defaultConfig.series_1_9_desc],
           ['series_2_title', cfg.series_2_title || defaultConfig.series_2_title],
           ['series_2_1_url', cfg.series_2_1_url || ''],
           ['series_2_1_title', cfg.series_2_1_title || defaultConfig.series_2_1_title],
@@ -1196,6 +1904,36 @@
           ['series_2_3_medium', cfg.series_2_3_medium || defaultConfig.series_2_3_medium],
           ['series_2_3_year', cfg.series_2_3_year || defaultConfig.series_2_3_year],
           ['series_2_3_desc', cfg.series_2_3_desc || defaultConfig.series_2_3_desc],
+          ['series_2_4_url', cfg.series_2_4_url || ''],
+          ['series_2_4_title', cfg.series_2_4_title || defaultConfig.series_2_4_title],
+          ['series_2_4_medium', cfg.series_2_4_medium || defaultConfig.series_2_4_medium],
+          ['series_2_4_year', cfg.series_2_4_year || defaultConfig.series_2_4_year],
+          ['series_2_4_desc', cfg.series_2_4_desc || defaultConfig.series_2_4_desc],
+          ['series_2_5_url', cfg.series_2_5_url || ''],
+          ['series_2_5_title', cfg.series_2_5_title || defaultConfig.series_2_5_title],
+          ['series_2_5_medium', cfg.series_2_5_medium || defaultConfig.series_2_5_medium],
+          ['series_2_5_year', cfg.series_2_5_year || defaultConfig.series_2_5_year],
+          ['series_2_5_desc', cfg.series_2_5_desc || defaultConfig.series_2_5_desc],
+          ['series_2_6_url', cfg.series_2_6_url || ''],
+          ['series_2_6_title', cfg.series_2_6_title || defaultConfig.series_2_6_title],
+          ['series_2_6_medium', cfg.series_2_6_medium || defaultConfig.series_2_6_medium],
+          ['series_2_6_year', cfg.series_2_6_year || defaultConfig.series_2_6_year],
+          ['series_2_6_desc', cfg.series_2_6_desc || defaultConfig.series_2_6_desc],
+          ['series_2_7_url', cfg.series_2_7_url || ''],
+          ['series_2_7_title', cfg.series_2_7_title || defaultConfig.series_2_7_title],
+          ['series_2_7_medium', cfg.series_2_7_medium || defaultConfig.series_2_7_medium],
+          ['series_2_7_year', cfg.series_2_7_year || defaultConfig.series_2_7_year],
+          ['series_2_7_desc', cfg.series_2_7_desc || defaultConfig.series_2_7_desc],
+          ['series_2_8_url', cfg.series_2_8_url || ''],
+          ['series_2_8_title', cfg.series_2_8_title || defaultConfig.series_2_8_title],
+          ['series_2_8_medium', cfg.series_2_8_medium || defaultConfig.series_2_8_medium],
+          ['series_2_8_year', cfg.series_2_8_year || defaultConfig.series_2_8_year],
+          ['series_2_8_desc', cfg.series_2_8_desc || defaultConfig.series_2_8_desc],
+          ['series_2_9_url', cfg.series_2_9_url || ''],
+          ['series_2_9_title', cfg.series_2_9_title || defaultConfig.series_2_9_title],
+          ['series_2_9_medium', cfg.series_2_9_medium || defaultConfig.series_2_9_medium],
+          ['series_2_9_year', cfg.series_2_9_year || defaultConfig.series_2_9_year],
+          ['series_2_9_desc', cfg.series_2_9_desc || defaultConfig.series_2_9_desc],
           ['artist_testimonial_title', cfg.artist_testimonial_title || defaultConfig.artist_testimonial_title],
           ['artist_testimonial_name', cfg.artist_testimonial_name || defaultConfig.artist_testimonial_name],
           ['artist_testimonial_text', cfg.artist_testimonial_text || defaultConfig.artist_testimonial_text],
@@ -1226,6 +1964,56 @@
           ['series_3_5_medium', cfg.series_3_5_medium || defaultConfig.series_3_5_medium],
           ['series_3_5_year', cfg.series_3_5_year || defaultConfig.series_3_5_year],
           ['series_3_5_desc', cfg.series_3_5_desc || defaultConfig.series_3_5_desc],
+          ['series_3_sub2_1_url', cfg.series_3_sub2_1_url || ''],
+          ['series_3_sub2_1_title', cfg.series_3_sub2_1_title || defaultConfig.series_3_sub2_1_title],
+          ['series_3_sub2_1_medium', cfg.series_3_sub2_1_medium || defaultConfig.series_3_sub2_1_medium],
+          ['series_3_sub2_1_year', cfg.series_3_sub2_1_year || defaultConfig.series_3_sub2_1_year],
+          ['series_3_sub2_1_desc', cfg.series_3_sub2_1_desc || defaultConfig.series_3_sub2_1_desc],
+          ['series_3_sub2_2_url', cfg.series_3_sub2_2_url || ''],
+          ['series_3_sub2_2_title', cfg.series_3_sub2_2_title || defaultConfig.series_3_sub2_2_title],
+          ['series_3_sub2_2_medium', cfg.series_3_sub2_2_medium || defaultConfig.series_3_sub2_2_medium],
+          ['series_3_sub2_2_year', cfg.series_3_sub2_2_year || defaultConfig.series_3_sub2_2_year],
+          ['series_3_sub2_2_desc', cfg.series_3_sub2_2_desc || defaultConfig.series_3_sub2_2_desc],
+          ['series_3_sub2_3_url', cfg.series_3_sub2_3_url || ''],
+          ['series_3_sub2_3_title', cfg.series_3_sub2_3_title || defaultConfig.series_3_sub2_3_title],
+          ['series_3_sub2_3_medium', cfg.series_3_sub2_3_medium || defaultConfig.series_3_sub2_3_medium],
+          ['series_3_sub2_3_year', cfg.series_3_sub2_3_year || defaultConfig.series_3_sub2_3_year],
+          ['series_3_sub2_3_desc', cfg.series_3_sub2_3_desc || defaultConfig.series_3_sub2_3_desc],
+          ['series_3_sub2_4_url', cfg.series_3_sub2_4_url || ''],
+          ['series_3_sub2_4_title', cfg.series_3_sub2_4_title || defaultConfig.series_3_sub2_4_title],
+          ['series_3_sub2_4_medium', cfg.series_3_sub2_4_medium || defaultConfig.series_3_sub2_4_medium],
+          ['series_3_sub2_4_year', cfg.series_3_sub2_4_year || defaultConfig.series_3_sub2_4_year],
+          ['series_3_sub2_4_desc', cfg.series_3_sub2_4_desc || defaultConfig.series_3_sub2_4_desc],
+          ['series_3_sub2_5_url', cfg.series_3_sub2_5_url || ''],
+          ['series_3_sub2_5_title', cfg.series_3_sub2_5_title || defaultConfig.series_3_sub2_5_title],
+          ['series_3_sub2_5_medium', cfg.series_3_sub2_5_medium || defaultConfig.series_3_sub2_5_medium],
+          ['series_3_sub2_5_year', cfg.series_3_sub2_5_year || defaultConfig.series_3_sub2_5_year],
+          ['series_3_sub2_5_desc', cfg.series_3_sub2_5_desc || defaultConfig.series_3_sub2_5_desc],
+          ['series_3_sub3_1_url', cfg.series_3_sub3_1_url || ''],
+          ['series_3_sub3_1_title', cfg.series_3_sub3_1_title || defaultConfig.series_3_sub3_1_title],
+          ['series_3_sub3_1_medium', cfg.series_3_sub3_1_medium || defaultConfig.series_3_sub3_1_medium],
+          ['series_3_sub3_1_year', cfg.series_3_sub3_1_year || defaultConfig.series_3_sub3_1_year],
+          ['series_3_sub3_1_desc', cfg.series_3_sub3_1_desc || defaultConfig.series_3_sub3_1_desc],
+          ['series_3_sub3_2_url', cfg.series_3_sub3_2_url || ''],
+          ['series_3_sub3_2_title', cfg.series_3_sub3_2_title || defaultConfig.series_3_sub3_2_title],
+          ['series_3_sub3_2_medium', cfg.series_3_sub3_2_medium || defaultConfig.series_3_sub3_2_medium],
+          ['series_3_sub3_2_year', cfg.series_3_sub3_2_year || defaultConfig.series_3_sub3_2_year],
+          ['series_3_sub3_2_desc', cfg.series_3_sub3_2_desc || defaultConfig.series_3_sub3_2_desc],
+          ['series_3_sub3_3_url', cfg.series_3_sub3_3_url || ''],
+          ['series_3_sub3_3_title', cfg.series_3_sub3_3_title || defaultConfig.series_3_sub3_3_title],
+          ['series_3_sub3_3_medium', cfg.series_3_sub3_3_medium || defaultConfig.series_3_sub3_3_medium],
+          ['series_3_sub3_3_year', cfg.series_3_sub3_3_year || defaultConfig.series_3_sub3_3_year],
+          ['series_3_sub3_3_desc', cfg.series_3_sub3_3_desc || defaultConfig.series_3_sub3_3_desc],
+          ['series_3_sub3_4_url', cfg.series_3_sub3_4_url || ''],
+          ['series_3_sub3_4_title', cfg.series_3_sub3_4_title || defaultConfig.series_3_sub3_4_title],
+          ['series_3_sub3_4_medium', cfg.series_3_sub3_4_medium || defaultConfig.series_3_sub3_4_medium],
+          ['series_3_sub3_4_year', cfg.series_3_sub3_4_year || defaultConfig.series_3_sub3_4_year],
+          ['series_3_sub3_4_desc', cfg.series_3_sub3_4_desc || defaultConfig.series_3_sub3_4_desc],
+          ['series_3_sub3_5_url', cfg.series_3_sub3_5_url || ''],
+          ['series_3_sub3_5_title', cfg.series_3_sub3_5_title || defaultConfig.series_3_sub3_5_title],
+          ['series_3_sub3_5_medium', cfg.series_3_sub3_5_medium || defaultConfig.series_3_sub3_5_medium],
+          ['series_3_sub3_5_year', cfg.series_3_sub3_5_year || defaultConfig.series_3_sub3_5_year],
+          ['series_3_sub3_5_desc', cfg.series_3_sub3_5_desc || defaultConfig.series_3_sub3_5_desc],
           ['studio_2_url', cfg.studio_2_url || ''],
           ['studio_3_url', cfg.studio_3_url || ''],
           ['instagram_link', cfg.instagram_link || ''],
@@ -1247,15 +2035,10 @@
       // Hero section
       const heroTitle = document.getElementById('hero-title');
       if (heroTitle && config.hero_title) {
-      const titleText = config.hero_title;
-
-      const words = titleText.split(' ');
-      const lastTwo = words.slice(-2).join(' ');
-      const restText = words.slice(0, -2).join(' ');
-
-      heroTitle.innerHTML =
-        restText + '<br><span style="color:' + (config.primary_color || defaultConfig.primary_color) + ';">' + lastTwo + '</span>';
-
+        const titleText = config.hero_title;
+        const lastWord = titleText.split(' ').pop();
+        const restText = titleText.substring(0, titleText.length - lastWord.length);
+        heroTitle.innerHTML = restText + '<br><span style="color: ' + (config.primary_color || defaultConfig.primary_color) + ';">' + lastWord + '</span>';
       }
       
       const heroSubtitle = document.getElementById('hero-subtitle');
@@ -1316,7 +2099,7 @@
       const series1Title = document.getElementById('series-1-title');
       if (series1Title) series1Title.textContent = config.series_1_title || defaultConfig.series_1_title;
       
-      for (let i = 1; i <= 3; i++) {
+      for (let i = 1; i <= 9; i++) {
         const img = document.getElementById(`series-1-${i}-img`);
         if (img && config[`series_1_${i}_url`]) img.src = config[`series_1_${i}_url`];
         
@@ -1334,7 +2117,7 @@
       const series2Title = document.getElementById('series-2-title');
       if (series2Title) series2Title.textContent = config.series_2_title || defaultConfig.series_2_title;
       
-      for (let i = 1; i <= 3; i++) {
+      for (let i = 1; i <= 9; i++) {
         const img = document.getElementById(`series-2-${i}-img`);
         if (img && config[`series_2_${i}_url`]) img.src = config[`series_2_${i}_url`];
         
@@ -1364,6 +2147,36 @@
         
         const year = document.getElementById(`series-3-${i}-year`);
         if (year) year.textContent = config[`series_3_${i}_year`] || defaultConfig[`series_3_${i}_year`];
+      }
+
+      // Series 3 Sub2 - Lukisan Maya Rupa
+      for (let i = 1; i <= 5; i++) {
+        const img = document.getElementById(`series-3-sub2-${i}-img`);
+        if (img && config[`series_3_sub2_${i}_url`]) img.src = config[`series_3_sub2_${i}_url`];
+        
+        const title = document.getElementById(`series-3-sub2-${i}-title`);
+        if (title) title.textContent = config[`series_3_sub2_${i}_title`] || defaultConfig[`series_3_sub2_${i}_title`];
+        
+        const medium = document.getElementById(`series-3-sub2-${i}-medium`);
+        if (medium) medium.textContent = config[`series_3_sub2_${i}_medium`] || defaultConfig[`series_3_sub2_${i}_medium`];
+        
+        const year = document.getElementById(`series-3-sub2-${i}-year`);
+        if (year) year.textContent = config[`series_3_sub2_${i}_year`] || defaultConfig[`series_3_sub2_${i}_year`];
+      }
+
+      // Series 3 Sub3 - Limbah Gerinda
+      for (let i = 1; i <= 5; i++) {
+        const img = document.getElementById(`series-3-sub3-${i}-img`);
+        if (img && config[`series_3_sub3_${i}_url`]) img.src = config[`series_3_sub3_${i}_url`];
+        
+        const title = document.getElementById(`series-3-sub3-${i}-title`);
+        if (title) title.textContent = config[`series_3_sub3_${i}_title`] || defaultConfig[`series_3_sub3_${i}_title`];
+        
+        const medium = document.getElementById(`series-3-sub3-${i}-medium`);
+        if (medium) medium.textContent = config[`series_3_sub3_${i}_medium`] || defaultConfig[`series_3_sub3_${i}_medium`];
+        
+        const year = document.getElementById(`series-3-sub3-${i}-year`);
+        if (year) year.textContent = config[`series_3_sub3_${i}_year`] || defaultConfig[`series_3_sub3_${i}_year`];
       }
       
       // Studio
@@ -1418,7 +2231,7 @@
       const sectionElements = document.querySelectorAll('section[id]');
       sectionElements.forEach(sec => {
         const rect = sec.getBoundingClientRect();
-        if (rect.top <= 150 && rect.bottom >= 150) {
+        if (rect.top <= window.innerHeight * 0.3 && rect.bottom >= window.innerHeight * 0.3) {
           navLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('data-section') === sec.id) {
@@ -1515,5 +2328,5 @@ document.querySelectorAll("img").forEach(img => {
   img.setAttribute("draggable", false);
 });
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cc2d1d5c4785c61',t:'MTc3MDgwMjE0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cf40d8b350c6d44',t:'MTc3MTMxODM5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
