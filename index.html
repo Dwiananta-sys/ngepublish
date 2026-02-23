@@ -418,7 +418,9 @@
     
     .modal-backdrop.closing {
       opacity: 0;
-      transition: all 0.4s ease 0.1s;
+      visibility: visible;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
     }
     
     .modal-image {
@@ -1718,28 +1720,28 @@
       series_3_title: 'Upcycled Art',
       series_3_1_url: 'https://imgur.com/N7ZZDkM.jpg',
       series_3_1_title: 'Sculpture Title',
-      series_3_1_medium: 'Plastic',
-      series_3_1_year: 'year • size',
+      series_3_1_medium: 'Plastic Waste',
+      series_3_1_year: '',
       series_3_1_desc: 'Description',
       series_3_2_url: 'https://imgur.com/9nG8KPp.jpg',
       series_3_2_title: 'Sculpture Title',
-      series_3_2_medium: 'Plastic',
-      series_3_2_year: 'year • size',
+      series_3_2_medium: 'Plastic Waste',
+      series_3_2_year: '',
       series_3_2_desc: 'Description',
       series_3_3_url: 'https://imgur.com/7VeoXTO.jpg',
       series_3_3_title: 'Kala Rahu: Maha Kala',
-      series_3_3_medium: 'Plastic',
-      series_3_3_year: 'year • size',
+      series_3_3_medium: 'Plastic Waste',
+      series_3_3_year: '',
       series_3_3_desc: 'When humanity fails to be wise with plastic, it becomes a new Maha Kala, ready to swallow everything without remainder.',
       series_3_4_url: 'https://imgur.com/sNMeBXV.jpg',
       series_3_4_title: 'Sculpture Title',
-      series_3_4_medium: 'Plastic',
-      series_3_4_year: 'year • size',
+      series_3_4_medium: 'Plastic Waste',
+      series_3_4_year: '',
       series_3_4_desc: 'Description',
       series_3_5_url: '',
       series_3_5_title: 'Sculpture Title',
-      series_3_5_medium: 'Plastic',
-      series_3_5_year: 'year • size',
+      series_3_5_medium: 'Plastic Waste',
+      series_3_5_year: '',
       series_3_5_desc: 'Description',
 
       series_3_sub2_1_url: 'https://imgur.com/b7PPmUr.jpg',
@@ -2348,6 +2350,7 @@
     
     function closeModalWithAnimation() {
       modal.classList.add('closing');
+      document.body.style.overflow = '';
       setTimeout(() => {
         modal.classList.remove('active', 'closing');
       }, 400);
